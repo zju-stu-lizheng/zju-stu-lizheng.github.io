@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.3k</span>
+            <span class="post-count">1.7k</span>
         </span>
     </span>
 
@@ -105,7 +105,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">6 min</span>
+            <span class="post-count">7 min</span>
         </span>
     </span>
 </div>
@@ -203,6 +203,23 @@
 <p>使用<code>checked</code> 属性可以设置复选或单选框的默认勾选.</p>
 <p>To do this, just add the word <code>checked</code> to the inside of an input element. For example:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;test-name&quot;</span> <span class="attr">checked</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="17-声明-html-文档的-doctype">17. 声明 HTML 文档的 Doctype</h3>
+<p>可以通过<code>&lt;!DOCTYPE ...&gt;</code>在第一行添加标记来告诉浏览器此信息，其中<code>...</code>部分是 HTML 的版本。对于 HTML5，您使用<code>&lt;!DOCTYPE html&gt;</code>.</p>
+<p>该<code>!</code>和大写<code>DOCTYPE</code>是很重要的，特别是对于旧的浏览器。在<code>html</code>不区分大小写。</p>
+<p>接下来，您的 HTML 代码的其余部分需要包含在<code>html</code>标签中。开头<code>&lt;html&gt;</code>直接在<code>&lt;!DOCTYPE html&gt;</code>线条下方，<code>&lt;/html&gt;</code>结尾在页面末尾。</p>
+<p>这是页面结构的示例。您的 HTML 代码将位于两个<code>html</code>标签之间的空间中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="18-定义-html-文档的头部和正文">18. 定义 HTML 文档的头部和正文</h3>
+<p>您可以在<code>html</code>带有<code>head</code>和<code>body</code>元素的标记内在 HTML 文档中添加另一个级别的组织。任何包含有关您的页面信息的标记都将进入<code>head</code>标记。然后任何带有页面内容的标记（向用户显示的内容）都将进入<code>body</code>标签。</p>
+<p>元数据元素，例如<code>link</code>，<code>meta</code>，<code>title</code>，和<code>style</code>，典型地去内部<code>head</code>元件。</p>
+<p>以下是页面布局的示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="19-更改文本颜色">19. 更改文本颜色</h3>
+<p>现在让我们改变一些文本的颜色。</p>
+<p>我们可以通过改变<code>style</code>你的<code>h2</code>元素来做到这一点。</p>
+<p>负责元素文本颜色的<code>color</code>属性是样式属性。</p>
+<p>以下是将<code>h2</code>元素的文本颜色设置为蓝色的方法：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">style</span>=<span class="string">&quot;color: blue;&quot;</span>&gt;</span>CatPhotoApp<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
  
       <!-- reward -->
       
@@ -267,6 +284,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2021/10/24/CSS/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            CSS
+          
+        </div>
+      </a>
     
     
       <a href="/2021/10/12/GAT/" class="article-nav-link">
