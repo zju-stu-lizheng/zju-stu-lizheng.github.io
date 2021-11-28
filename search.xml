@@ -888,17 +888,35 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">220px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>您可以使用<code>height</code>CSS 中的属性指定元素的高度，类似于<code>width</code>属性。这是一个将图像高度更改为 20px 的示例：</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="三-加粗与下划线">三、<strong>加粗与下划线</strong></h3>
+<h3 id="三-对文本操作">三、<strong>对文本操作</strong></h3>
 <p>要使文本加粗，您可以使用<code>strong</code>标签。这通常用于引起对文本的注意并象征它很重要。使用<code>strong</code>标签，浏览器将 CSS 应用<code>font-weight: bold;</code>到元素。</p>
 <p>要为文本加下划线，您可以使用<code>u</code>标签。这通常用于表示一段文本很重要，或者要记住一些东西。使用<code>u</code>标签，浏览器将 CSS 应用<code>text-decoration: underline;</code>到元素。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;Google was founded by Larry Page and Sergey Brin <span class="keyword">while</span> they were&lt;u&gt; Ph.D. students&lt;/u&gt; at &lt;strong&gt;Stanford University&lt;/strong&gt;.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 <img src="https://i.loli.net/2021/11/13/cMYgqr4uE6VsdUK.jpg" style="zoom: 67%;" />
+<p><strong>使用 em 标签使文本斜体</strong></p>
+<p>要强调文本，您可以使用<code>em</code>标签。这将文本显示为斜体，因为浏览器将 的 CSS 应用于<code>font-style: italic;</code>元素。</p>
+<p><strong>使用 s 标记删除文本</strong></p>
+<p>要删除文本（当水平线穿过字符时），您可以使用<code>s</code>标记。它显示一段文本不再有效。使用<code>s</code>标签，浏览器将 CSS 应用<code>text-decoration: line-through;</code>到元素。</p>
+<p><strong>使用 hr 元素创建一条水平线</strong></p>
+<p>您可以使用该<code>hr</code>标签在其包含元素的宽度上添加一条水平线。这可用于定义主题的更改或在视觉上分隔内容组。</p>
 ]]></content>
       <categories>
         <category>前端开发基础</category>
       </categories>
       <tags>
         <tag>SRTP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenGL</title>
+    <url>/2021/11/28/OpenGL/</url>
+    <content><![CDATA[<h1>OpenGL</h1>
+]]></content>
+      <categories>
+        <category>计算机图形学</category>
+      </categories>
+      <tags>
+        <tag>OpenGL</tag>
       </tags>
   </entry>
 </search>
