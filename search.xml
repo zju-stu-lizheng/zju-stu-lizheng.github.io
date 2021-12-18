@@ -1,43 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Visual Design</title>
-    <url>/project/2021/11/13/Design/</url>
-    <content><![CDATA[<h3 id="一-使用-text-align-属性创建视觉平衡">一、<strong>使用 text-align 属性创建视觉平衡</strong></h3>
-<p>课程的这一部分侧重于应用视觉设计。第一组挑战建立在给定的卡片布局上，以展示一些核心原则。</p>
-<p>文本通常是 Web 内容的很大一部分。CSS 有几个关于如何将其与<code>text-align</code>属性对齐的选项。</p>
-<p><code>text-align: justify;</code> 将文本间隔开，以便每行具有相等的宽度。</p>
-<p><code>text-align: center;</code> 居中文本</p>
-<p><code>text-align: right;</code> 右对齐文本</p>
-<p>并且<code>text-align: left;</code>（默认）左对齐文本。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css"><span class="selector-tag">h4</span> &#123;</span></span><br><span class="line"><span class="css">	<span class="attribute">text-align</span>:center;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-tag">p</span> &#123;</span></span><br><span class="line"><span class="css">	<span class="attribute">text-align</span>:justify;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>Google<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Google was founded by Larry Page and Sergey Brin while they were Ph.D. students at Stanford University.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<img src="https://i.loli.net/2021/11/13/4r8u3qjEvK9x7zo.png" style="zoom:67%;" />
-<h3 id="二-使用-width-属性或者height属性"><strong>二、使用 width 属性或者height属性</strong></h3>
-<p>您可以使用<code>width</code>CSS 中的属性指定元素的宽度。值可以以相对长度单位（例如<code>em</code>）、绝对长度单位（例如<code>px</code>）或以其包含的父元素的百分比给出。这是一个将图像宽度更改为 220px 的示例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">220px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>您可以使用<code>height</code>CSS 中的属性指定元素的高度，类似于<code>width</code>属性。这是一个将图像高度更改为 20px 的示例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="三-对文本操作">三、<strong>对文本操作</strong></h3>
-<p>要使文本加粗，您可以使用<code>strong</code>标签。这通常用于引起对文本的注意并象征它很重要。使用<code>strong</code>标签，浏览器将 CSS 应用<code>font-weight: bold;</code>到元素。</p>
-<p>要为文本加下划线，您可以使用<code>u</code>标签。这通常用于表示一段文本很重要，或者要记住一些东西。使用<code>u</code>标签，浏览器将 CSS 应用<code>text-decoration: underline;</code>到元素。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;Google was founded by Larry Page and Sergey Brin <span class="keyword">while</span> they were&lt;u&gt; Ph.D. students&lt;/u&gt; at &lt;strong&gt;Stanford University&lt;/strong&gt;.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<img src="https://i.loli.net/2021/11/13/cMYgqr4uE6VsdUK.jpg" style="zoom: 67%;" />
-<p><strong>使用 em 标签使文本斜体</strong></p>
-<p>要强调文本，您可以使用<code>em</code>标签。这将文本显示为斜体，因为浏览器将 的 CSS 应用于<code>font-style: italic;</code>元素。</p>
-<p><strong>使用 s 标记删除文本</strong></p>
-<p>要删除文本（当水平线穿过字符时），您可以使用<code>s</code>标记。它显示一段文本不再有效。使用<code>s</code>标签，浏览器将 CSS 应用<code>text-decoration: line-through;</code>到元素。</p>
-<p><strong>使用 hr 元素创建一条水平线</strong></p>
-<p>您可以使用该<code>hr</code>标签在其包含元素的宽度上添加一条水平线。这可用于定义主题的更改或在视觉上分隔内容组。</p>
-]]></content>
-      <categories>
-        <category>前端开发基础</category>
-      </categories>
-      <tags>
-        <tag>SRTP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CSS</title>
     <url>/project/2021/10/24/CSS/</url>
     <content><![CDATA[<h2 id="基础语法">基础语法</h2>
@@ -104,6 +67,43 @@
       <tags>
         <tag>SRTP</tag>
         <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Visual Design</title>
+    <url>/project/2021/11/13/Design/</url>
+    <content><![CDATA[<h3 id="一-使用-text-align-属性创建视觉平衡">一、<strong>使用 text-align 属性创建视觉平衡</strong></h3>
+<p>课程的这一部分侧重于应用视觉设计。第一组挑战建立在给定的卡片布局上，以展示一些核心原则。</p>
+<p>文本通常是 Web 内容的很大一部分。CSS 有几个关于如何将其与<code>text-align</code>属性对齐的选项。</p>
+<p><code>text-align: justify;</code> 将文本间隔开，以便每行具有相等的宽度。</p>
+<p><code>text-align: center;</code> 居中文本</p>
+<p><code>text-align: right;</code> 右对齐文本</p>
+<p>并且<code>text-align: left;</code>（默认）左对齐文本。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css"><span class="selector-tag">h4</span> &#123;</span></span><br><span class="line"><span class="css">	<span class="attribute">text-align</span>:center;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-tag">p</span> &#123;</span></span><br><span class="line"><span class="css">	<span class="attribute">text-align</span>:justify;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>Google<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Google was founded by Larry Page and Sergey Brin while they were Ph.D. students at Stanford University.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<img src="https://i.loli.net/2021/11/13/4r8u3qjEvK9x7zo.png" style="zoom:67%;" />
+<h3 id="二-使用-width-属性或者height属性"><strong>二、使用 width 属性或者height属性</strong></h3>
+<p>您可以使用<code>width</code>CSS 中的属性指定元素的宽度。值可以以相对长度单位（例如<code>em</code>）、绝对长度单位（例如<code>px</code>）或以其包含的父元素的百分比给出。这是一个将图像宽度更改为 220px 的示例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">220px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>您可以使用<code>height</code>CSS 中的属性指定元素的高度，类似于<code>width</code>属性。这是一个将图像高度更改为 20px 的示例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三-对文本操作">三、<strong>对文本操作</strong></h3>
+<p>要使文本加粗，您可以使用<code>strong</code>标签。这通常用于引起对文本的注意并象征它很重要。使用<code>strong</code>标签，浏览器将 CSS 应用<code>font-weight: bold;</code>到元素。</p>
+<p>要为文本加下划线，您可以使用<code>u</code>标签。这通常用于表示一段文本很重要，或者要记住一些东西。使用<code>u</code>标签，浏览器将 CSS 应用<code>text-decoration: underline;</code>到元素。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;Google was founded by Larry Page and Sergey Brin <span class="keyword">while</span> they were&lt;u&gt; Ph.D. students&lt;/u&gt; at &lt;strong&gt;Stanford University&lt;/strong&gt;.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<img src="https://i.loli.net/2021/11/13/cMYgqr4uE6VsdUK.jpg" style="zoom: 67%;" />
+<p><strong>使用 em 标签使文本斜体</strong></p>
+<p>要强调文本，您可以使用<code>em</code>标签。这将文本显示为斜体，因为浏览器将 的 CSS 应用于<code>font-style: italic;</code>元素。</p>
+<p><strong>使用 s 标记删除文本</strong></p>
+<p>要删除文本（当水平线穿过字符时），您可以使用<code>s</code>标记。它显示一段文本不再有效。使用<code>s</code>标签，浏览器将 CSS 应用<code>text-decoration: line-through;</code>到元素。</p>
+<p><strong>使用 hr 元素创建一条水平线</strong></p>
+<p>您可以使用该<code>hr</code>标签在其包含元素的宽度上添加一条水平线。这可用于定义主题的更改或在视觉上分隔内容组。</p>
+]]></content>
+      <categories>
+        <category>前端开发基础</category>
+      </categories>
+      <tags>
+        <tag>SRTP</tag>
       </tags>
   </entry>
   <entry>
