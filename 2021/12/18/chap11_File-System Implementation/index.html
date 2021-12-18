@@ -16,14 +16,14 @@
       
       <link rel="shortcut icon" href="/favicon.ico" />
        
-<link rel="stylesheet" href="/dist/main.css">
+<link rel="stylesheet" href="/project/dist/main.css">
 
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
       />
       
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/project/css/custom.css">
  
       <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
        
@@ -84,11 +84,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/12/18/chap11_File-System%20Implementation/" class="article-date">
+      <a href="/project/2021/12/18/chap11_File-System%20Implementation/" class="article-date">
   <time datetime="2021-12-18T03:22:45.000Z" itemprop="datePublished">2021-12-18</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    <a class="article-category-link" href="/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
   </div>
   
 <div class="word_count">
@@ -134,7 +134,7 @@
 </ul>
 <h2 id="layered-file-system">Layered file system</h2>
 <p>分层的目的：每层设计利用更低层的功能，创建新的功能，以用于更高层服务。</p>
-<img src="https://s2.loli.net/2021/12/13/YsHiQJWa1K9ICeF.png" alt="image-20211213143457119" style="zoom:80%;" />
+<img src="https://s2.loli.net/2021/12/13/YsHiQJWa1K9ICeF.png" style="zoom:80%;" />
 <h3 id="i-o-control">I/O control</h3>
 <p>包括设备驱动程序和中断处理程序，以在主内存和磁盘系统之间传输信息。设备驱动程序可以作为翻译器。</p>
 <h3 id="basic-file-system">basic file system</h3>
@@ -147,7 +147,7 @@
 <p>它通过文件控制块来维护文件结构。文件控制块（<code>PCB</code>)包含有关文件的信息，包括所有者、权限、文件内容的位置等。</p>
 <h2 id="文件系统实现">文件系统实现</h2>
 <h3 id="概述">概述</h3>
-<img src="https://s2.loli.net/2021/12/13/M7ADuEpYSagmTKW.png" alt="image-20211213144822913" style="zoom:67%;" />
+<img src="https://s2.loli.net/2021/12/13/M7ADuEpYSagmTKW.png"  style="zoom:67%;" />
 <p>文件名称保留在目录信息中。</p>
 <h3 id="实现文件系统的数据结构">实现文件系统的数据结构</h3>
 <ul>
@@ -167,7 +167,7 @@
 </ul>
 </li>
 </ul>
-<img src="https://s2.loli.net/2021/12/13/9iCLt2VkgbSqY6l.png" alt="image-20211213145733272" style="zoom:80%;" />
+<img src="https://s2.loli.net/2021/12/13/9iCLt2VkgbSqY6l.png" style="zoom:80%;" />
 <ul>
 <li>先经过进程的打开文件表，（通过文件描述符作为下标），找到系统打开文件表</li>
 </ul>
@@ -201,7 +201,7 @@
 <p>另一个难题是：确定一个文件需要多少空间。</p>
 </li>
 </ul>
-<p><img src="https://s2.loli.net/2021/12/13/UeHh8xBSi9zprOd.png" alt="image-20211213153157161"></p>
+<p><img src="https://s2.loli.net/2021/12/13/UeHh8xBSi9zprOd.png" alt=""></p>
 <h4 id="extent-based-systems">Extent-Based Systems</h4>
 <p>通过拓展来分配磁盘块</p>
 <p>每个拓展是磁盘上的连续块</p>
@@ -209,35 +209,35 @@
 <ul>
 <li>需要保留一个指针，指向下一个block</li>
 </ul>
-<p><img src="https://s2.loli.net/2021/12/13/yaFNwlPZ4e3fjhY.png" alt="image-20211213153342743"></p>
+<p><img src="https://s2.loli.net/2021/12/13/yaFNwlPZ4e3fjhY.png" alt=""></p>
 <ul>
 <li>Simple -need only starting address</li>
 <li>没有浪费的空间</li>
 <li><font color=red>No random access,poor reliability</font></li>
 <li>Mapping（第一个word放指向下一块的指针）</li>
 </ul>
-<p><img src="https://s2.loli.net/2021/12/13/PmrgXBp1DGxbLVQ.png" alt="image-20211213153635131"></p>
+<p><img src="https://s2.loli.net/2021/12/13/PmrgXBp1DGxbLVQ.png" alt=""></p>
 <h4 id="file-allocation-table">File-Allocation Table</h4>
 <p>mini-link:<code>FAT</code>每一项是一个word，存有指向下一块的位置。</p>
 <p>使用内存块的指针链表代替磁盘的指针链表。</p>
 <p><code>FAT</code>表磁盘贮存，mount后加载到内存。</p>
-<img src="https://s2.loli.net/2021/12/16/EGO2xvNdM3F64oT.png" alt="image-20211216160543096" style="zoom:67%;" />
+<img src="https://s2.loli.net/2021/12/16/EGO2xvNdM3F64oT.png"  style="zoom:67%;" />
 <h4 id="缺陷：如果一个pointer出错-可能导致后面的信息全部丢失">缺陷：如果一个pointer出错，可能导致后面的信息全部丢失</h4>
 <h3 id="索引分配">索引分配</h3>
 <ul>
 <li>Brings all pointer together into the index block</li>
 <li>Logical views</li>
-<li><img src="https://s2.loli.net/2021/12/16/V4ar3YzvifbT5wp.png" alt="image-20211216161501695"></li>
+<li><img src="https://s2.loli.net/2021/12/16/V4ar3YzvifbT5wp.png" alt=""></li>
 </ul>
-<p><img src="https://s2.loli.net/2021/12/16/NK84groX29DtOqR.png" alt="image-20211216162200711"></p>
-<p><img src="https://s2.loli.net/2021/12/16/OD8wW2ZqEaBMpPR.png" alt="image-20211216162210567"></p>
+<p><img src="https://s2.loli.net/2021/12/16/NK84groX29DtOqR.png" alt=""></p>
+<p><img src="https://s2.loli.net/2021/12/16/OD8wW2ZqEaBMpPR.png" alt=""></p>
 <h4 id="缺点：需要多访问一次磁盘-索引块">缺点：需要多访问一次磁盘（索引块）</h4>
 <blockquote>
 <p>通常来说：会采用组合的模式：既有直接访问，也可以有多级访问</p>
 </blockquote>
 <h2 id="free-space-management">Free-Space Management</h2>
 <p>空闲块的管理</p>
-<p><img src="https://s2.loli.net/2021/12/16/JoSPGAQgNTDkOps.png" alt="image-20211216163358184"></p>
+<p><img src="https://s2.loli.net/2021/12/16/JoSPGAQgNTDkOps.png" alt=""></p>
 <ul>
 <li>Bit map requires extra space
 <ul>
@@ -287,7 +287,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="C:/Users/1/AppData/Roaming/Typora/typora-user-images/image-20211217231511367.png" alt="image-20211217231511367"></p>
+<p><img src="https://s2.loli.net/2021/12/18/W6TXmSbarhd2t3o.png" alt=""></p>
 <p>（1）</p>
 <ul>
 <li>连续分配：理论上不受限制，可大到整个磁盘文件区</li>
@@ -391,12 +391,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/12/18/chap11_File-System%20Implementation/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://lizheng.github.io/project/2021/12/18/chap11_File-System%20Implementation/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OS/" rel="tag">OS</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/OS/" rel="tag">OS</a></li></ul>
 
     </footer>
   </div>
@@ -405,7 +405,7 @@
   <nav class="article-nav">
     
     
-      <a href="/2021/11/28/OpenGL/" class="article-nav-link">
+      <a href="/project/2021/11/28/OpenGL/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">OpenGL</div>
       </a>
@@ -524,29 +524,29 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="Fascinating Blog"></a>
+    <a href="/project/"><img src="/images/ayer-side.svg" alt="Fascinating Blog"></a>
   </div>
   
   <ul class="nav nav-main">
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/">主页</a>
+      <a class="nav-item-link" href="/project/">主页</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/archives">归档</a>
+      <a class="nav-item-link" href="/project/archives">归档</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/categories">分类</a>
+      <a class="nav-item-link" href="/project/categories">分类</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/tags">标签</a>
+      <a class="nav-item-link" href="/project/tags">标签</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/friends">友链</a>
+      <a class="nav-item-link" href="/project/friends">友链</a>
     </li>
     
   </ul>
@@ -582,13 +582,13 @@
   </div>
 </div>
     
-<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/project/js/jquery-3.6.0.min.js"></script>
  
-<script src="/js/lazyload.min.js"></script>
+<script src="/project/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
  
-<script src="/js/tocbot.min.js"></script>
+<script src="/project/js/tocbot.min.js"></script>
 
 <script>
   tocbot.init({
@@ -611,7 +611,7 @@
 />
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
 
-<script src="/dist/main.js"></script>
+<script src="/project/dist/main.js"></script>
 
 <!-- ImageViewer -->
  <!-- Root element of PhotoSwipe. Must have class pswp. -->
@@ -749,7 +749,7 @@
 
 <!-- busuanzi  -->
  
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
+<script src="/project/js/busuanzi-2.3.pure.min.js"></script>
  
 <!-- ClickLove -->
 
@@ -757,13 +757,13 @@
 
 <script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
 
-<script src="/js/clickBoom1.js"></script>
+<script src="/project/js/clickBoom1.js"></script>
  
 <!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
  
-<link rel="stylesheet" href="/css/clipboard.css">
+<link rel="stylesheet" href="/project/css/clipboard.css">
  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
   function wait(callback, seconds) {

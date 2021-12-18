@@ -16,14 +16,14 @@
       
       <link rel="shortcut icon" href="/favicon.ico" />
        
-<link rel="stylesheet" href="/dist/main.css">
+<link rel="stylesheet" href="/project/dist/main.css">
 
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
       />
       
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/project/css/custom.css">
  
       <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
        
@@ -71,7 +71,7 @@
       <img src="/images/cover1.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
-      <h1><a href="/">Fascinating Blog</a></h1>
+      <h1><a href="/project/">Fascinating Blog</a></h1>
       <div id="subtitle-box">
         
         <span id="subtitle"></span>
@@ -172,7 +172,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/12/18/chap11_File-System%20Implementation/"
+  <a class="article-title" href="/project/2021/12/18/chap11_File-System%20Implementation/"
     >File System Implementation</a> 
 </h2>
  
@@ -181,11 +181,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/12/18/chap11_File-System%20Implementation/" class="article-date">
+      <a href="/project/2021/12/18/chap11_File-System%20Implementation/" class="article-date">
   <time datetime="2021-12-18T03:22:45.000Z" itemprop="datePublished">2021-12-18</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    <a class="article-category-link" href="/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
   </div>
    
     </div>
@@ -206,7 +206,7 @@
 </ul>
 <h2 id="layered-file-system">Layered file system</h2>
 <p>分层的目的：每层设计利用更低层的功能，创建新的功能，以用于更高层服务。</p>
-<img src="https://s2.loli.net/2021/12/13/YsHiQJWa1K9ICeF.png" alt="image-20211213143457119" style="zoom:80%;" />
+<img src="https://s2.loli.net/2021/12/13/YsHiQJWa1K9ICeF.png" style="zoom:80%;" />
 <h3 id="i-o-control">I/O control</h3>
 <p>包括设备驱动程序和中断处理程序，以在主内存和磁盘系统之间传输信息。设备驱动程序可以作为翻译器。</p>
 <h3 id="basic-file-system">basic file system</h3>
@@ -219,7 +219,7 @@
 <p>它通过文件控制块来维护文件结构。文件控制块（<code>PCB</code>)包含有关文件的信息，包括所有者、权限、文件内容的位置等。</p>
 <h2 id="文件系统实现">文件系统实现</h2>
 <h3 id="概述">概述</h3>
-<img src="https://s2.loli.net/2021/12/13/M7ADuEpYSagmTKW.png" alt="image-20211213144822913" style="zoom:67%;" />
+<img src="https://s2.loli.net/2021/12/13/M7ADuEpYSagmTKW.png"  style="zoom:67%;" />
 <p>文件名称保留在目录信息中。</p>
 <h3 id="实现文件系统的数据结构">实现文件系统的数据结构</h3>
 <ul>
@@ -239,7 +239,7 @@
 </ul>
 </li>
 </ul>
-<img src="https://s2.loli.net/2021/12/13/9iCLt2VkgbSqY6l.png" alt="image-20211213145733272" style="zoom:80%;" />
+<img src="https://s2.loli.net/2021/12/13/9iCLt2VkgbSqY6l.png" style="zoom:80%;" />
 <ul>
 <li>先经过进程的打开文件表，（通过文件描述符作为下标），找到系统打开文件表</li>
 </ul>
@@ -273,7 +273,7 @@
 <p>另一个难题是：确定一个文件需要多少空间。</p>
 </li>
 </ul>
-<p><img src="https://s2.loli.net/2021/12/13/UeHh8xBSi9zprOd.png" alt="image-20211213153157161"></p>
+<p><img src="https://s2.loli.net/2021/12/13/UeHh8xBSi9zprOd.png" alt=""></p>
 <h4 id="extent-based-systems">Extent-Based Systems</h4>
 <p>通过拓展来分配磁盘块</p>
 <p>每个拓展是磁盘上的连续块</p>
@@ -281,35 +281,35 @@
 <ul>
 <li>需要保留一个指针，指向下一个block</li>
 </ul>
-<p><img src="https://s2.loli.net/2021/12/13/yaFNwlPZ4e3fjhY.png" alt="image-20211213153342743"></p>
+<p><img src="https://s2.loli.net/2021/12/13/yaFNwlPZ4e3fjhY.png" alt=""></p>
 <ul>
 <li>Simple -need only starting address</li>
 <li>没有浪费的空间</li>
 <li><font color=red>No random access,poor reliability</font></li>
 <li>Mapping（第一个word放指向下一块的指针）</li>
 </ul>
-<p><img src="https://s2.loli.net/2021/12/13/PmrgXBp1DGxbLVQ.png" alt="image-20211213153635131"></p>
+<p><img src="https://s2.loli.net/2021/12/13/PmrgXBp1DGxbLVQ.png" alt=""></p>
 <h4 id="file-allocation-table">File-Allocation Table</h4>
 <p>mini-link:<code>FAT</code>每一项是一个word，存有指向下一块的位置。</p>
 <p>使用内存块的指针链表代替磁盘的指针链表。</p>
 <p><code>FAT</code>表磁盘贮存，mount后加载到内存。</p>
-<img src="https://s2.loli.net/2021/12/16/EGO2xvNdM3F64oT.png" alt="image-20211216160543096" style="zoom:67%;" />
+<img src="https://s2.loli.net/2021/12/16/EGO2xvNdM3F64oT.png"  style="zoom:67%;" />
 <h4 id="缺陷：如果一个pointer出错-可能导致后面的信息全部丢失">缺陷：如果一个pointer出错，可能导致后面的信息全部丢失</h4>
 <h3 id="索引分配">索引分配</h3>
 <ul>
 <li>Brings all pointer together into the index block</li>
 <li>Logical views</li>
-<li><img src="https://s2.loli.net/2021/12/16/V4ar3YzvifbT5wp.png" alt="image-20211216161501695"></li>
+<li><img src="https://s2.loli.net/2021/12/16/V4ar3YzvifbT5wp.png" alt=""></li>
 </ul>
-<p><img src="https://s2.loli.net/2021/12/16/NK84groX29DtOqR.png" alt="image-20211216162200711"></p>
-<p><img src="https://s2.loli.net/2021/12/16/OD8wW2ZqEaBMpPR.png" alt="image-20211216162210567"></p>
+<p><img src="https://s2.loli.net/2021/12/16/NK84groX29DtOqR.png" alt=""></p>
+<p><img src="https://s2.loli.net/2021/12/16/OD8wW2ZqEaBMpPR.png" alt=""></p>
 <h4 id="缺点：需要多访问一次磁盘-索引块">缺点：需要多访问一次磁盘（索引块）</h4>
 <blockquote>
 <p>通常来说：会采用组合的模式：既有直接访问，也可以有多级访问</p>
 </blockquote>
 <h2 id="free-space-management">Free-Space Management</h2>
 <p>空闲块的管理</p>
-<p><img src="https://s2.loli.net/2021/12/16/JoSPGAQgNTDkOps.png" alt="image-20211216163358184"></p>
+<p><img src="https://s2.loli.net/2021/12/16/JoSPGAQgNTDkOps.png" alt=""></p>
 <ul>
 <li>Bit map requires extra space
 <ul>
@@ -359,7 +359,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="C:/Users/1/AppData/Roaming/Typora/typora-user-images/image-20211217231511367.png" alt="image-20211217231511367"></p>
+<p><img src="https://s2.loli.net/2021/12/18/W6TXmSbarhd2t3o.png" alt=""></p>
 <p>（1）</p>
 <ul>
 <li>连续分配：理论上不受限制，可大到整个磁盘文件区</li>
@@ -421,7 +421,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OS/" rel="tag">OS</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/OS/" rel="tag">OS</a></li></ul>
 
     </footer>
   </div>
@@ -444,7 +444,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/11/28/OpenGL/"
+  <a class="article-title" href="/project/2021/11/28/OpenGL/"
     >OpenGL</a> 
 </h2>
  
@@ -453,11 +453,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/11/28/OpenGL/" class="article-date">
+      <a href="/project/2021/11/28/OpenGL/" class="article-date">
   <time datetime="2021-11-28T08:10:45.000Z" itemprop="datePublished">2021-11-28</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
+    <a class="article-category-link" href="/project/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/">计算机图形学</a>
   </div>
    
     </div>
@@ -491,7 +491,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/" rel="tag">OpenGL</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/OpenGL/" rel="tag">OpenGL</a></li></ul>
 
     </footer>
   </div>
@@ -514,7 +514,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/11/13/Design/"
+  <a class="article-title" href="/project/2021/11/13/Design/"
     >Visual Design</a> 
 </h2>
  
@@ -523,11 +523,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/11/13/Design/" class="article-date">
+      <a href="/project/2021/11/13/Design/" class="article-date">
   <time datetime="2021-11-13T08:35:31.000Z" itemprop="datePublished">2021-11-13</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/">前端开发基础</a>
+    <a class="article-category-link" href="/project/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/">前端开发基础</a>
   </div>
    
     </div>
@@ -570,7 +570,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SRTP/" rel="tag">SRTP</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/SRTP/" rel="tag">SRTP</a></li></ul>
 
     </footer>
   </div>
@@ -593,7 +593,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/10/24/CSS/"
+  <a class="article-title" href="/project/2021/10/24/CSS/"
     >CSS</a> 
 </h2>
  
@@ -602,11 +602,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/10/24/CSS/" class="article-date">
+      <a href="/project/2021/10/24/CSS/" class="article-date">
   <time datetime="2021-10-24T07:39:45.000Z" itemprop="datePublished">2021-10-24</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/">前端开发基础</a>
+    <a class="article-category-link" href="/project/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/">前端开发基础</a>
   </div>
    
     </div>
@@ -680,7 +680,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SRTP/" rel="tag">SRTP</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/SRTP/" rel="tag">SRTP</a></li></ul>
 
     </footer>
   </div>
@@ -703,7 +703,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/10/20/HTML/"
+  <a class="article-title" href="/project/2021/10/20/HTML/"
     >HTML</a> 
 </h2>
  
@@ -712,11 +712,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/10/20/HTML/" class="article-date">
+      <a href="/project/2021/10/20/HTML/" class="article-date">
   <time datetime="2021-10-20T14:22:34.000Z" itemprop="datePublished">2021-10-20</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/">前端开发基础</a>
+    <a class="article-category-link" href="/project/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/">前端开发基础</a>
   </div>
    
     </div>
@@ -771,7 +771,7 @@
 <p>Ordered lists start with an opening <code>&lt;ol&gt;</code> element, followed by any number of <code>&lt;li&gt;</code> elements. Finally, ordered lists are closed with the <code>&lt;/ol&gt;</code> tag.</p>
 <p>For example:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Garfield<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Sylvester<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure> 
-      <a class="article-more-link" href="/2021/10/20/HTML/"
+      <a class="article-more-link" href="/project/2021/10/20/HTML/"
         >阅读更多...</a
       >
        
@@ -784,7 +784,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SRTP/" rel="tag">SRTP</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/SRTP/" rel="tag">SRTP</a></li></ul>
 
     </footer>
   </div>
@@ -807,7 +807,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/10/12/GAT/"
+  <a class="article-title" href="/project/2021/10/12/GAT/"
     >GAT</a> 
 </h2>
  
@@ -816,11 +816,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/10/12/GAT/" class="article-date">
+      <a href="/project/2021/10/12/GAT/" class="article-date">
   <time datetime="2021-10-12T14:50:46.000Z" itemprop="datePublished">2021-10-12</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/SRTP/">SRTP</a>
+    <a class="article-category-link" href="/project/categories/SRTP/">SRTP</a>
   </div>
    
     </div>
@@ -1043,7 +1043,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SRTP/" rel="tag">SRTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graph/" rel="tag">graph</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/SRTP/" rel="tag">SRTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/graph/" rel="tag">graph</a></li></ul>
 
     </footer>
   </div>
@@ -1066,7 +1066,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/10/12/GCN/"
+  <a class="article-title" href="/project/2021/10/12/GCN/"
     >GCN</a> 
 </h2>
  
@@ -1075,11 +1075,11 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
     </header>
      
     <div class="article-meta">
-      <a href="/2021/10/12/GCN/" class="article-date">
+      <a href="/project/2021/10/12/GCN/" class="article-date">
   <time datetime="2021-10-12T10:40:56.000Z" itemprop="datePublished">2021-10-12</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/SRTP/">SRTP</a>
+    <a class="article-category-link" href="/project/categories/SRTP/">SRTP</a>
   </div>
    
     </div>
@@ -1107,7 +1107,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>θ</mi></msub><mo>⋆</mo><mi>x</mi><mo>=</mo><mi>U</mi><msub><mi>g</mi><mi>θ</mi></msub><msup><mi>U</mi><mi>T</mi></msup><mi>X</mi></mrow><annotation encoding="application/x-tex">g_{\theta} \star x = U g_{\theta} U^T X
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6597200000000001em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋆</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.0857709999999998em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913309999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span></span></span></span></span></p>
 <p>但上述卷积计算复杂度比较大： 特征向量矩阵U相乘计算复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi mathvariant="normal">∣</mi><msup><mi>N</mi><mn>2</mn></msup><mi mathvariant="normal">∣</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(|N^2|)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">∣</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord">∣</span><span class="mclose">)</span></span></span></span> ，以及图的拉普拉斯矩阵分解开销。</p> 
-      <a class="article-more-link" href="/2021/10/12/GCN/"
+      <a class="article-more-link" href="/project/2021/10/12/GCN/"
         >阅读更多...</a
       >
        
@@ -1120,7 +1120,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SRTP/" rel="tag">SRTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graph/" rel="tag">graph</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/SRTP/" rel="tag">SRTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/graph/" rel="tag">graph</a></li></ul>
 
     </footer>
   </div>
@@ -1143,7 +1143,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/10/11/DeepWalk/"
+  <a class="article-title" href="/project/2021/10/11/DeepWalk/"
     >DeepWalk</a> 
 </h2>
  
@@ -1152,11 +1152,11 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
     </header>
      
     <div class="article-meta">
-      <a href="/2021/10/11/DeepWalk/" class="article-date">
+      <a href="/project/2021/10/11/DeepWalk/" class="article-date">
   <time datetime="2021-10-11T09:00:26.000Z" itemprop="datePublished">2021-10-11</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/SRTP/">SRTP</a>
+    <a class="article-category-link" href="/project/categories/SRTP/">SRTP</a>
   </div>
    
     </div>
@@ -1209,7 +1209,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 </li>
 </ol>
 <img src="https://i.loli.net/2021/10/11/HGUm2vdY9hwQnCc.png" alt="结果示意图" style="zoom: 50%;" /> 
-      <a class="article-more-link" href="/2021/10/11/DeepWalk/"
+      <a class="article-more-link" href="/project/2021/10/11/DeepWalk/"
         >阅读更多...</a
       >
        
@@ -1222,7 +1222,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SRTP/" rel="tag">SRTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graph/" rel="tag">graph</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/SRTP/" rel="tag">SRTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/graph/" rel="tag">graph</a></li></ul>
 
     </footer>
   </div>
@@ -1245,7 +1245,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/10/10/Node2vec/"
+  <a class="article-title" href="/project/2021/10/10/Node2vec/"
     >Node2vec</a> 
 </h2>
  
@@ -1254,11 +1254,11 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
     </header>
      
     <div class="article-meta">
-      <a href="/2021/10/10/Node2vec/" class="article-date">
+      <a href="/project/2021/10/10/Node2vec/" class="article-date">
   <time datetime="2021-10-10T10:48:07.000Z" itemprop="datePublished">2021-10-10</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/SRTP/">SRTP</a>
+    <a class="article-category-link" href="/project/categories/SRTP/">SRTP</a>
   </div>
    
     </div>
@@ -1305,7 +1305,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 <li>一些无监督学习（<strong>Unsupervised feature learning</strong>）中的降维方法拿来使用，但是这些方法计算效率低，准确度也不够，而且还不能反映出网络的结构特征。</li>
 </ul>
 <p>自然语言处理（<strong>natural language processing</strong>）表征学习的进展为本文的作者提供了思路。与deepwalk相似，这里也用skip-gram模型来解决网络表示学习的问题。</p> 
-      <a class="article-more-link" href="/2021/10/10/Node2vec/"
+      <a class="article-more-link" href="/project/2021/10/10/Node2vec/"
         >阅读更多...</a
       >
        
@@ -1318,7 +1318,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SRTP/" rel="tag">SRTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graph/" rel="tag">graph</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/SRTP/" rel="tag">SRTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/graph/" rel="tag">graph</a></li></ul>
 
     </footer>
   </div>
@@ -1341,7 +1341,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2021/10/09/%E5%8D%9A%E5%AE%A2%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/"
+  <a class="article-title" href="/project/2021/10/09/%E5%8D%9A%E5%AE%A2%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/"
     >博客入门指南</a> 
 </h2>
  
@@ -1350,7 +1350,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
     </header>
      
     <div class="article-meta">
-      <a href="/2021/10/09/%E5%8D%9A%E5%AE%A2%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/" class="article-date">
+      <a href="/project/2021/10/09/%E5%8D%9A%E5%AE%A2%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/" class="article-date">
   <time datetime="2021-10-09T15:03:37.000Z" itemprop="datePublished">2021-10-09</time>
 </a>    
     </div>
@@ -1429,7 +1429,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
 
     </footer>
   </div>
@@ -1446,7 +1446,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
   
   <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/project/page/2/">2</a><a class="extend next" rel="next" href="/project/page/2/">下一页</a>
   </nav>
   
 </section>
@@ -1510,29 +1510,29 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="Fascinating Blog"></a>
+    <a href="/project/"><img src="/images/ayer-side.svg" alt="Fascinating Blog"></a>
   </div>
   
   <ul class="nav nav-main">
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/">主页</a>
+      <a class="nav-item-link" href="/project/">主页</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/archives">归档</a>
+      <a class="nav-item-link" href="/project/archives">归档</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/categories">分类</a>
+      <a class="nav-item-link" href="/project/categories">分类</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/tags">标签</a>
+      <a class="nav-item-link" href="/project/tags">标签</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/friends">友链</a>
+      <a class="nav-item-link" href="/project/friends">友链</a>
     </li>
     
   </ul>
@@ -1568,9 +1568,9 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
   </div>
 </div>
     
-<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/project/js/jquery-3.6.0.min.js"></script>
  
-<script src="/js/lazyload.min.js"></script>
+<script src="/project/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
 
@@ -1581,7 +1581,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 />
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
 
-<script src="/dist/main.js"></script>
+<script src="/project/dist/main.js"></script>
 
 <!-- ImageViewer -->
  <!-- Root element of PhotoSwipe. Must have class pswp. -->
@@ -1719,7 +1719,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 
 <!-- busuanzi  -->
  
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
+<script src="/project/js/busuanzi-2.3.pure.min.js"></script>
  
 <!-- ClickLove -->
 
@@ -1727,13 +1727,13 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 
 <script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
 
-<script src="/js/clickBoom1.js"></script>
+<script src="/project/js/clickBoom1.js"></script>
  
 <!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
  
-<link rel="stylesheet" href="/css/clipboard.css">
+<link rel="stylesheet" href="/project/css/clipboard.css">
  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
   function wait(callback, seconds) {

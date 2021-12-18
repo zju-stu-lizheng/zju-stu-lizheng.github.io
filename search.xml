@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>CSS</title>
-    <url>/2021/10/24/CSS/</url>
+    <url>/project/2021/10/24/CSS/</url>
     <content><![CDATA[<h2 id="基础语法">基础语法</h2>
 <h3 id="一-使用-css-选择器为元素设置样式">一、使用 CSS 选择器为元素设置样式</h3>
 <p>使用 CSS，您可以使用数百个 CSS 属性来更改元素在页面上的外观。</p>
@@ -71,7 +71,7 @@
   </entry>
   <entry>
     <title>Visual Design</title>
-    <url>/2021/11/13/Design/</url>
+    <url>/project/2021/11/13/Design/</url>
     <content><![CDATA[<h3 id="一-使用-text-align-属性创建视觉平衡">一、<strong>使用 text-align 属性创建视觉平衡</strong></h3>
 <p>课程的这一部分侧重于应用视觉设计。第一组挑战建立在给定的卡片布局上，以展示一些核心原则。</p>
 <p>文本通常是 Web 内容的很大一部分。CSS 有几个关于如何将其与<code>text-align</code>属性对齐的选项。</p>
@@ -108,7 +108,7 @@
   </entry>
   <entry>
     <title>GAT</title>
-    <url>/2021/10/12/GAT/</url>
+    <url>/project/2021/10/12/GAT/</url>
     <content><![CDATA[<h1>Graph Attention Networks</h1>
 <blockquote>
 <p>参考文献 ：<a href="https://arxiv.org/abs/1710.10903">《Graph Attention Networks》</a></p>
@@ -326,7 +326,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
   </entry>
   <entry>
     <title>HTML</title>
-    <url>/2021/10/20/HTML/</url>
+    <url>/project/2021/10/20/HTML/</url>
     <content><![CDATA[<h2 id="基础语法">基础语法</h2>
 <h3 id="1-html基础格式">1. HTML基础格式</h3>
 <p>Most HTML elements have an opening tag and a closing tag.</p>
@@ -438,7 +438,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
   </entry>
   <entry>
     <title>OpenGL</title>
-    <url>/2021/11/28/OpenGL/</url>
+    <url>/project/2021/11/28/OpenGL/</url>
     <content><![CDATA[<h1>OpenGL</h1>
 <h2 id="实现phong光照模型">实现Phong光照模型</h2>
 <h3 id="一-光照模型简介">一、光照模型简介</h3>
@@ -466,7 +466,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
   </entry>
   <entry>
     <title>Node2vec</title>
-    <url>/2021/10/10/Node2vec/</url>
+    <url>/project/2021/10/10/Node2vec/</url>
     <content><![CDATA[<h1>node2vec</h1>
 <blockquote>
 <p>node2vec : Scalable Feature Learning for Networks</p>
@@ -656,7 +656,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
   </entry>
   <entry>
     <title>intro of hexo</title>
-    <url>/2021/10/09/intro%20of%20hexo/</url>
+    <url>/project/2021/10/09/intro%20of%20hexo/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="quick-start">Quick Start</h2>
 <h3 id="create-a-new-post">Create a new post</h3>
@@ -675,7 +675,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
   </entry>
   <entry>
     <title>File System Implementation</title>
-    <url>/2021/12/18/chap11_File-System%20Implementation/</url>
+    <url>/project/2021/12/18/chap11_File-System%20Implementation/</url>
     <content><![CDATA[<h2 id="file-system-structure">File-System Structure</h2>
 <ul>
 <li>文件结构
@@ -690,7 +690,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 </ul>
 <h2 id="layered-file-system">Layered file system</h2>
 <p>分层的目的：每层设计利用更低层的功能，创建新的功能，以用于更高层服务。</p>
-<img src="https://s2.loli.net/2021/12/13/YsHiQJWa1K9ICeF.png" alt="image-20211213143457119" style="zoom:80%;" />
+<img src="https://s2.loli.net/2021/12/13/YsHiQJWa1K9ICeF.png" style="zoom:80%;" />
 <h3 id="i-o-control">I/O control</h3>
 <p>包括设备驱动程序和中断处理程序，以在主内存和磁盘系统之间传输信息。设备驱动程序可以作为翻译器。</p>
 <h3 id="basic-file-system">basic file system</h3>
@@ -703,7 +703,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 <p>它通过文件控制块来维护文件结构。文件控制块（<code>PCB</code>)包含有关文件的信息，包括所有者、权限、文件内容的位置等。</p>
 <h2 id="文件系统实现">文件系统实现</h2>
 <h3 id="概述">概述</h3>
-<img src="https://s2.loli.net/2021/12/13/M7ADuEpYSagmTKW.png" alt="image-20211213144822913" style="zoom:67%;" />
+<img src="https://s2.loli.net/2021/12/13/M7ADuEpYSagmTKW.png"  style="zoom:67%;" />
 <p>文件名称保留在目录信息中。</p>
 <h3 id="实现文件系统的数据结构">实现文件系统的数据结构</h3>
 <ul>
@@ -723,7 +723,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 </ul>
 </li>
 </ul>
-<img src="https://s2.loli.net/2021/12/13/9iCLt2VkgbSqY6l.png" alt="image-20211213145733272" style="zoom:80%;" />
+<img src="https://s2.loli.net/2021/12/13/9iCLt2VkgbSqY6l.png" style="zoom:80%;" />
 <ul>
 <li>先经过进程的打开文件表，（通过文件描述符作为下标），找到系统打开文件表</li>
 </ul>
@@ -757,7 +757,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 <p>另一个难题是：确定一个文件需要多少空间。</p>
 </li>
 </ul>
-<p><img src="https://s2.loli.net/2021/12/13/UeHh8xBSi9zprOd.png" alt="image-20211213153157161"></p>
+<p><img src="https://s2.loli.net/2021/12/13/UeHh8xBSi9zprOd.png" alt=""></p>
 <h4 id="extent-based-systems">Extent-Based Systems</h4>
 <p>通过拓展来分配磁盘块</p>
 <p>每个拓展是磁盘上的连续块</p>
@@ -765,35 +765,35 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 <ul>
 <li>需要保留一个指针，指向下一个block</li>
 </ul>
-<p><img src="https://s2.loli.net/2021/12/13/yaFNwlPZ4e3fjhY.png" alt="image-20211213153342743"></p>
+<p><img src="https://s2.loli.net/2021/12/13/yaFNwlPZ4e3fjhY.png" alt=""></p>
 <ul>
 <li>Simple -need only starting address</li>
 <li>没有浪费的空间</li>
 <li><font color=red>No random access,poor reliability</font></li>
 <li>Mapping（第一个word放指向下一块的指针）</li>
 </ul>
-<p><img src="https://s2.loli.net/2021/12/13/PmrgXBp1DGxbLVQ.png" alt="image-20211213153635131"></p>
+<p><img src="https://s2.loli.net/2021/12/13/PmrgXBp1DGxbLVQ.png" alt=""></p>
 <h4 id="file-allocation-table">File-Allocation Table</h4>
 <p>mini-link:<code>FAT</code>每一项是一个word，存有指向下一块的位置。</p>
 <p>使用内存块的指针链表代替磁盘的指针链表。</p>
 <p><code>FAT</code>表磁盘贮存，mount后加载到内存。</p>
-<img src="https://s2.loli.net/2021/12/16/EGO2xvNdM3F64oT.png" alt="image-20211216160543096" style="zoom:67%;" />
+<img src="https://s2.loli.net/2021/12/16/EGO2xvNdM3F64oT.png"  style="zoom:67%;" />
 <h4 id="缺陷：如果一个pointer出错-可能导致后面的信息全部丢失">缺陷：如果一个pointer出错，可能导致后面的信息全部丢失</h4>
 <h3 id="索引分配">索引分配</h3>
 <ul>
 <li>Brings all pointer together into the index block</li>
 <li>Logical views</li>
-<li><img src="https://s2.loli.net/2021/12/16/V4ar3YzvifbT5wp.png" alt="image-20211216161501695"></li>
+<li><img src="https://s2.loli.net/2021/12/16/V4ar3YzvifbT5wp.png" alt=""></li>
 </ul>
-<p><img src="https://s2.loli.net/2021/12/16/NK84groX29DtOqR.png" alt="image-20211216162200711"></p>
-<p><img src="https://s2.loli.net/2021/12/16/OD8wW2ZqEaBMpPR.png" alt="image-20211216162210567"></p>
+<p><img src="https://s2.loli.net/2021/12/16/NK84groX29DtOqR.png" alt=""></p>
+<p><img src="https://s2.loli.net/2021/12/16/OD8wW2ZqEaBMpPR.png" alt=""></p>
 <h4 id="缺点：需要多访问一次磁盘-索引块">缺点：需要多访问一次磁盘（索引块）</h4>
 <blockquote>
 <p>通常来说：会采用组合的模式：既有直接访问，也可以有多级访问</p>
 </blockquote>
 <h2 id="free-space-management">Free-Space Management</h2>
 <p>空闲块的管理</p>
-<p><img src="https://s2.loli.net/2021/12/16/JoSPGAQgNTDkOps.png" alt="image-20211216163358184"></p>
+<p><img src="https://s2.loli.net/2021/12/16/JoSPGAQgNTDkOps.png" alt=""></p>
 <ul>
 <li>Bit map requires extra space
 <ul>
@@ -843,7 +843,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 </ul>
 </li>
 </ul>
-<p><img src="C:/Users/1/AppData/Roaming/Typora/typora-user-images/image-20211217231511367.png" alt="image-20211217231511367"></p>
+<p><img src="https://s2.loli.net/2021/12/18/W6TXmSbarhd2t3o.png" alt=""></p>
 <p>（1）</p>
 <ul>
 <li>连续分配：理论上不受限制，可大到整个磁盘文件区</li>
@@ -905,7 +905,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
   </entry>
   <entry>
     <title>博客入门指南</title>
-    <url>/2021/10/09/%E5%8D%9A%E5%AE%A2%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</url>
+    <url>/project/2021/10/09/%E5%8D%9A%E5%AE%A2%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<h2 id="搭建步骤：">搭建步骤：</h2>
 <ul>
 <li>GitHub创建个人仓库</li>
@@ -975,7 +975,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
   </entry>
   <entry>
     <title>DeepWalk</title>
-    <url>/2021/10/11/DeepWalk/</url>
+    <url>/project/2021/10/11/DeepWalk/</url>
     <content><![CDATA[<h1>DeepWalk Implementation</h1>
 <blockquote>
 <p>关于中文编码问题： <a href="https://blog.csdn.net/qq_40371180/article/details/112917271">一个有用的博客</a></p>
@@ -1045,7 +1045,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
   </entry>
   <entry>
     <title>GCN</title>
-    <url>/2021/10/12/GCN/</url>
+    <url>/project/2021/10/12/GCN/</url>
     <content><![CDATA[<h1>GCN</h1>
 <blockquote>
 <p>论文：Semi-Supervised Classification with Graph Convolutional Networks<br>
