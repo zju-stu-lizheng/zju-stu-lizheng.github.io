@@ -935,4 +935,234 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
         <tag>OpenGL</tag>
       </tags>
   </entry>
+  <entry>
+    <title>File System Implementation</title>
+    <url>/2021/12/18/chap11_File-System%20Implementation/</url>
+    <content><![CDATA[<h2 id="file-system-structure">File-System Structure</h2>
+<ul>
+<li>文件结构
+<ul>
+<li>逻辑储存模块</li>
+<li>相关信息的容器</li>
+</ul>
+</li>
+<li>二级存储（disks）</li>
+<li>分层管理</li>
+<li>FCB(文件控制块)：包含文件管理的信息</li>
+</ul>
+<h2 id="layered-file-system">Layered file system</h2>
+<p>分层的目的：每层设计利用更低层的功能，创建新的功能，以用于更高层服务。</p>
+<img src="https://s2.loli.net/2021/12/13/YsHiQJWa1K9ICeF.png" alt="image-20211213143457119" style="zoom:80%;" />
+<h3 id="i-o-control">I/O control</h3>
+<p>包括设备驱动程序和中断处理程序，以在主内存和磁盘系统之间传输信息。设备驱动程序可以作为翻译器。</p>
+<h3 id="basic-file-system">basic file system</h3>
+<p>只需向适当设备驱动程序发送通用命令，以读取和写入磁盘的物理块。每个物理块由磁盘的数字地址来标识（如，驱动器：1，磁道：3）。</p>
+<p>也管理内存缓冲区和保存各种文件系统、目录和数据块的缓存。</p>
+<h3 id="file-organization-module">file-organization module</h3>
+<p>知道文件及其逻辑块以及物理块。可以将逻辑块地址转为物理块地址，以供<code>basic file system</code>传输。</p>
+<h3 id="logical-file-system">Logical file system</h3>
+<p>管理元数据信息。元数据包括文件系统的所有结构，而不包括实际数据（或文件内容）。逻辑文件系统<code>Logical file system</code>管理目录结构，以便根据给定文件名称为文件组织模块提供所需的信息。</p>
+<p>它通过文件控制块来维护文件结构。文件控制块（<code>PCB</code>)包含有关文件的信息，包括所有者、权限、文件内容的位置等。</p>
+<h2 id="文件系统实现">文件系统实现</h2>
+<h3 id="概述">概述</h3>
+<img src="https://s2.loli.net/2021/12/13/M7ADuEpYSagmTKW.png" alt="image-20211213144822913" style="zoom:67%;" />
+<p>文件名称保留在目录信息中。</p>
+<h3 id="实现文件系统的数据结构">实现文件系统的数据结构</h3>
+<ul>
+<li>disk structure
+<ul>
+<li>boot control block</li>
+<li>Volume control block(<font color =red>superblock</font> in Unix)</li>
+<li>Directory structure per file system</li>
+<li>Per-file PCB(<font color =red>inode</font> in Unix)</li>
+</ul>
+</li>
+<li>in-memory structures
+<ul>
+<li>In-memory mount table about each mounted volumn</li>
+<li>目录缓存</li>
+<li>打开文件表</li>
+</ul>
+</li>
+</ul>
+<img src="https://s2.loli.net/2021/12/13/9iCLt2VkgbSqY6l.png" alt="image-20211213145733272" style="zoom:80%;" />
+<ul>
+<li>先经过进程的打开文件表，（通过文件描述符作为下标），找到系统打开文件表</li>
+</ul>
+<h2 id="virtual-file-system">Virtual File System</h2>
+<ul>
+<li>虚拟文件系统提供一种面向对象的方式实现文件系统</li>
+<li>允许同一个系统调用接口（API)来操作不同的文件系统</li>
+</ul>
+<h2 id="目录实现">目录实现</h2>
+<h3 id="线性列表">线性列表</h3>
+<p>编程简单，执行费时</p>
+<h3 id="哈希表">哈希表</h3>
+<p>根据文件名称获得一个值，返回线性列表内的一个元素指针。</p>
+<p>可以采用溢出链接的哈希表：每个条目可以是链表而不是单个值</p>
+<h2 id="分配方法">分配方法</h2>
+<h3 id="连续分配">连续分配</h3>
+<ul>
+<li>
+<p>要求：每个文件在磁盘上占有一组连续的块。</p>
+</li>
+<li>
+<p>文件的连续分配可以用首块的磁盘地址和连续的块数来定义。</p>
+</li>
+<li>
+<p>访问非常容易，支持顺序访问和直接访问。（对于直接访问一个文件的从块b开始的第i块，可以直接访问块b+i.</p>
+</li>
+<li>
+<p>一个难题是：为新文件找到空间。动态存储分配（容易造成外部碎片）</p>
+</li>
+<li>
+<p>另一个难题是：确定一个文件需要多少空间。</p>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2021/12/13/UeHh8xBSi9zprOd.png" alt="image-20211213153157161"></p>
+<h4 id="extent-based-systems">Extent-Based Systems</h4>
+<p>通过拓展来分配磁盘块</p>
+<p>每个拓展是磁盘上的连续块</p>
+<h3 id="链表分配">链表分配</h3>
+<ul>
+<li>需要保留一个指针，指向下一个block</li>
+</ul>
+<p><img src="https://s2.loli.net/2021/12/13/yaFNwlPZ4e3fjhY.png" alt="image-20211213153342743"></p>
+<ul>
+<li>Simple -need only starting address</li>
+<li>没有浪费的空间</li>
+<li><font color=red>No random access,poor reliability</font></li>
+<li>Mapping（第一个word放指向下一块的指针）</li>
+</ul>
+<p><img src="https://s2.loli.net/2021/12/13/PmrgXBp1DGxbLVQ.png" alt="image-20211213153635131"></p>
+<h4 id="file-allocation-table">File-Allocation Table</h4>
+<p>mini-link:<code>FAT</code>每一项是一个word，存有指向下一块的位置。</p>
+<p>使用内存块的指针链表代替磁盘的指针链表。</p>
+<p><code>FAT</code>表磁盘贮存，mount后加载到内存。</p>
+<img src="https://s2.loli.net/2021/12/16/EGO2xvNdM3F64oT.png" alt="image-20211216160543096" style="zoom:67%;" />
+<h4 id="缺陷：如果一个pointer出错-可能导致后面的信息全部丢失">缺陷：如果一个pointer出错，可能导致后面的信息全部丢失</h4>
+<h3 id="索引分配">索引分配</h3>
+<ul>
+<li>Brings all pointer together into the index block</li>
+<li>Logical views</li>
+<li><img src="https://s2.loli.net/2021/12/16/V4ar3YzvifbT5wp.png" alt="image-20211216161501695"></li>
+</ul>
+<p><img src="https://s2.loli.net/2021/12/16/NK84groX29DtOqR.png" alt="image-20211216162200711"></p>
+<p><img src="https://s2.loli.net/2021/12/16/OD8wW2ZqEaBMpPR.png" alt="image-20211216162210567"></p>
+<h4 id="缺点：需要多访问一次磁盘-索引块">缺点：需要多访问一次磁盘（索引块）</h4>
+<blockquote>
+<p>通常来说：会采用组合的模式：既有直接访问，也可以有多级访问</p>
+</blockquote>
+<h2 id="free-space-management">Free-Space Management</h2>
+<p>空闲块的管理</p>
+<p><img src="https://s2.loli.net/2021/12/16/JoSPGAQgNTDkOps.png" alt="image-20211216163358184"></p>
+<ul>
+<li>Bit map requires extra space
+<ul>
+<li>Example:
+<ul>
+<li>block size : <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>12</mn></msup></mrow><annotation encoding="application/x-tex">2^{12}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>bytes</li>
+<li>disk size: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>30</mn></msup></mrow><annotation encoding="application/x-tex">2^{30}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span>bytes</li>
+<li>n = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>30</mn></msup><mi mathvariant="normal">/</mi><msup><mn>2</mn><mn>12</mn></msup><mo>=</mo><msup><mn>2</mn><mn>18</mn></msup></mrow><annotation encoding="application/x-tex">2^{30}/2^{12} = 2^{18}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span></span>bits(32 K bytes)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><font color = red>Easy to get contiguous files</font></li>
+<li>Linked list(free list)
+<ul>
+<li>Cannot get contiguous space easily</li>
+<li>But basically can work (FAT)</li>
+<li>No waste of space</li>
+</ul>
+</li>
+<li>Grouping - a modification of the Linked list
+<ul>
+<li>Addresses of the n free blocks are stored in the first block.</li>
+</ul>
+</li>
+<li>Counting
+<ul>
+<li>Address of the first free block and number n contiguous blocks.</li>
+</ul>
+</li>
+</ul>
+<h4 id="need-to-protect">Need to protect</h4>
+<ul>
+<li>空闲链表的指针</li>
+<li>bit map
+<ul>
+<li>Must be kept on disk</li>
+<li>The copy in memory and disk may differ</li>
+<li>Cannot allow for block[i] to have a situation where bit[i] = 1 in memory and bit[i] = 0 on disk</li>
+</ul>
+</li>
+<li>Solution:
+<ul>
+<li>先给硬盘上的 bit[i]置1</li>
+<li>再释放block[i]</li>
+<li>最后改内存上的bit[i]</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:/Users/1/AppData/Roaming/Typora/typora-user-images/image-20211217231511367.png" alt="image-20211217231511367"></p>
+<p>（1）</p>
+<ul>
+<li>连续分配：理论上不受限制，可大到整个磁盘文件区</li>
+<li>链接分配：由于块的地址为4字节，所以最多的链接索引块数为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>32</mn></msup></mrow><annotation encoding="application/x-tex">2^{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>，而每个盘块中存放文件大小为4092B。链接分配可管理的最大文件为:<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>G</mi><mo>×</mo><mn>4092</mn><mi>B</mi><mo>=</mo><mn>16368</mn><mi>G</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">4G \times 4092B = 16368GB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault">G</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mord">9</span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord">3</span><span class="mord">6</span><span class="mord">8</span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span></li>
+<li>链接索引：由于块的地址为4字节，所以最多的链接索引块数为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>32</mn></msup></mrow><annotation encoding="application/x-tex">2^{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>,而每个索引块中有1023个文件块的地址，盘块大小为4B。假设最多有n个索引块，则<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1023</mn><mo>×</mo><mi>n</mi><mo>+</mo><mi>n</mi><mo>=</mo><msup><mn>2</mn><mn>32</mn></msup></mrow><annotation encoding="application/x-tex">1023\times n+n=2^{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">2</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>,最大文件为:<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>G</mi><mo>×</mo><mn>4092</mn><mi>B</mi><mo>=</mo><mn>16368</mn><mi>G</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">4G \times 4092B = 16368GB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault">G</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mord">9</span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord">3</span><span class="mord">6</span><span class="mord">8</span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span></li>
+<li>二级索引：由于盘块大小为4KB，每个地址用4B表示，一个盘块可存1K个索引表目。
+<ul>
+<li>最大文件容量<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>K</mi><mi>B</mi><mo>×</mo><mn>1</mn><mi>K</mi><mo>×</mo><mn>1</mn><mi>K</mi><mo>=</mo><mn>4</mn><mi>G</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">4KB\times 1K \times 1K=4GB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span></li>
+</ul>
+</li>
+<li><code>LINUX 混合分配</code>：<code>LINUX</code>的直接地址指针有12个，还有一个一级索引，一个二级索引，一个三级索引
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>48</mn><mi>K</mi><mi>B</mi><mo>+</mo><mn>4</mn><mi>M</mi><mi>B</mi><mo>+</mo><mn>4</mn><mi>G</mi><mi>B</mi><mo>+</mo><mn>4</mn><mi>T</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">48KB + 4MB + 4GB + 4TB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord">8</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span></li>
+</ul>
+</li>
+</ul>
+<p>（2）</p>
+<ul>
+<li>连续分配：不管大小文件，只需要在文件控制块FCB设两项，一是首块物理块块号，另一是文件总块数，不需专用块来记录文件的物理地址。</li>
+<li>链接分配：对大小文件都只需在文件控制块FCB中设二项，一是首块物理块块号，另一是末块物理块块号；同时在文件的每个物理块中设置存放下一个块号的指针。</li>
+<li>一级索引：
+<ul>
+<li>对20KB小文件只有5个物理块大小，所以只需一块专用物理块来做索引块，用来保存文件的各个物理块地址；</li>
+<li>对于20MB大文件共有5K个物理块，由于链接索引的每个索引块只能保存（1K-1)个文件物理块地址（另有一个表目存放下一个索引块指针），所以他需要6块专用物理块来作链接索引块。</li>
+</ul>
+</li>
+<li>二级索引：
+<ul>
+<li>对20KB小文件用一个物理块作第一级索引，另一块作二级索引；</li>
+<li>对20MB大文件，用一块物理块作第一级索引，另外需要5块物理块（一块存1K地址项，每一项指向一块能存4KB空间，故一块可以指代4MB空间）作第二级索引。</li>
+</ul>
+</li>
+<li><code>LINUX</code>的混合分配：
+<ul>
+<li>对20KB小文件只需在文件控制块<code>FCB</code>的<code>i_addr[15]</code>中使用前5个表目存放文件的物理块号，不需专用物理块。</li>
+<li>对20MB小文件，（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn><mo>∗</mo><mn>4</mn><mi>K</mi><mi>B</mi><mo>=</mo><mn>48</mn><mi>K</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">12*4KB = 48KB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">8</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>)，用一级索引一块保存大文件接着的1K块块号（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>K</mi><mo>∗</mo><mn>4</mn><mi>K</mi><mi>B</mi><mo>=</mo><mn>4</mn><mi>M</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">1K*4KB = 4MB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>）,剩下还有接近16MB，还要用二级索引存大文件以后的块号，一块物理块作为二级索引，第二级索引4块（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>K</mi><mi>B</mi><mo>×</mo><mn>1</mn><mi>K</mi><mo>×</mo><mn>4</mn><mo>=</mo><mn>16</mn><mi>M</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">4KB\times 1K \times 4 = 16MB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>）。</li>
+</ul>
+</li>
+</ul>
+<p>（3）</p>
+<ul>
+<li>连续分配：读前面第5.5KB的信息，只需要一次IO操作；读后面第（16MB+5.5KB）的信息，也只需要一次。
+<ul>
+<li>未读大文件前面和后面信息都需先计算信息在文件中的相对块数，前面信息相对逻辑块号为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5.5</mn><mi>K</mi><mi mathvariant="normal">/</mi><mn>4</mn><mi>K</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">5.5K/4K =1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5</span><span class="mord">.</span><span class="mord">5</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord">/</span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>,后面信息相对逻辑块号（(16M+5.5K)/4K = 4097)</li>
+</ul>
+</li>
+<li>链接分配：读前面第5.5KB的信息，需要两次IO；读后面（(16MB+5.5KB)/ 4092 = 4102）的信息需要4103次IO</li>
+<li>链接索引：读前面第5.5KB信息，需要首先读取索引块，再获取第一块的信息，即两次IO；读后面第（16MB+5.5KB）的信息，需要读取第四块索引块（0,1,2,3,4 -&gt; 5次IO），在读取所需的信息，一共6次。</li>
+<li>二级索引：为读大文件前面和后面信息的操作相同，需要一次第一级索引，一次第二级索引，最后一次所在数据块。3次IO。</li>
+<li><code>LINUX</code>混合分配：读前面第5.5KB的信息（在内存文件控制块<code>FCB</code>的<code>i_addr</code>第二个表目中读取信息所在块块号），只需要一次IO操作。后面(16MB+5.5KB)的信息在二级索引，所以需要3次IO.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+      </tags>
+  </entry>
 </search>
