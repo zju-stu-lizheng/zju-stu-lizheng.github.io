@@ -1,6 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CSS</title>
+    <url>/2021/10/24/CSS/</url>
+    <content><![CDATA[<h2 id="基础语法">基础语法</h2>
+<h3 id="一-使用-css-选择器为元素设置样式">一、使用 CSS 选择器为元素设置样式</h3>
+<p>使用 CSS，您可以使用数百个 CSS 属性来更改元素在页面上的外观。</p>
+<p>当您输入 时<code>&lt;h2 style=&quot;color: red;&quot;&gt;CatPhotoApp&lt;/h2&gt;</code>，您正在<code>h2</code>使用内联 CSS（代表级联样式表）为该单个元素设置样式。</p>
+<p>这是指定元素样式的一种方式，但还有一种更好的方式来应用 CSS。</p>
+<p>在代码的顶部，创建一个<code>style</code>像这样的块：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在该样式块中，您可以为所有元素创建一个CSS 选择器<code>h2</code>。例如，如果您希望所有<code>h2</code>元素都为红色，您可以添加如下所示的样式规则：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">  <span class="selector-tag">h2</span> &#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">color</span>: red;</span></span><br><span class="line"><span class="css">  &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>请注意，在每个元素的样式规则周围使用左花括号和右花括号（<code>&#123;</code>和<code>&#125;</code>）很重要。您还需要确保元素的样式定义位于开始和结束样式标记之间。最后，确保在每个元素的样式规则的末尾添加一个分号。</p>
+<h3 id="二-使用-css-类为元素设置样式">二、使用 CSS 类为元素设置样式</h3>
+<p>类是可重用的样式，可以添加到 HTML 元素中。</p>
+<p>这是一个示例 CSS 类声明：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    .red-text &#123;</span><br><span class="line">        color: red;</span><br><span class="line">        font-size:16px;</span><br><span class="line">    &#125;</span><br><span class="line">    p&#123;		&#x27;&#x27;&#x27;修饰html的段落格式&#x27;&#x27;&#x27;</span><br><span class="line">        font-family: monospace;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>您可以看到我们创建了一个<code>red-text</code>在<code>&lt;style&gt;</code>标签内调用的 CSS 类。这个类颜色为红色，字体大小为16像素。</p>
+<p>使用该类描述HTML元素：<code>&lt;h2 class=&quot;red-text&quot;&gt;CatPhotoApp&lt;/h2&gt;</code>。请注意，在您的 CSS<code>style</code>元素中，类名以句点开头。在 HTML 元素的 class 属性中，类名不包括句点。</p>
+<h3 id="三-指定字体应如何降级">三、指定字体应如何降级</h3>
+<p>有几种默认字体可用于所有浏览器。这些通用字体系列包括<code>monospace</code>、<code>serif</code>和<code>sans-serif</code>。</p>
+<p>当一种字体不可用时，您可以告诉浏览器“降级”为另一种字体。</p>
+<p>例如，如果您希望元素使用该<code>Helvetica</code>字体，但<code>sans-serif</code>在<code>Helvetica</code>不可用时降级为该字体，您将按如下方式指定：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: Helvetica, sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通用字体系列名称不区分大小写。此外，它们不需要引号，因为它们是 CSS 关键字。</p>
+<h3 id="四-修饰图片">四、修饰图片</h3>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.thick-green-border</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">border-color</span>: green;</span></span><br><span class="line"><span class="css">        <span class="attribute">border-width</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">border-style</span>: solid;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.smaller-image</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;smaller-image thick-green-border&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;A cute orange cat lying on its back.&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>CSS 边框具有<code>style</code>,<code>color</code>和等属性<code>width</code>。</p>
+<p>例如，如果我们想在 HTML 元素周围创建一个红色的 5 像素边框，我们可以使用这个类：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.thin-red-border</span> &#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">border-color</span>: red;</span></span><br><span class="line"><span class="css">    <span class="attribute">border-width</span>: <span class="number">5px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">border-style</span>: solid;</span></span><br><span class="line"><span class="css">  &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>请记住，您可以使用元素的<code>class</code>属性将多个类应用于元素，方法是用空格分隔每个类名。例如：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;class1 class2&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="五-为-div-元素赋予背景颜色">五、为 div 元素赋予背景颜色</h3>
+<p>您可以使用该<code>background-color</code>属性设置元素的背景颜色。</p>
+<p>例如，如果你想要一个元素的背景颜色是<code>green</code>，你可以把它放在你的<code>style</code>元素中：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.green-background</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="六-设置元素的-id">六、设置元素的 id</h3>
+<p>除了类之外，每个 HTML 元素还可以有一个<code>id</code>属性。</p>
+<p>使用<code>id</code>属性有几个好处：您可以使用<code>id</code>来设置单个元素的样式，稍后您将了解到可以使用它们来选择和修改 JavaScript 中的特定元素。</p>
+<p><code>id</code>属性应该是唯一的。浏览器不会强制执行此操作，但这是公认的最佳实践。所以请不要给多个元素提供相同的<code>id</code>属性。</p>
+<p>这是一个如何为<code>h2</code>元素指定 id的示例<code>cat-photo-app</code>：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">&quot;cat-photo-app&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="七-使用-id-属性为元素设置样式">七、使用 id 属性为元素设置样式</h3>
+<p><code>id</code>属性就像类一样，您可以使用 CSS 来设置它们的样式。</p>
+<p>但是， <code>id</code>不可重用，只能应用于一个元素。<code>id</code>也比类具有更高的特异性（重要性），因此如果两者都应用于同一元素并且具有冲突的样式，<code>id</code>则将被应用。</p>
+<p>这是一个示例，说明如何使用<code>id</code>属性为 的元素<code>cat-photo-element</code>并为其设置绿色背景色。在您的<code>style</code>元素中：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#cat-photo-element</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>请注意，在您的<code>style</code>元素中，您始终通过<code>.</code>在名称前放置来引用类。您总是通过<code>#</code>在其名称前放置来引用 ID 。</p>
+<h3 id="八-使用属性选择器为元素设置样式">八、使用属性选择器为元素设置样式</h3>
+<p>您一直在为要特别设置样式的元素添加<code>id</code>或<code>class</code>属性。这些被称为 ID 和类选择器。您还可以使用其他 CSS 选择器来选择要设置样式的自定义元素组。</p>
+<p>使用<code>[attr=value]</code>属性选择器为 CatPhotoApp 中的复选框设置样式。此选择器匹配具有特定属性值的元素并为其设置样式。例如，下面的代码更改了所有具有属性<code>type</code>的元素的边距<code>radio</code>：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-attr">[type=<span class="string">&#x27;radio&#x27;</span>]</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">20px</span> <span class="number">0px</span> <span class="number">20px</span> <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">margin-top: 40px;</span><br><span class="line">margin-right: 20px;</span><br><span class="line">margin-bottom: 20px;</span><br><span class="line">margin-left: 40px;</span><br></pre></td></tr></table></figure>
+<h3 id="九-设置-html-body-元素的样式">九、设置 HTML Body 元素的样式</h3>
+<p>现在让我们重新开始讨论 CSS 继承。</p>
+<p>每个 HTML 页面都有一个<code>body</code>元素。</p>
+<hr>
+<p>我们可以<code>body</code>通过给它一个<code>background-color</code>黑色来证明该元素存在于此处。</p>
+<p>我们可以通过将以下内容添加到我们的<code>style</code>元素中来做到这一点：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: black;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>前端开发基础</category>
+      </categories>
+      <tags>
+        <tag>SRTP</tag>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Visual Design</title>
+    <url>/2021/11/13/Design/</url>
+    <content><![CDATA[<h3 id="一-使用-text-align-属性创建视觉平衡">一、<strong>使用 text-align 属性创建视觉平衡</strong></h3>
+<p>课程的这一部分侧重于应用视觉设计。第一组挑战建立在给定的卡片布局上，以展示一些核心原则。</p>
+<p>文本通常是 Web 内容的很大一部分。CSS 有几个关于如何将其与<code>text-align</code>属性对齐的选项。</p>
+<p><code>text-align: justify;</code> 将文本间隔开，以便每行具有相等的宽度。</p>
+<p><code>text-align: center;</code> 居中文本</p>
+<p><code>text-align: right;</code> 右对齐文本</p>
+<p>并且<code>text-align: left;</code>（默认）左对齐文本。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css"><span class="selector-tag">h4</span> &#123;</span></span><br><span class="line"><span class="css">	<span class="attribute">text-align</span>:center;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-tag">p</span> &#123;</span></span><br><span class="line"><span class="css">	<span class="attribute">text-align</span>:justify;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>Google<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Google was founded by Larry Page and Sergey Brin while they were Ph.D. students at Stanford University.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<img src="https://i.loli.net/2021/11/13/4r8u3qjEvK9x7zo.png" style="zoom:67%;" />
+<h3 id="二-使用-width-属性或者height属性"><strong>二、使用 width 属性或者height属性</strong></h3>
+<p>您可以使用<code>width</code>CSS 中的属性指定元素的宽度。值可以以相对长度单位（例如<code>em</code>）、绝对长度单位（例如<code>px</code>）或以其包含的父元素的百分比给出。这是一个将图像宽度更改为 220px 的示例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">220px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>您可以使用<code>height</code>CSS 中的属性指定元素的高度，类似于<code>width</code>属性。这是一个将图像高度更改为 20px 的示例：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三-对文本操作">三、<strong>对文本操作</strong></h3>
+<p>要使文本加粗，您可以使用<code>strong</code>标签。这通常用于引起对文本的注意并象征它很重要。使用<code>strong</code>标签，浏览器将 CSS 应用<code>font-weight: bold;</code>到元素。</p>
+<p>要为文本加下划线，您可以使用<code>u</code>标签。这通常用于表示一段文本很重要，或者要记住一些东西。使用<code>u</code>标签，浏览器将 CSS 应用<code>text-decoration: underline;</code>到元素。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;Google was founded by Larry Page and Sergey Brin <span class="keyword">while</span> they were&lt;u&gt; Ph.D. students&lt;/u&gt; at &lt;strong&gt;Stanford University&lt;/strong&gt;.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<img src="https://i.loli.net/2021/11/13/cMYgqr4uE6VsdUK.jpg" style="zoom: 67%;" />
+<p><strong>使用 em 标签使文本斜体</strong></p>
+<p>要强调文本，您可以使用<code>em</code>标签。这将文本显示为斜体，因为浏览器将 的 CSS 应用于<code>font-style: italic;</code>元素。</p>
+<p><strong>使用 s 标记删除文本</strong></p>
+<p>要删除文本（当水平线穿过字符时），您可以使用<code>s</code>标记。它显示一段文本不再有效。使用<code>s</code>标签，浏览器将 CSS 应用<code>text-decoration: line-through;</code>到元素。</p>
+<p><strong>使用 hr 元素创建一条水平线</strong></p>
+<p>您可以使用该<code>hr</code>标签在其包含元素的宽度上添加一条水平线。这可用于定义主题的更改或在视觉上分隔内容组。</p>
+]]></content>
+      <categories>
+        <category>前端开发基础</category>
+      </categories>
+      <tags>
+        <tag>SRTP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GAT</title>
     <url>/2021/10/12/GAT/</url>
     <content><![CDATA[<h1>Graph Attention Networks</h1>
@@ -219,6 +325,146 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
       </tags>
   </entry>
   <entry>
+    <title>HTML</title>
+    <url>/2021/10/20/HTML/</url>
+    <content><![CDATA[<h2 id="基础语法">基础语法</h2>
+<h3 id="1-html基础格式">1. HTML基础格式</h3>
+<p>Most HTML elements have an opening tag and a closing tag.</p>
+<p>Opening tags look like this:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Closing tags look like this:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>显示<code>Hello World</code>:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-各级标题">2.各级标题</h3>
+<p><code>h1,h2,h3,...,h6</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>CatPhotoApp<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-段落">3.段落</h3>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>I&#x27;m a p tag!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-注释">4.注释</h3>
+<p>Comments in HTML start with <code>&lt;!--</code> and end with a <code>--&gt;</code></p>
+<h3 id="5-元素简介">5.元素简介</h3>
+<p>HTML5 引入了更具描述性的 HTML 标签。这些措施包括<code>main</code>，<code>header</code>，<code>footer</code>，<code>nav</code>，<code>video</code>，<code>article</code>，<code>section</code></p>
+<p>示例用法，一个<code>main</code>元素内部嵌套有两个子元素：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">main</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello Paragraph<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-插入图片">6.插入图片</h3>
+<p>An example of this would be:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://www.freecatphotoapp.com/your-image.jpg&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Note ： <code>img</code> elements are self-closing.（不需要<code>&lt;/img&gt;</code>)</p>
+<p>用<code>alt</code>为<code>img</code>上面的示例添加一个属性：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://www.freecatphotoapp.com/your-image.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;A business cat wearing a necktie.&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-超链接">7.超链接</h3>
+<p><code>a</code> elements need a destination web address called an <code>href</code> attribute. They also need anchor text. Here’s an example:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.freecodecamp.org&quot;</span>&gt;</span>this links to freecodecamp.org<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Then your browser will display the text <code>this links to freecodecamp.org</code> as a link you can click. And that link will take you to the web address <code>https://www.freecodecamp.org</code>.</p>
+<h3 id="8-内部链接">8.内部链接</h3>
+<p>以下是内部锚链接及其目标元素的示例：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#contacts-header&quot;</span>&gt;</span>Contacts<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">&quot;contacts-header&quot;</span>&gt;</span>Contacts<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当用户单击该<code>Contacts</code>链接时，他们将被带到带有<strong>Contacts</strong>标题元素的网页部分。</p>
+<h3 id="9-嵌套">9.嵌套</h3>
+<p>You can nest links within other text elements.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  Here&#x27;s a <span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://www.freecodecamp.org&quot;</span>&gt;</span> link to www.freecodecamp.org<span class="tag">&lt;/<span class="name">a</span>&gt;</span> for you to follow.</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="10-死链接">10.死链接</h3>
+<p>The current value of the <code>href</code> attribute is a link that points to “<code>https://www.freecatphotoapp.com</code>”. Replace the <code>href</code> attribute value with a <code>#</code>, also known as a hash symbol, to create a dead link.</p>
+<p>例如: <code>href=&quot;#&quot;</code></p>
+<h3 id="11-无序列表">11.无序列表</h3>
+<p>无序列表以一个开始<code>&lt;ul&gt;</code>元素开始，然后是任意数量的<code>&lt;li&gt;</code>元素。最后，无序列表以<code>&lt;/ul&gt;</code>.</p>
+<p>例如：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>milk<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>cheese<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="12-有序列表">12.有序列表</h3>
+<p>Ordered lists start with an opening <code>&lt;ol&gt;</code> element, followed by any number of <code>&lt;li&gt;</code> elements. Finally, ordered lists are closed with the <code>&lt;/ol&gt;</code> tag.</p>
+<p>For example:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Garfield<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Sylvester<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h3 id="13-创建文本字段">13.创建文本字段</h3>
+<p><code>input</code> elements are a convenient way to get input from your user.</p>
+<p>You can create a text input like this:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以通过<code>placeholder</code>提供默认填充符：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;cat photo URL&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="14-创建表单元素">14.创建表单元素</h3>
+<p>可以仅使用纯 HTML 构建实际将数据提交到服务器的 Web 表单。可以通过<code>action</code>在<code>form</code>元素上指定一个属性来做到这一点。</p>
+<p>例如：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/url-where-you-want-to-submit-form-data&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="14-1-向表单添加提交按钮">14.1 向表单添加提交按钮</h4>
+<p>让我们<code>submit</code>向您的表单添加一个按钮。单击此按钮会将表单中的数据发送到您使用表单<code>action</code>属性指定的 URL 。</p>
+<p>这是一个示例提交按钮：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>this button submits the form<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="14-2-使用要求字段">14.2 使用要求字段</h4>
+<p>可以要求特定的表单字段，以便用户在填写完这些字段之前无法提交您的表单。</p>
+<p>例如，如果您想让文本输入字段成为必需，您只需<code>required</code>在<code>input</code>元素中添加该属性，如下所示：<code>&lt;input type=&quot;text&quot; required&gt;</code></p>
+<h3 id="15-创建一组单选按钮">15.创建一组单选按钮</h3>
+<p>下面是一个单选按钮的例子：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;indoor-outdoor&quot;</span>&gt;</span>Indoor </span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>最好的做法在<code>label</code>元素上设置一个<code>for</code>属性，该值有一个与之相匹配的<code>input</code>元素（与值<code>id</code>的属性一致）。这允许辅助技术在标签和相关<code>input</code>元素之间创建链接关系。例如：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;indoor&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;indoor-outdoor&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;indoor&quot;</span>&gt;</span>Indoor<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>我们还可以将<code>input</code>元素嵌套在<code>label</code>标签中：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;indoor&quot;</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;indoor&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;indoor-outdoor&quot;</span>&gt;</span>Indoor </span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="16-创建一组复选框">16.创建一组复选框</h3>
+<p>对于可能有多个答案的问题，表单通常使用复选框。</p>
+<p>复选框是<code>input</code>元素.</p>
+<p>您的每个复选框都可以嵌套在其自己的<code>label</code>元素中。通过将<code>input</code>元素包装在元素内，<code>label</code>它会自动将复选框输入与其周围的标签元素相关联。</p>
+<p>下面是一个复选框示例：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;loving&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;loving&quot;</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">value</span> = <span class="string">&quot;loving&quot;</span> <span class="attr">name</span>=<span class="string">&quot;personality&quot;</span>&gt;</span> Loving</span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="16-1-设置默认值">16.1 设置默认值</h4>
+<p>使用<code>checked</code> 属性可以设置复选或单选框的默认勾选.</p>
+<p>To do this, just add the word <code>checked</code> to the inside of an input element. For example:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;test-name&quot;</span> <span class="attr">checked</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="17-声明-html-文档的-doctype">17. 声明 HTML 文档的 Doctype</h3>
+<p>可以通过<code>&lt;!DOCTYPE ...&gt;</code>在第一行添加标记来告诉浏览器此信息，其中<code>...</code>部分是 HTML 的版本。对于 HTML5，您使用<code>&lt;!DOCTYPE html&gt;</code>.</p>
+<p>该<code>!</code>和大写<code>DOCTYPE</code>是很重要的，特别是对于旧的浏览器。在<code>html</code>不区分大小写。</p>
+<p>接下来，您的 HTML 代码的其余部分需要包含在<code>html</code>标签中。开头<code>&lt;html&gt;</code>直接在<code>&lt;!DOCTYPE html&gt;</code>线条下方，<code>&lt;/html&gt;</code>结尾在页面末尾。</p>
+<p>这是页面结构的示例。您的 HTML 代码将位于两个<code>html</code>标签之间的空间中。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="18-定义-html-文档的头部和正文">18. 定义 HTML 文档的头部和正文</h3>
+<p>您可以在<code>html</code>带有<code>head</code>和<code>body</code>元素的标记内在 HTML 文档中添加另一个级别的组织。任何包含有关您的页面信息的标记都将进入<code>head</code>标记。然后任何带有页面内容的标记（向用户显示的内容）都将进入<code>body</code>标签。</p>
+<p>元数据元素，例如<code>link</code>，<code>meta</code>，<code>title</code>，和<code>style</code>，典型地去内部<code>head</code>元件。</p>
+<p>以下是页面布局的示例：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="19-更改文本颜色">19. 更改文本颜色</h3>
+<p>现在让我们改变一些文本的颜色。</p>
+<p>我们可以通过改变<code>style</code>你的<code>h2</code>元素来做到这一点。</p>
+<p>负责元素文本颜色的<code>color</code>属性是样式属性。</p>
+<p>以下是将<code>h2</code>元素的文本颜色设置为蓝色的方法：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">style</span>=<span class="string">&quot;color: blue;&quot;</span>&gt;</span>CatPhotoApp<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>前端开发基础</category>
+      </categories>
+      <tags>
+        <tag>SRTP</tag>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenGL</title>
+    <url>/2021/11/28/OpenGL/</url>
+    <content><![CDATA[<h1>OpenGL</h1>
+<h2 id="实现phong光照模型">实现Phong光照模型</h2>
+<h3 id="一-光照模型简介">一、光照模型简介</h3>
+<p>在 OpenGL 中，常用的一个光照模型被称为冯氏光照模型(Phong Lighting Model)。冯氏光照模型的主要结构由3个分量组成：环境(Ambient)、漫反射(Diffuse)和镜面(Specular)光照。下面这张图展示了这些光照分量看起来的样子：</p>
+<p><img src="https://i.loli.net/2021/11/28/kSI2RNzOYwG143T.png" alt="opengl1.png"></p>
+<p>环境光照(Ambient Lighting)：为了模拟真实世界中，即便在黑暗的情况下，物体也不会永远是黑暗的这样一个事实，我们使用一个常量始终给物体一些颜色。</p>
+<p>漫反射光照(Diffuse Lighting)：模拟光源对物体的方向性影响(Directional Impact)。它是冯氏光照模型中视觉上最显著的分量。物体的某一部分越是正对着光源，它就会越亮。</p>
+<p>镜面光照(Specular Lighting)：模拟有光泽物体上面出现的亮点。镜面光照的颜色相比于物体的颜色会更倾向于光的颜色。</p>
+<h3 id="二-着色器实现">二、着色器实现</h3>
+<p>着色器是使用一种叫GLSL的类C语言写成的。GLSL是为图形计算量身定制的，它包含一些针对向量和矩阵操作的有用特性。</p>
+<h4 id="环境光">环境光</h4>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">out vec4 color;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Material</span> &#123;</span></span><br><span class="line">    vec3 albedo;	<span class="comment">//物体材质</span></span><br><span class="line">    <span class="keyword">float</span> ka;		<span class="comment">//环境光反射系数</span></span><br><span class="line">&#125;;</span><br><span class="line">uniform Material material;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vec3 result = material.ka * material.albedo;	<span class="comment">//直接逐元素相乘</span></span><br><span class="line">    color = vec4(result, <span class="number">1.0f</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="漫反射光">漫反射光</h4>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">in vec3 FragPos;</span><br><span class="line">in vec3 Normal;</span><br><span class="line">out vec4 color;</span><br><span class="line"><span class="comment">// material data structure declaration</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Material</span> &#123;</span></span><br><span class="line">    vec3 albedo;</span><br><span class="line">    <span class="keyword">float</span> ka;</span><br><span class="line">    vec3 kd;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// directional light data structure declaration</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DirectionalLight</span> &#123;</span></span><br><span class="line">    vec3 direction;</span><br><span class="line">    <span class="keyword">float</span> intensity;</span><br><span class="line">    vec3 color;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// spot light data structure declaration</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SpotLight</span> &#123;</span></span><br><span class="line">    vec3 position;</span><br><span class="line">    vec3 direction;</span><br><span class="line">    <span class="keyword">float</span> intensity;</span><br><span class="line">    vec3 color;</span><br><span class="line">    <span class="keyword">float</span> angle;</span><br><span class="line">    <span class="keyword">float</span> kc;</span><br><span class="line">    <span class="keyword">float</span> kl;</span><br><span class="line">    <span class="keyword">float</span> kq;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// uniform variables</span></span><br><span class="line">uniform Material material;</span><br><span class="line">uniform DirectionalLight directionalLight;</span><br><span class="line">uniform SpotLight spotLight;</span><br><span class="line"></span><br><span class="line"><span class="function">vec3 <span class="title">calcDirectionalLight</span><span class="params">(vec3 normal)</span> </span>&#123;</span><br><span class="line">    vec3 lightDir = normalize(-directionalLight.direction);</span><br><span class="line">    <span class="comment">// diffuse color</span></span><br><span class="line">    vec3 diffuse = directionalLight.color * max(dot(lightDir, normal), <span class="number">0.0f</span>) * material.kd;</span><br><span class="line">    <span class="keyword">return</span> directionalLight.intensity * diffuse ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">vec3 <span class="title">calcSpotLight</span><span class="params">(vec3 normal)</span> </span>&#123;</span><br><span class="line">    vec3 lightDir = normalize(spotLight.position - FragPos);</span><br><span class="line">    <span class="keyword">float</span> theta = <span class="built_in">acos</span>(-dot(lightDir, normalize(spotLight.direction)));</span><br><span class="line">    <span class="keyword">if</span> (theta &gt; spotLight.angle) &#123;</span><br><span class="line">        <span class="keyword">return</span> vec3(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    vec3 diffuse = spotLight.color * max(dot(lightDir, normal), <span class="number">0.0f</span>) * material.kd;</span><br><span class="line">    <span class="keyword">float</span> distance = length(spotLight.position - FragPos);</span><br><span class="line">    <span class="keyword">float</span> attenuation = <span class="number">1.0f</span> / (spotLight.kc + spotLight.kl * distance + spotLight.kq * distance * distance);</span><br><span class="line">    <span class="keyword">return</span> spotLight.intensity * attenuation * diffuse;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vec3 normal = normalize(Normal);</span><br><span class="line">    <span class="comment">// ambient color</span></span><br><span class="line">    vec3 ambient = material.ka * material.albedo;</span><br><span class="line">    <span class="comment">// diffuse color</span></span><br><span class="line">    vec3 diffuse = calcDirectionalLight(normal) + calcSpotLight(normal);</span><br><span class="line">    color = vec4(ambient + diffuse, <span class="number">1.0f</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="镜面反射光">镜面反射光</h4>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">in vec3 FragPos;</span><br><span class="line">in vec3 Normal;</span><br><span class="line">out vec4 color;</span><br><span class="line"><span class="comment">// material data structure declaration</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Material</span> &#123;</span></span><br><span class="line">    vec3 albedo;</span><br><span class="line">    <span class="keyword">float</span> ka;</span><br><span class="line">    vec3 kd;</span><br><span class="line">    vec3 ks;</span><br><span class="line">    <span class="keyword">float</span> ns;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// directional light data structure declaration</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DirectionalLight</span> &#123;</span></span><br><span class="line">    vec3 direction;</span><br><span class="line">    <span class="keyword">float</span> intensity;</span><br><span class="line">    vec3 color;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// spot light data structure declaration</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SpotLight</span> &#123;</span></span><br><span class="line">    vec3 position;</span><br><span class="line">    vec3 direction;</span><br><span class="line">    <span class="keyword">float</span> intensity;</span><br><span class="line">    vec3 color;</span><br><span class="line">    <span class="keyword">float</span> angle;</span><br><span class="line">    <span class="keyword">float</span> kc;</span><br><span class="line">    <span class="keyword">float</span> kl;</span><br><span class="line">    <span class="keyword">float</span> kq;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// uniform variables</span></span><br><span class="line">uniform Material material;</span><br><span class="line">uniform DirectionalLight directionalLight;</span><br><span class="line">uniform SpotLight spotLight;</span><br><span class="line">uniform cameraPosition;</span><br><span class="line"></span><br><span class="line"><span class="function">vec3 <span class="title">calcDirectionalLight</span><span class="params">(vec3 normal)</span> </span>&#123;</span><br><span class="line">    vec3 lightDir = normalize(-directionalLight.direction);</span><br><span class="line">    <span class="comment">// diffuse color</span></span><br><span class="line">    vec3 diffuse = directionalLight.color * max(dot(lightDir, normal), <span class="number">0.0f</span>) * material.kd;</span><br><span class="line">    <span class="keyword">return</span> directionalLight.intensity * diffuse ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">vec3 <span class="title">calcSpotLight</span><span class="params">(vec3 normal)</span> </span>&#123;</span><br><span class="line">    vec3 lightDir = normalize(spotLight.position - FragPos);</span><br><span class="line">    <span class="keyword">float</span> theta = <span class="built_in">acos</span>(-dot(lightDir, normalize(spotLight.direction)));</span><br><span class="line">    <span class="keyword">if</span> (theta &gt; spotLight.angle) &#123;</span><br><span class="line">        <span class="keyword">return</span> vec3(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    vec3 diffuse = spotLight.color * max(dot(lightDir, normal), <span class="number">0.0f</span>) * material.kd;</span><br><span class="line">    <span class="keyword">float</span> distance = length(spotLight.position - FragPos);</span><br><span class="line">    <span class="keyword">float</span> attenuation = <span class="number">1.0f</span> / (spotLight.kc + spotLight.kl * distance + spotLight.kq * distance * distance);</span><br><span class="line">    <span class="keyword">return</span> spotLight.intensity * attenuation * diffuse;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">vec3 <span class="title">calcSpecDLight</span><span class="params">(vec3 normal)</span></span>&#123;</span><br><span class="line">    vec3 lightDir = normalize(-directionalLight.direction);</span><br><span class="line">    vec3 norm2 = norm / dot(lightDir, norm);</span><br><span class="line">    vec3 tmp = lightDir - norm2;</span><br><span class="line">    vec3 reflectDir = norm2 - tmp;					<span class="comment">// 反射光的方向</span></span><br><span class="line">    vec3 viewDir = normalize(cameraPosition - FragPos);	<span class="comment">// 照相机观察的方向</span></span><br><span class="line">    <span class="keyword">float</span> spec = <span class="built_in">pow</span>(max(dot(viewDir, reflectDir), <span class="number">0.0</span>), material.ns);</span><br><span class="line">    vec3 specular = sepc * directionalLight.color;</span><br><span class="line">    <span class="keyword">return</span> directionalLight.intensity * specular;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">vec3 <span class="title">calcSpecSLight</span><span class="params">(vec3 normal)</span></span>&#123;</span><br><span class="line">    vec3 lightDir = normalize(spotLight.position - FragPos);</span><br><span class="line">    <span class="keyword">float</span> theta = <span class="built_in">acos</span>(-dot(lightDir, normalize(spotLight.direction)));</span><br><span class="line">    <span class="keyword">if</span> (theta &gt; spotLight.angle) &#123;</span><br><span class="line">        <span class="keyword">return</span> vec3(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    vec3 norm2 = norm / dot(lightDir, norm);</span><br><span class="line">    vec3 tmp = lightDir - norm2;</span><br><span class="line">    vec3 reflectDir = norm2 - tmp;					<span class="comment">// 反射光的方向</span></span><br><span class="line">    vec3 viewDir = normalize(cameraPosition - FragPos);	<span class="comment">// 照相机观察的方向</span></span><br><span class="line">    <span class="keyword">float</span> spec = <span class="built_in">pow</span>(max(dot(viewDir, reflectDir), <span class="number">0.0</span>), material.ns);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">float</span> distance = length(spotLight.position - FragPos);</span><br><span class="line">    <span class="keyword">float</span> attenuation = <span class="number">1.0f</span> / (spotLight.kc + spotLight.kl * distance + spotLight.kq * distance * distance);</span><br><span class="line">    <span class="keyword">return</span> spotLight.intensity * specular * attenuation;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vec3 normal = normalize(Normal);</span><br><span class="line">    <span class="comment">// ambient color</span></span><br><span class="line">    vec3 ambient = material.ka * material.albedo;</span><br><span class="line">    <span class="comment">// diffuse color</span></span><br><span class="line">    vec3 diffuse = calcDirectionalLight(normal) + calcSpotLight(normal);</span><br><span class="line">    vec3 specular = calcSpecDLight(normal) + calcSpecSLight(normal);</span><br><span class="line">    color = vec4(ambient + diffuse + specular, <span class="number">1.0f</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="http://file.cc98.org/v2-upload/js0zuxvy.jpg" alt="Phong模型示例"></p>
+]]></content>
+      <categories>
+        <category>计算机图形学</category>
+      </categories>
+      <tags>
+        <tag>OpenGL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Node2vec</title>
     <url>/2021/10/10/Node2vec/</url>
     <content><![CDATA[<h1>node2vec</h1>
@@ -426,6 +672,236 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>File System Implementation</title>
+    <url>/2021/12/18/chap11_File-System%20Implementation/</url>
+    <content><![CDATA[<h2 id="file-system-structure">File-System Structure</h2>
+<ul>
+<li>文件结构
+<ul>
+<li>逻辑储存模块</li>
+<li>相关信息的容器</li>
+</ul>
+</li>
+<li>二级存储（disks）</li>
+<li>分层管理</li>
+<li>FCB(文件控制块)：包含文件管理的信息</li>
+</ul>
+<h2 id="layered-file-system">Layered file system</h2>
+<p>分层的目的：每层设计利用更低层的功能，创建新的功能，以用于更高层服务。</p>
+<img src="https://s2.loli.net/2021/12/13/YsHiQJWa1K9ICeF.png" alt="image-20211213143457119" style="zoom:80%;" />
+<h3 id="i-o-control">I/O control</h3>
+<p>包括设备驱动程序和中断处理程序，以在主内存和磁盘系统之间传输信息。设备驱动程序可以作为翻译器。</p>
+<h3 id="basic-file-system">basic file system</h3>
+<p>只需向适当设备驱动程序发送通用命令，以读取和写入磁盘的物理块。每个物理块由磁盘的数字地址来标识（如，驱动器：1，磁道：3）。</p>
+<p>也管理内存缓冲区和保存各种文件系统、目录和数据块的缓存。</p>
+<h3 id="file-organization-module">file-organization module</h3>
+<p>知道文件及其逻辑块以及物理块。可以将逻辑块地址转为物理块地址，以供<code>basic file system</code>传输。</p>
+<h3 id="logical-file-system">Logical file system</h3>
+<p>管理元数据信息。元数据包括文件系统的所有结构，而不包括实际数据（或文件内容）。逻辑文件系统<code>Logical file system</code>管理目录结构，以便根据给定文件名称为文件组织模块提供所需的信息。</p>
+<p>它通过文件控制块来维护文件结构。文件控制块（<code>PCB</code>)包含有关文件的信息，包括所有者、权限、文件内容的位置等。</p>
+<h2 id="文件系统实现">文件系统实现</h2>
+<h3 id="概述">概述</h3>
+<img src="https://s2.loli.net/2021/12/13/M7ADuEpYSagmTKW.png" alt="image-20211213144822913" style="zoom:67%;" />
+<p>文件名称保留在目录信息中。</p>
+<h3 id="实现文件系统的数据结构">实现文件系统的数据结构</h3>
+<ul>
+<li>disk structure
+<ul>
+<li>boot control block</li>
+<li>Volume control block(<font color =red>superblock</font> in Unix)</li>
+<li>Directory structure per file system</li>
+<li>Per-file PCB(<font color =red>inode</font> in Unix)</li>
+</ul>
+</li>
+<li>in-memory structures
+<ul>
+<li>In-memory mount table about each mounted volumn</li>
+<li>目录缓存</li>
+<li>打开文件表</li>
+</ul>
+</li>
+</ul>
+<img src="https://s2.loli.net/2021/12/13/9iCLt2VkgbSqY6l.png" alt="image-20211213145733272" style="zoom:80%;" />
+<ul>
+<li>先经过进程的打开文件表，（通过文件描述符作为下标），找到系统打开文件表</li>
+</ul>
+<h2 id="virtual-file-system">Virtual File System</h2>
+<ul>
+<li>虚拟文件系统提供一种面向对象的方式实现文件系统</li>
+<li>允许同一个系统调用接口（API)来操作不同的文件系统</li>
+</ul>
+<h2 id="目录实现">目录实现</h2>
+<h3 id="线性列表">线性列表</h3>
+<p>编程简单，执行费时</p>
+<h3 id="哈希表">哈希表</h3>
+<p>根据文件名称获得一个值，返回线性列表内的一个元素指针。</p>
+<p>可以采用溢出链接的哈希表：每个条目可以是链表而不是单个值</p>
+<h2 id="分配方法">分配方法</h2>
+<h3 id="连续分配">连续分配</h3>
+<ul>
+<li>
+<p>要求：每个文件在磁盘上占有一组连续的块。</p>
+</li>
+<li>
+<p>文件的连续分配可以用首块的磁盘地址和连续的块数来定义。</p>
+</li>
+<li>
+<p>访问非常容易，支持顺序访问和直接访问。（对于直接访问一个文件的从块b开始的第i块，可以直接访问块b+i.</p>
+</li>
+<li>
+<p>一个难题是：为新文件找到空间。动态存储分配（容易造成外部碎片）</p>
+</li>
+<li>
+<p>另一个难题是：确定一个文件需要多少空间。</p>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2021/12/13/UeHh8xBSi9zprOd.png" alt="image-20211213153157161"></p>
+<h4 id="extent-based-systems">Extent-Based Systems</h4>
+<p>通过拓展来分配磁盘块</p>
+<p>每个拓展是磁盘上的连续块</p>
+<h3 id="链表分配">链表分配</h3>
+<ul>
+<li>需要保留一个指针，指向下一个block</li>
+</ul>
+<p><img src="https://s2.loli.net/2021/12/13/yaFNwlPZ4e3fjhY.png" alt="image-20211213153342743"></p>
+<ul>
+<li>Simple -need only starting address</li>
+<li>没有浪费的空间</li>
+<li><font color=red>No random access,poor reliability</font></li>
+<li>Mapping（第一个word放指向下一块的指针）</li>
+</ul>
+<p><img src="https://s2.loli.net/2021/12/13/PmrgXBp1DGxbLVQ.png" alt="image-20211213153635131"></p>
+<h4 id="file-allocation-table">File-Allocation Table</h4>
+<p>mini-link:<code>FAT</code>每一项是一个word，存有指向下一块的位置。</p>
+<p>使用内存块的指针链表代替磁盘的指针链表。</p>
+<p><code>FAT</code>表磁盘贮存，mount后加载到内存。</p>
+<img src="https://s2.loli.net/2021/12/16/EGO2xvNdM3F64oT.png" alt="image-20211216160543096" style="zoom:67%;" />
+<h4 id="缺陷：如果一个pointer出错-可能导致后面的信息全部丢失">缺陷：如果一个pointer出错，可能导致后面的信息全部丢失</h4>
+<h3 id="索引分配">索引分配</h3>
+<ul>
+<li>Brings all pointer together into the index block</li>
+<li>Logical views</li>
+<li><img src="https://s2.loli.net/2021/12/16/V4ar3YzvifbT5wp.png" alt="image-20211216161501695"></li>
+</ul>
+<p><img src="https://s2.loli.net/2021/12/16/NK84groX29DtOqR.png" alt="image-20211216162200711"></p>
+<p><img src="https://s2.loli.net/2021/12/16/OD8wW2ZqEaBMpPR.png" alt="image-20211216162210567"></p>
+<h4 id="缺点：需要多访问一次磁盘-索引块">缺点：需要多访问一次磁盘（索引块）</h4>
+<blockquote>
+<p>通常来说：会采用组合的模式：既有直接访问，也可以有多级访问</p>
+</blockquote>
+<h2 id="free-space-management">Free-Space Management</h2>
+<p>空闲块的管理</p>
+<p><img src="https://s2.loli.net/2021/12/16/JoSPGAQgNTDkOps.png" alt="image-20211216163358184"></p>
+<ul>
+<li>Bit map requires extra space
+<ul>
+<li>Example:
+<ul>
+<li>block size : <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>12</mn></msup></mrow><annotation encoding="application/x-tex">2^{12}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>bytes</li>
+<li>disk size: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>30</mn></msup></mrow><annotation encoding="application/x-tex">2^{30}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span>bytes</li>
+<li>n = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>30</mn></msup><mi mathvariant="normal">/</mi><msup><mn>2</mn><mn>12</mn></msup><mo>=</mo><msup><mn>2</mn><mn>18</mn></msup></mrow><annotation encoding="application/x-tex">2^{30}/2^{12} = 2^{18}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span></span>bits(32 K bytes)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><font color = red>Easy to get contiguous files</font></li>
+<li>Linked list(free list)
+<ul>
+<li>Cannot get contiguous space easily</li>
+<li>But basically can work (FAT)</li>
+<li>No waste of space</li>
+</ul>
+</li>
+<li>Grouping - a modification of the Linked list
+<ul>
+<li>Addresses of the n free blocks are stored in the first block.</li>
+</ul>
+</li>
+<li>Counting
+<ul>
+<li>Address of the first free block and number n contiguous blocks.</li>
+</ul>
+</li>
+</ul>
+<h4 id="need-to-protect">Need to protect</h4>
+<ul>
+<li>空闲链表的指针</li>
+<li>bit map
+<ul>
+<li>Must be kept on disk</li>
+<li>The copy in memory and disk may differ</li>
+<li>Cannot allow for block[i] to have a situation where bit[i] = 1 in memory and bit[i] = 0 on disk</li>
+</ul>
+</li>
+<li>Solution:
+<ul>
+<li>先给硬盘上的 bit[i]置1</li>
+<li>再释放block[i]</li>
+<li>最后改内存上的bit[i]</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:/Users/1/AppData/Roaming/Typora/typora-user-images/image-20211217231511367.png" alt="image-20211217231511367"></p>
+<p>（1）</p>
+<ul>
+<li>连续分配：理论上不受限制，可大到整个磁盘文件区</li>
+<li>链接分配：由于块的地址为4字节，所以最多的链接索引块数为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>32</mn></msup></mrow><annotation encoding="application/x-tex">2^{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>，而每个盘块中存放文件大小为4092B。链接分配可管理的最大文件为:<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>G</mi><mo>×</mo><mn>4092</mn><mi>B</mi><mo>=</mo><mn>16368</mn><mi>G</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">4G \times 4092B = 16368GB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault">G</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mord">9</span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord">3</span><span class="mord">6</span><span class="mord">8</span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span></li>
+<li>链接索引：由于块的地址为4字节，所以最多的链接索引块数为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>32</mn></msup></mrow><annotation encoding="application/x-tex">2^{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>,而每个索引块中有1023个文件块的地址，盘块大小为4B。假设最多有n个索引块，则<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1023</mn><mo>×</mo><mi>n</mi><mo>+</mo><mi>n</mi><mo>=</mo><msup><mn>2</mn><mn>32</mn></msup></mrow><annotation encoding="application/x-tex">1023\times n+n=2^{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">2</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>,最大文件为:<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>G</mi><mo>×</mo><mn>4092</mn><mi>B</mi><mo>=</mo><mn>16368</mn><mi>G</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">4G \times 4092B = 16368GB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault">G</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mord">9</span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord">3</span><span class="mord">6</span><span class="mord">8</span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span></li>
+<li>二级索引：由于盘块大小为4KB，每个地址用4B表示，一个盘块可存1K个索引表目。
+<ul>
+<li>最大文件容量<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>K</mi><mi>B</mi><mo>×</mo><mn>1</mn><mi>K</mi><mo>×</mo><mn>1</mn><mi>K</mi><mo>=</mo><mn>4</mn><mi>G</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">4KB\times 1K \times 1K=4GB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span></li>
+</ul>
+</li>
+<li><code>LINUX 混合分配</code>：<code>LINUX</code>的直接地址指针有12个，还有一个一级索引，一个二级索引，一个三级索引
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>48</mn><mi>K</mi><mi>B</mi><mo>+</mo><mn>4</mn><mi>M</mi><mi>B</mi><mo>+</mo><mn>4</mn><mi>G</mi><mi>B</mi><mo>+</mo><mn>4</mn><mi>T</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">48KB + 4MB + 4GB + 4TB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord">8</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span></li>
+</ul>
+</li>
+</ul>
+<p>（2）</p>
+<ul>
+<li>连续分配：不管大小文件，只需要在文件控制块FCB设两项，一是首块物理块块号，另一是文件总块数，不需专用块来记录文件的物理地址。</li>
+<li>链接分配：对大小文件都只需在文件控制块FCB中设二项，一是首块物理块块号，另一是末块物理块块号；同时在文件的每个物理块中设置存放下一个块号的指针。</li>
+<li>一级索引：
+<ul>
+<li>对20KB小文件只有5个物理块大小，所以只需一块专用物理块来做索引块，用来保存文件的各个物理块地址；</li>
+<li>对于20MB大文件共有5K个物理块，由于链接索引的每个索引块只能保存（1K-1)个文件物理块地址（另有一个表目存放下一个索引块指针），所以他需要6块专用物理块来作链接索引块。</li>
+</ul>
+</li>
+<li>二级索引：
+<ul>
+<li>对20KB小文件用一个物理块作第一级索引，另一块作二级索引；</li>
+<li>对20MB大文件，用一块物理块作第一级索引，另外需要5块物理块（一块存1K地址项，每一项指向一块能存4KB空间，故一块可以指代4MB空间）作第二级索引。</li>
+</ul>
+</li>
+<li><code>LINUX</code>的混合分配：
+<ul>
+<li>对20KB小文件只需在文件控制块<code>FCB</code>的<code>i_addr[15]</code>中使用前5个表目存放文件的物理块号，不需专用物理块。</li>
+<li>对20MB小文件，（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn><mo>∗</mo><mn>4</mn><mi>K</mi><mi>B</mi><mo>=</mo><mn>48</mn><mi>K</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">12*4KB = 48KB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">8</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>)，用一级索引一块保存大文件接着的1K块块号（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>K</mi><mo>∗</mo><mn>4</mn><mi>K</mi><mi>B</mi><mo>=</mo><mn>4</mn><mi>M</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">1K*4KB = 4MB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>）,剩下还有接近16MB，还要用二级索引存大文件以后的块号，一块物理块作为二级索引，第二级索引4块（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>K</mi><mi>B</mi><mo>×</mo><mn>1</mn><mi>K</mi><mo>×</mo><mn>4</mn><mo>=</mo><mn>16</mn><mi>M</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">4KB\times 1K \times 4 = 16MB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>）。</li>
+</ul>
+</li>
+</ul>
+<p>（3）</p>
+<ul>
+<li>连续分配：读前面第5.5KB的信息，只需要一次IO操作；读后面第（16MB+5.5KB）的信息，也只需要一次。
+<ul>
+<li>未读大文件前面和后面信息都需先计算信息在文件中的相对块数，前面信息相对逻辑块号为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5.5</mn><mi>K</mi><mi mathvariant="normal">/</mi><mn>4</mn><mi>K</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">5.5K/4K =1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5</span><span class="mord">.</span><span class="mord">5</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord">/</span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>,后面信息相对逻辑块号（(16M+5.5K)/4K = 4097)</li>
+</ul>
+</li>
+<li>链接分配：读前面第5.5KB的信息，需要两次IO；读后面（(16MB+5.5KB)/ 4092 = 4102）的信息需要4103次IO</li>
+<li>链接索引：读前面第5.5KB信息，需要首先读取索引块，再获取第一块的信息，即两次IO；读后面第（16MB+5.5KB）的信息，需要读取第四块索引块（0,1,2,3,4 -&gt; 5次IO），在读取所需的信息，一共6次。</li>
+<li>二级索引：为读大文件前面和后面信息的操作相同，需要一次第一级索引，一次第二级索引，最后一次所在数据块。3次IO。</li>
+<li><code>LINUX</code>混合分配：读前面第5.5KB的信息（在内存文件控制块<code>FCB</code>的<code>i_addr</code>第二个表目中读取信息所在块块号），只需要一次IO操作。后面(16MB+5.5KB)的信息在二级索引，所以需要3次IO.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+      </tags>
   </entry>
   <entry>
     <title>博客入门指南</title>
@@ -687,482 +1163,6 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
       <tags>
         <tag>SRTP</tag>
         <tag>graph</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTML</title>
-    <url>/2021/10/20/HTML/</url>
-    <content><![CDATA[<h2 id="基础语法">基础语法</h2>
-<h3 id="1-html基础格式">1. HTML基础格式</h3>
-<p>Most HTML elements have an opening tag and a closing tag.</p>
-<p>Opening tags look like this:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>Closing tags look like this:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>显示<code>Hello World</code>:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-各级标题">2.各级标题</h3>
-<p><code>h1,h2,h3,...,h6</code></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>CatPhotoApp<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-段落">3.段落</h3>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>I&#x27;m a p tag!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-注释">4.注释</h3>
-<p>Comments in HTML start with <code>&lt;!--</code> and end with a <code>--&gt;</code></p>
-<h3 id="5-元素简介">5.元素简介</h3>
-<p>HTML5 引入了更具描述性的 HTML 标签。这些措施包括<code>main</code>，<code>header</code>，<code>footer</code>，<code>nav</code>，<code>video</code>，<code>article</code>，<code>section</code></p>
-<p>示例用法，一个<code>main</code>元素内部嵌套有两个子元素：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">main</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello Paragraph<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="6-插入图片">6.插入图片</h3>
-<p>An example of this would be:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://www.freecatphotoapp.com/your-image.jpg&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>Note ： <code>img</code> elements are self-closing.（不需要<code>&lt;/img&gt;</code>)</p>
-<p>用<code>alt</code>为<code>img</code>上面的示例添加一个属性：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://www.freecatphotoapp.com/your-image.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;A business cat wearing a necktie.&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="7-超链接">7.超链接</h3>
-<p><code>a</code> elements need a destination web address called an <code>href</code> attribute. They also need anchor text. Here’s an example:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.freecodecamp.org&quot;</span>&gt;</span>this links to freecodecamp.org<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>Then your browser will display the text <code>this links to freecodecamp.org</code> as a link you can click. And that link will take you to the web address <code>https://www.freecodecamp.org</code>.</p>
-<h3 id="8-内部链接">8.内部链接</h3>
-<p>以下是内部锚链接及其目标元素的示例：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#contacts-header&quot;</span>&gt;</span>Contacts<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">&quot;contacts-header&quot;</span>&gt;</span>Contacts<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>当用户单击该<code>Contacts</code>链接时，他们将被带到带有<strong>Contacts</strong>标题元素的网页部分。</p>
-<h3 id="9-嵌套">9.嵌套</h3>
-<p>You can nest links within other text elements.</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  Here&#x27;s a <span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://www.freecodecamp.org&quot;</span>&gt;</span> link to www.freecodecamp.org<span class="tag">&lt;/<span class="name">a</span>&gt;</span> for you to follow.</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="10-死链接">10.死链接</h3>
-<p>The current value of the <code>href</code> attribute is a link that points to “<code>https://www.freecatphotoapp.com</code>”. Replace the <code>href</code> attribute value with a <code>#</code>, also known as a hash symbol, to create a dead link.</p>
-<p>例如: <code>href=&quot;#&quot;</code></p>
-<h3 id="11-无序列表">11.无序列表</h3>
-<p>无序列表以一个开始<code>&lt;ul&gt;</code>元素开始，然后是任意数量的<code>&lt;li&gt;</code>元素。最后，无序列表以<code>&lt;/ul&gt;</code>.</p>
-<p>例如：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>milk<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>cheese<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="12-有序列表">12.有序列表</h3>
-<p>Ordered lists start with an opening <code>&lt;ol&gt;</code> element, followed by any number of <code>&lt;li&gt;</code> elements. Finally, ordered lists are closed with the <code>&lt;/ol&gt;</code> tag.</p>
-<p>For example:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Garfield<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Sylvester<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h3 id="13-创建文本字段">13.创建文本字段</h3>
-<p><code>input</code> elements are a convenient way to get input from your user.</p>
-<p>You can create a text input like this:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>可以通过<code>placeholder</code>提供默认填充符：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;cat photo URL&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="14-创建表单元素">14.创建表单元素</h3>
-<p>可以仅使用纯 HTML 构建实际将数据提交到服务器的 Web 表单。可以通过<code>action</code>在<code>form</code>元素上指定一个属性来做到这一点。</p>
-<p>例如：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/url-where-you-want-to-submit-form-data&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="14-1-向表单添加提交按钮">14.1 向表单添加提交按钮</h4>
-<p>让我们<code>submit</code>向您的表单添加一个按钮。单击此按钮会将表单中的数据发送到您使用表单<code>action</code>属性指定的 URL 。</p>
-<p>这是一个示例提交按钮：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>this button submits the form<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="14-2-使用要求字段">14.2 使用要求字段</h4>
-<p>可以要求特定的表单字段，以便用户在填写完这些字段之前无法提交您的表单。</p>
-<p>例如，如果您想让文本输入字段成为必需，您只需<code>required</code>在<code>input</code>元素中添加该属性，如下所示：<code>&lt;input type=&quot;text&quot; required&gt;</code></p>
-<h3 id="15-创建一组单选按钮">15.创建一组单选按钮</h3>
-<p>下面是一个单选按钮的例子：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;indoor-outdoor&quot;</span>&gt;</span>Indoor </span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>最好的做法在<code>label</code>元素上设置一个<code>for</code>属性，该值有一个与之相匹配的<code>input</code>元素（与值<code>id</code>的属性一致）。这允许辅助技术在标签和相关<code>input</code>元素之间创建链接关系。例如：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;indoor&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;indoor-outdoor&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;indoor&quot;</span>&gt;</span>Indoor<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>我们还可以将<code>input</code>元素嵌套在<code>label</code>标签中：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;indoor&quot;</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;indoor&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;indoor-outdoor&quot;</span>&gt;</span>Indoor </span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="16-创建一组复选框">16.创建一组复选框</h3>
-<p>对于可能有多个答案的问题，表单通常使用复选框。</p>
-<p>复选框是<code>input</code>元素.</p>
-<p>您的每个复选框都可以嵌套在其自己的<code>label</code>元素中。通过将<code>input</code>元素包装在元素内，<code>label</code>它会自动将复选框输入与其周围的标签元素相关联。</p>
-<p>下面是一个复选框示例：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;loving&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;loving&quot;</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">value</span> = <span class="string">&quot;loving&quot;</span> <span class="attr">name</span>=<span class="string">&quot;personality&quot;</span>&gt;</span> Loving</span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="16-1-设置默认值">16.1 设置默认值</h4>
-<p>使用<code>checked</code> 属性可以设置复选或单选框的默认勾选.</p>
-<p>To do this, just add the word <code>checked</code> to the inside of an input element. For example:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;test-name&quot;</span> <span class="attr">checked</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="17-声明-html-文档的-doctype">17. 声明 HTML 文档的 Doctype</h3>
-<p>可以通过<code>&lt;!DOCTYPE ...&gt;</code>在第一行添加标记来告诉浏览器此信息，其中<code>...</code>部分是 HTML 的版本。对于 HTML5，您使用<code>&lt;!DOCTYPE html&gt;</code>.</p>
-<p>该<code>!</code>和大写<code>DOCTYPE</code>是很重要的，特别是对于旧的浏览器。在<code>html</code>不区分大小写。</p>
-<p>接下来，您的 HTML 代码的其余部分需要包含在<code>html</code>标签中。开头<code>&lt;html&gt;</code>直接在<code>&lt;!DOCTYPE html&gt;</code>线条下方，<code>&lt;/html&gt;</code>结尾在页面末尾。</p>
-<p>这是页面结构的示例。您的 HTML 代码将位于两个<code>html</code>标签之间的空间中。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="18-定义-html-文档的头部和正文">18. 定义 HTML 文档的头部和正文</h3>
-<p>您可以在<code>html</code>带有<code>head</code>和<code>body</code>元素的标记内在 HTML 文档中添加另一个级别的组织。任何包含有关您的页面信息的标记都将进入<code>head</code>标记。然后任何带有页面内容的标记（向用户显示的内容）都将进入<code>body</code>标签。</p>
-<p>元数据元素，例如<code>link</code>，<code>meta</code>，<code>title</code>，和<code>style</code>，典型地去内部<code>head</code>元件。</p>
-<p>以下是页面布局的示例：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="19-更改文本颜色">19. 更改文本颜色</h3>
-<p>现在让我们改变一些文本的颜色。</p>
-<p>我们可以通过改变<code>style</code>你的<code>h2</code>元素来做到这一点。</p>
-<p>负责元素文本颜色的<code>color</code>属性是样式属性。</p>
-<p>以下是将<code>h2</code>元素的文本颜色设置为蓝色的方法：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">style</span>=<span class="string">&quot;color: blue;&quot;</span>&gt;</span>CatPhotoApp<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>前端开发基础</category>
-      </categories>
-      <tags>
-        <tag>SRTP</tag>
-        <tag>HTML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSS</title>
-    <url>/2021/10/24/CSS/</url>
-    <content><![CDATA[<h2 id="基础语法">基础语法</h2>
-<h3 id="一-使用-css-选择器为元素设置样式">一、使用 CSS 选择器为元素设置样式</h3>
-<p>使用 CSS，您可以使用数百个 CSS 属性来更改元素在页面上的外观。</p>
-<p>当您输入 时<code>&lt;h2 style=&quot;color: red;&quot;&gt;CatPhotoApp&lt;/h2&gt;</code>，您正在<code>h2</code>使用内联 CSS（代表级联样式表）为该单个元素设置样式。</p>
-<p>这是指定元素样式的一种方式，但还有一种更好的方式来应用 CSS。</p>
-<p>在代码的顶部，创建一个<code>style</code>像这样的块：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>在该样式块中，您可以为所有元素创建一个CSS 选择器<code>h2</code>。例如，如果您希望所有<code>h2</code>元素都为红色，您可以添加如下所示的样式规则：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">  <span class="selector-tag">h2</span> &#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">color</span>: red;</span></span><br><span class="line"><span class="css">  &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>请注意，在每个元素的样式规则周围使用左花括号和右花括号（<code>&#123;</code>和<code>&#125;</code>）很重要。您还需要确保元素的样式定义位于开始和结束样式标记之间。最后，确保在每个元素的样式规则的末尾添加一个分号。</p>
-<h3 id="二-使用-css-类为元素设置样式">二、使用 CSS 类为元素设置样式</h3>
-<p>类是可重用的样式，可以添加到 HTML 元素中。</p>
-<p>这是一个示例 CSS 类声明：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    .red-text &#123;</span><br><span class="line">        color: red;</span><br><span class="line">        font-size:16px;</span><br><span class="line">    &#125;</span><br><span class="line">    p&#123;		&#x27;&#x27;&#x27;修饰html的段落格式&#x27;&#x27;&#x27;</span><br><span class="line">        font-family: monospace;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>您可以看到我们创建了一个<code>red-text</code>在<code>&lt;style&gt;</code>标签内调用的 CSS 类。这个类颜色为红色，字体大小为16像素。</p>
-<p>使用该类描述HTML元素：<code>&lt;h2 class=&quot;red-text&quot;&gt;CatPhotoApp&lt;/h2&gt;</code>。请注意，在您的 CSS<code>style</code>元素中，类名以句点开头。在 HTML 元素的 class 属性中，类名不包括句点。</p>
-<h3 id="三-指定字体应如何降级">三、指定字体应如何降级</h3>
-<p>有几种默认字体可用于所有浏览器。这些通用字体系列包括<code>monospace</code>、<code>serif</code>和<code>sans-serif</code>。</p>
-<p>当一种字体不可用时，您可以告诉浏览器“降级”为另一种字体。</p>
-<p>例如，如果您希望元素使用该<code>Helvetica</code>字体，但<code>sans-serif</code>在<code>Helvetica</code>不可用时降级为该字体，您将按如下方式指定：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: Helvetica, sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通用字体系列名称不区分大小写。此外，它们不需要引号，因为它们是 CSS 关键字。</p>
-<h3 id="四-修饰图片">四、修饰图片</h3>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.thick-green-border</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">border-color</span>: green;</span></span><br><span class="line"><span class="css">        <span class="attribute">border-width</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="css">        <span class="attribute">border-style</span>: solid;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.smaller-image</span> &#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="css">    &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;smaller-image thick-green-border&quot;</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;A cute orange cat lying on its back.&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>CSS 边框具有<code>style</code>,<code>color</code>和等属性<code>width</code>。</p>
-<p>例如，如果我们想在 HTML 元素周围创建一个红色的 5 像素边框，我们可以使用这个类：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.thin-red-border</span> &#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">border-color</span>: red;</span></span><br><span class="line"><span class="css">    <span class="attribute">border-width</span>: <span class="number">5px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">border-style</span>: solid;</span></span><br><span class="line"><span class="css">  &#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>请记住，您可以使用元素的<code>class</code>属性将多个类应用于元素，方法是用空格分隔每个类名。例如：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;class1 class2&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="五-为-div-元素赋予背景颜色">五、为 div 元素赋予背景颜色</h3>
-<p>您可以使用该<code>background-color</code>属性设置元素的背景颜色。</p>
-<p>例如，如果你想要一个元素的背景颜色是<code>green</code>，你可以把它放在你的<code>style</code>元素中：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.green-background</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="六-设置元素的-id">六、设置元素的 id</h3>
-<p>除了类之外，每个 HTML 元素还可以有一个<code>id</code>属性。</p>
-<p>使用<code>id</code>属性有几个好处：您可以使用<code>id</code>来设置单个元素的样式，稍后您将了解到可以使用它们来选择和修改 JavaScript 中的特定元素。</p>
-<p><code>id</code>属性应该是唯一的。浏览器不会强制执行此操作，但这是公认的最佳实践。所以请不要给多个元素提供相同的<code>id</code>属性。</p>
-<p>这是一个如何为<code>h2</code>元素指定 id的示例<code>cat-photo-app</code>：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">&quot;cat-photo-app&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="七-使用-id-属性为元素设置样式">七、使用 id 属性为元素设置样式</h3>
-<p><code>id</code>属性就像类一样，您可以使用 CSS 来设置它们的样式。</p>
-<p>但是， <code>id</code>不可重用，只能应用于一个元素。<code>id</code>也比类具有更高的特异性（重要性），因此如果两者都应用于同一元素并且具有冲突的样式，<code>id</code>则将被应用。</p>
-<p>这是一个示例，说明如何使用<code>id</code>属性为 的元素<code>cat-photo-element</code>并为其设置绿色背景色。在您的<code>style</code>元素中：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#cat-photo-element</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>请注意，在您的<code>style</code>元素中，您始终通过<code>.</code>在名称前放置来引用类。您总是通过<code>#</code>在其名称前放置来引用 ID 。</p>
-<h3 id="八-使用属性选择器为元素设置样式">八、使用属性选择器为元素设置样式</h3>
-<p>您一直在为要特别设置样式的元素添加<code>id</code>或<code>class</code>属性。这些被称为 ID 和类选择器。您还可以使用其他 CSS 选择器来选择要设置样式的自定义元素组。</p>
-<p>使用<code>[attr=value]</code>属性选择器为 CatPhotoApp 中的复选框设置样式。此选择器匹配具有特定属性值的元素并为其设置样式。例如，下面的代码更改了所有具有属性<code>type</code>的元素的边距<code>radio</code>：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-attr">[type=<span class="string">&#x27;radio&#x27;</span>]</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">20px</span> <span class="number">0px</span> <span class="number">20px</span> <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">margin-top: 40px;</span><br><span class="line">margin-right: 20px;</span><br><span class="line">margin-bottom: 20px;</span><br><span class="line">margin-left: 40px;</span><br></pre></td></tr></table></figure>
-<h3 id="九-设置-html-body-元素的样式">九、设置 HTML Body 元素的样式</h3>
-<p>现在让我们重新开始讨论 CSS 继承。</p>
-<p>每个 HTML 页面都有一个<code>body</code>元素。</p>
-<hr>
-<p>我们可以<code>body</code>通过给它一个<code>background-color</code>黑色来证明该元素存在于此处。</p>
-<p>我们可以通过将以下内容添加到我们的<code>style</code>元素中来做到这一点：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: black;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>前端开发基础</category>
-      </categories>
-      <tags>
-        <tag>SRTP</tag>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Visual Design</title>
-    <url>/2021/11/13/Design/</url>
-    <content><![CDATA[<h3 id="一-使用-text-align-属性创建视觉平衡">一、<strong>使用 text-align 属性创建视觉平衡</strong></h3>
-<p>课程的这一部分侧重于应用视觉设计。第一组挑战建立在给定的卡片布局上，以展示一些核心原则。</p>
-<p>文本通常是 Web 内容的很大一部分。CSS 有几个关于如何将其与<code>text-align</code>属性对齐的选项。</p>
-<p><code>text-align: justify;</code> 将文本间隔开，以便每行具有相等的宽度。</p>
-<p><code>text-align: center;</code> 居中文本</p>
-<p><code>text-align: right;</code> 右对齐文本</p>
-<p>并且<code>text-align: left;</code>（默认）左对齐文本。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css"><span class="selector-tag">h4</span> &#123;</span></span><br><span class="line"><span class="css">	<span class="attribute">text-align</span>:center;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-tag">p</span> &#123;</span></span><br><span class="line"><span class="css">	<span class="attribute">text-align</span>:justify;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>Google<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Google was founded by Larry Page and Sergey Brin while they were Ph.D. students at Stanford University.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<img src="https://i.loli.net/2021/11/13/4r8u3qjEvK9x7zo.png" style="zoom:67%;" />
-<h3 id="二-使用-width-属性或者height属性"><strong>二、使用 width 属性或者height属性</strong></h3>
-<p>您可以使用<code>width</code>CSS 中的属性指定元素的宽度。值可以以相对长度单位（例如<code>em</code>）、绝对长度单位（例如<code>px</code>）或以其包含的父元素的百分比给出。这是一个将图像宽度更改为 220px 的示例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">220px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>您可以使用<code>height</code>CSS 中的属性指定元素的高度，类似于<code>width</code>属性。这是一个将图像高度更改为 20px 的示例：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="三-对文本操作">三、<strong>对文本操作</strong></h3>
-<p>要使文本加粗，您可以使用<code>strong</code>标签。这通常用于引起对文本的注意并象征它很重要。使用<code>strong</code>标签，浏览器将 CSS 应用<code>font-weight: bold;</code>到元素。</p>
-<p>要为文本加下划线，您可以使用<code>u</code>标签。这通常用于表示一段文本很重要，或者要记住一些东西。使用<code>u</code>标签，浏览器将 CSS 应用<code>text-decoration: underline;</code>到元素。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;Google was founded by Larry Page and Sergey Brin <span class="keyword">while</span> they were&lt;u&gt; Ph.D. students&lt;/u&gt; at &lt;strong&gt;Stanford University&lt;/strong&gt;.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<img src="https://i.loli.net/2021/11/13/cMYgqr4uE6VsdUK.jpg" style="zoom: 67%;" />
-<p><strong>使用 em 标签使文本斜体</strong></p>
-<p>要强调文本，您可以使用<code>em</code>标签。这将文本显示为斜体，因为浏览器将 的 CSS 应用于<code>font-style: italic;</code>元素。</p>
-<p><strong>使用 s 标记删除文本</strong></p>
-<p>要删除文本（当水平线穿过字符时），您可以使用<code>s</code>标记。它显示一段文本不再有效。使用<code>s</code>标签，浏览器将 CSS 应用<code>text-decoration: line-through;</code>到元素。</p>
-<p><strong>使用 hr 元素创建一条水平线</strong></p>
-<p>您可以使用该<code>hr</code>标签在其包含元素的宽度上添加一条水平线。这可用于定义主题的更改或在视觉上分隔内容组。</p>
-]]></content>
-      <categories>
-        <category>前端开发基础</category>
-      </categories>
-      <tags>
-        <tag>SRTP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>OpenGL</title>
-    <url>/2021/11/28/OpenGL/</url>
-    <content><![CDATA[<h1>OpenGL</h1>
-<h2 id="实现phong光照模型">实现Phong光照模型</h2>
-<h3 id="一-光照模型简介">一、光照模型简介</h3>
-<p>在 OpenGL 中，常用的一个光照模型被称为冯氏光照模型(Phong Lighting Model)。冯氏光照模型的主要结构由3个分量组成：环境(Ambient)、漫反射(Diffuse)和镜面(Specular)光照。下面这张图展示了这些光照分量看起来的样子：</p>
-<p><img src="https://i.loli.net/2021/11/28/kSI2RNzOYwG143T.png" alt="opengl1.png"></p>
-<p>环境光照(Ambient Lighting)：为了模拟真实世界中，即便在黑暗的情况下，物体也不会永远是黑暗的这样一个事实，我们使用一个常量始终给物体一些颜色。</p>
-<p>漫反射光照(Diffuse Lighting)：模拟光源对物体的方向性影响(Directional Impact)。它是冯氏光照模型中视觉上最显著的分量。物体的某一部分越是正对着光源，它就会越亮。</p>
-<p>镜面光照(Specular Lighting)：模拟有光泽物体上面出现的亮点。镜面光照的颜色相比于物体的颜色会更倾向于光的颜色。</p>
-<h3 id="二-着色器实现">二、着色器实现</h3>
-<p>着色器是使用一种叫GLSL的类C语言写成的。GLSL是为图形计算量身定制的，它包含一些针对向量和矩阵操作的有用特性。</p>
-<h4 id="环境光">环境光</h4>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">out vec4 color;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Material</span> &#123;</span></span><br><span class="line">    vec3 albedo;	<span class="comment">//物体材质</span></span><br><span class="line">    <span class="keyword">float</span> ka;		<span class="comment">//环境光反射系数</span></span><br><span class="line">&#125;;</span><br><span class="line">uniform Material material;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vec3 result = material.ka * material.albedo;	<span class="comment">//直接逐元素相乘</span></span><br><span class="line">    color = vec4(result, <span class="number">1.0f</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="漫反射光">漫反射光</h4>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">in vec3 FragPos;</span><br><span class="line">in vec3 Normal;</span><br><span class="line">out vec4 color;</span><br><span class="line"><span class="comment">// material data structure declaration</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Material</span> &#123;</span></span><br><span class="line">    vec3 albedo;</span><br><span class="line">    <span class="keyword">float</span> ka;</span><br><span class="line">    vec3 kd;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// directional light data structure declaration</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DirectionalLight</span> &#123;</span></span><br><span class="line">    vec3 direction;</span><br><span class="line">    <span class="keyword">float</span> intensity;</span><br><span class="line">    vec3 color;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// spot light data structure declaration</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SpotLight</span> &#123;</span></span><br><span class="line">    vec3 position;</span><br><span class="line">    vec3 direction;</span><br><span class="line">    <span class="keyword">float</span> intensity;</span><br><span class="line">    vec3 color;</span><br><span class="line">    <span class="keyword">float</span> angle;</span><br><span class="line">    <span class="keyword">float</span> kc;</span><br><span class="line">    <span class="keyword">float</span> kl;</span><br><span class="line">    <span class="keyword">float</span> kq;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// uniform variables</span></span><br><span class="line">uniform Material material;</span><br><span class="line">uniform DirectionalLight directionalLight;</span><br><span class="line">uniform SpotLight spotLight;</span><br><span class="line"></span><br><span class="line"><span class="function">vec3 <span class="title">calcDirectionalLight</span><span class="params">(vec3 normal)</span> </span>&#123;</span><br><span class="line">    vec3 lightDir = normalize(-directionalLight.direction);</span><br><span class="line">    <span class="comment">// diffuse color</span></span><br><span class="line">    vec3 diffuse = directionalLight.color * max(dot(lightDir, normal), <span class="number">0.0f</span>) * material.kd;</span><br><span class="line">    <span class="keyword">return</span> directionalLight.intensity * diffuse ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">vec3 <span class="title">calcSpotLight</span><span class="params">(vec3 normal)</span> </span>&#123;</span><br><span class="line">    vec3 lightDir = normalize(spotLight.position - FragPos);</span><br><span class="line">    <span class="keyword">float</span> theta = <span class="built_in">acos</span>(-dot(lightDir, normalize(spotLight.direction)));</span><br><span class="line">    <span class="keyword">if</span> (theta &gt; spotLight.angle) &#123;</span><br><span class="line">        <span class="keyword">return</span> vec3(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    vec3 diffuse = spotLight.color * max(dot(lightDir, normal), <span class="number">0.0f</span>) * material.kd;</span><br><span class="line">    <span class="keyword">float</span> distance = length(spotLight.position - FragPos);</span><br><span class="line">    <span class="keyword">float</span> attenuation = <span class="number">1.0f</span> / (spotLight.kc + spotLight.kl * distance + spotLight.kq * distance * distance);</span><br><span class="line">    <span class="keyword">return</span> spotLight.intensity * attenuation * diffuse;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vec3 normal = normalize(Normal);</span><br><span class="line">    <span class="comment">// ambient color</span></span><br><span class="line">    vec3 ambient = material.ka * material.albedo;</span><br><span class="line">    <span class="comment">// diffuse color</span></span><br><span class="line">    vec3 diffuse = calcDirectionalLight(normal) + calcSpotLight(normal);</span><br><span class="line">    color = vec4(ambient + diffuse, <span class="number">1.0f</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="镜面反射光">镜面反射光</h4>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#version 330 core</span></span><br><span class="line">in vec3 FragPos;</span><br><span class="line">in vec3 Normal;</span><br><span class="line">out vec4 color;</span><br><span class="line"><span class="comment">// material data structure declaration</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Material</span> &#123;</span></span><br><span class="line">    vec3 albedo;</span><br><span class="line">    <span class="keyword">float</span> ka;</span><br><span class="line">    vec3 kd;</span><br><span class="line">    vec3 ks;</span><br><span class="line">    <span class="keyword">float</span> ns;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// directional light data structure declaration</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DirectionalLight</span> &#123;</span></span><br><span class="line">    vec3 direction;</span><br><span class="line">    <span class="keyword">float</span> intensity;</span><br><span class="line">    vec3 color;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// spot light data structure declaration</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SpotLight</span> &#123;</span></span><br><span class="line">    vec3 position;</span><br><span class="line">    vec3 direction;</span><br><span class="line">    <span class="keyword">float</span> intensity;</span><br><span class="line">    vec3 color;</span><br><span class="line">    <span class="keyword">float</span> angle;</span><br><span class="line">    <span class="keyword">float</span> kc;</span><br><span class="line">    <span class="keyword">float</span> kl;</span><br><span class="line">    <span class="keyword">float</span> kq;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// uniform variables</span></span><br><span class="line">uniform Material material;</span><br><span class="line">uniform DirectionalLight directionalLight;</span><br><span class="line">uniform SpotLight spotLight;</span><br><span class="line">uniform cameraPosition;</span><br><span class="line"></span><br><span class="line"><span class="function">vec3 <span class="title">calcDirectionalLight</span><span class="params">(vec3 normal)</span> </span>&#123;</span><br><span class="line">    vec3 lightDir = normalize(-directionalLight.direction);</span><br><span class="line">    <span class="comment">// diffuse color</span></span><br><span class="line">    vec3 diffuse = directionalLight.color * max(dot(lightDir, normal), <span class="number">0.0f</span>) * material.kd;</span><br><span class="line">    <span class="keyword">return</span> directionalLight.intensity * diffuse ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">vec3 <span class="title">calcSpotLight</span><span class="params">(vec3 normal)</span> </span>&#123;</span><br><span class="line">    vec3 lightDir = normalize(spotLight.position - FragPos);</span><br><span class="line">    <span class="keyword">float</span> theta = <span class="built_in">acos</span>(-dot(lightDir, normalize(spotLight.direction)));</span><br><span class="line">    <span class="keyword">if</span> (theta &gt; spotLight.angle) &#123;</span><br><span class="line">        <span class="keyword">return</span> vec3(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    vec3 diffuse = spotLight.color * max(dot(lightDir, normal), <span class="number">0.0f</span>) * material.kd;</span><br><span class="line">    <span class="keyword">float</span> distance = length(spotLight.position - FragPos);</span><br><span class="line">    <span class="keyword">float</span> attenuation = <span class="number">1.0f</span> / (spotLight.kc + spotLight.kl * distance + spotLight.kq * distance * distance);</span><br><span class="line">    <span class="keyword">return</span> spotLight.intensity * attenuation * diffuse;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">vec3 <span class="title">calcSpecDLight</span><span class="params">(vec3 normal)</span></span>&#123;</span><br><span class="line">    vec3 lightDir = normalize(-directionalLight.direction);</span><br><span class="line">    vec3 norm2 = norm / dot(lightDir, norm);</span><br><span class="line">    vec3 tmp = lightDir - norm2;</span><br><span class="line">    vec3 reflectDir = norm2 - tmp;					<span class="comment">// 反射光的方向</span></span><br><span class="line">    vec3 viewDir = normalize(cameraPosition - FragPos);	<span class="comment">// 照相机观察的方向</span></span><br><span class="line">    <span class="keyword">float</span> spec = <span class="built_in">pow</span>(max(dot(viewDir, reflectDir), <span class="number">0.0</span>), material.ns);</span><br><span class="line">    vec3 specular = sepc * directionalLight.color;</span><br><span class="line">    <span class="keyword">return</span> directionalLight.intensity * specular;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">vec3 <span class="title">calcSpecSLight</span><span class="params">(vec3 normal)</span></span>&#123;</span><br><span class="line">    vec3 lightDir = normalize(spotLight.position - FragPos);</span><br><span class="line">    <span class="keyword">float</span> theta = <span class="built_in">acos</span>(-dot(lightDir, normalize(spotLight.direction)));</span><br><span class="line">    <span class="keyword">if</span> (theta &gt; spotLight.angle) &#123;</span><br><span class="line">        <span class="keyword">return</span> vec3(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    vec3 norm2 = norm / dot(lightDir, norm);</span><br><span class="line">    vec3 tmp = lightDir - norm2;</span><br><span class="line">    vec3 reflectDir = norm2 - tmp;					<span class="comment">// 反射光的方向</span></span><br><span class="line">    vec3 viewDir = normalize(cameraPosition - FragPos);	<span class="comment">// 照相机观察的方向</span></span><br><span class="line">    <span class="keyword">float</span> spec = <span class="built_in">pow</span>(max(dot(viewDir, reflectDir), <span class="number">0.0</span>), material.ns);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">float</span> distance = length(spotLight.position - FragPos);</span><br><span class="line">    <span class="keyword">float</span> attenuation = <span class="number">1.0f</span> / (spotLight.kc + spotLight.kl * distance + spotLight.kq * distance * distance);</span><br><span class="line">    <span class="keyword">return</span> spotLight.intensity * specular * attenuation;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    vec3 normal = normalize(Normal);</span><br><span class="line">    <span class="comment">// ambient color</span></span><br><span class="line">    vec3 ambient = material.ka * material.albedo;</span><br><span class="line">    <span class="comment">// diffuse color</span></span><br><span class="line">    vec3 diffuse = calcDirectionalLight(normal) + calcSpotLight(normal);</span><br><span class="line">    vec3 specular = calcSpecDLight(normal) + calcSpecSLight(normal);</span><br><span class="line">    color = vec4(ambient + diffuse + specular, <span class="number">1.0f</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><img src="http://file.cc98.org/v2-upload/js0zuxvy.jpg" alt="Phong模型示例"></p>
-]]></content>
-      <categories>
-        <category>计算机图形学</category>
-      </categories>
-      <tags>
-        <tag>OpenGL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>File System Implementation</title>
-    <url>/2021/12/18/chap11_File-System%20Implementation/</url>
-    <content><![CDATA[<h2 id="file-system-structure">File-System Structure</h2>
-<ul>
-<li>文件结构
-<ul>
-<li>逻辑储存模块</li>
-<li>相关信息的容器</li>
-</ul>
-</li>
-<li>二级存储（disks）</li>
-<li>分层管理</li>
-<li>FCB(文件控制块)：包含文件管理的信息</li>
-</ul>
-<h2 id="layered-file-system">Layered file system</h2>
-<p>分层的目的：每层设计利用更低层的功能，创建新的功能，以用于更高层服务。</p>
-<img src="https://s2.loli.net/2021/12/13/YsHiQJWa1K9ICeF.png" alt="image-20211213143457119" style="zoom:80%;" />
-<h3 id="i-o-control">I/O control</h3>
-<p>包括设备驱动程序和中断处理程序，以在主内存和磁盘系统之间传输信息。设备驱动程序可以作为翻译器。</p>
-<h3 id="basic-file-system">basic file system</h3>
-<p>只需向适当设备驱动程序发送通用命令，以读取和写入磁盘的物理块。每个物理块由磁盘的数字地址来标识（如，驱动器：1，磁道：3）。</p>
-<p>也管理内存缓冲区和保存各种文件系统、目录和数据块的缓存。</p>
-<h3 id="file-organization-module">file-organization module</h3>
-<p>知道文件及其逻辑块以及物理块。可以将逻辑块地址转为物理块地址，以供<code>basic file system</code>传输。</p>
-<h3 id="logical-file-system">Logical file system</h3>
-<p>管理元数据信息。元数据包括文件系统的所有结构，而不包括实际数据（或文件内容）。逻辑文件系统<code>Logical file system</code>管理目录结构，以便根据给定文件名称为文件组织模块提供所需的信息。</p>
-<p>它通过文件控制块来维护文件结构。文件控制块（<code>PCB</code>)包含有关文件的信息，包括所有者、权限、文件内容的位置等。</p>
-<h2 id="文件系统实现">文件系统实现</h2>
-<h3 id="概述">概述</h3>
-<img src="https://s2.loli.net/2021/12/13/M7ADuEpYSagmTKW.png" alt="image-20211213144822913" style="zoom:67%;" />
-<p>文件名称保留在目录信息中。</p>
-<h3 id="实现文件系统的数据结构">实现文件系统的数据结构</h3>
-<ul>
-<li>disk structure
-<ul>
-<li>boot control block</li>
-<li>Volume control block(<font color =red>superblock</font> in Unix)</li>
-<li>Directory structure per file system</li>
-<li>Per-file PCB(<font color =red>inode</font> in Unix)</li>
-</ul>
-</li>
-<li>in-memory structures
-<ul>
-<li>In-memory mount table about each mounted volumn</li>
-<li>目录缓存</li>
-<li>打开文件表</li>
-</ul>
-</li>
-</ul>
-<img src="https://s2.loli.net/2021/12/13/9iCLt2VkgbSqY6l.png" alt="image-20211213145733272" style="zoom:80%;" />
-<ul>
-<li>先经过进程的打开文件表，（通过文件描述符作为下标），找到系统打开文件表</li>
-</ul>
-<h2 id="virtual-file-system">Virtual File System</h2>
-<ul>
-<li>虚拟文件系统提供一种面向对象的方式实现文件系统</li>
-<li>允许同一个系统调用接口（API)来操作不同的文件系统</li>
-</ul>
-<h2 id="目录实现">目录实现</h2>
-<h3 id="线性列表">线性列表</h3>
-<p>编程简单，执行费时</p>
-<h3 id="哈希表">哈希表</h3>
-<p>根据文件名称获得一个值，返回线性列表内的一个元素指针。</p>
-<p>可以采用溢出链接的哈希表：每个条目可以是链表而不是单个值</p>
-<h2 id="分配方法">分配方法</h2>
-<h3 id="连续分配">连续分配</h3>
-<ul>
-<li>
-<p>要求：每个文件在磁盘上占有一组连续的块。</p>
-</li>
-<li>
-<p>文件的连续分配可以用首块的磁盘地址和连续的块数来定义。</p>
-</li>
-<li>
-<p>访问非常容易，支持顺序访问和直接访问。（对于直接访问一个文件的从块b开始的第i块，可以直接访问块b+i.</p>
-</li>
-<li>
-<p>一个难题是：为新文件找到空间。动态存储分配（容易造成外部碎片）</p>
-</li>
-<li>
-<p>另一个难题是：确定一个文件需要多少空间。</p>
-</li>
-</ul>
-<p><img src="https://s2.loli.net/2021/12/13/UeHh8xBSi9zprOd.png" alt="image-20211213153157161"></p>
-<h4 id="extent-based-systems">Extent-Based Systems</h4>
-<p>通过拓展来分配磁盘块</p>
-<p>每个拓展是磁盘上的连续块</p>
-<h3 id="链表分配">链表分配</h3>
-<ul>
-<li>需要保留一个指针，指向下一个block</li>
-</ul>
-<p><img src="https://s2.loli.net/2021/12/13/yaFNwlPZ4e3fjhY.png" alt="image-20211213153342743"></p>
-<ul>
-<li>Simple -need only starting address</li>
-<li>没有浪费的空间</li>
-<li><font color=red>No random access,poor reliability</font></li>
-<li>Mapping（第一个word放指向下一块的指针）</li>
-</ul>
-<p><img src="https://s2.loli.net/2021/12/13/PmrgXBp1DGxbLVQ.png" alt="image-20211213153635131"></p>
-<h4 id="file-allocation-table">File-Allocation Table</h4>
-<p>mini-link:<code>FAT</code>每一项是一个word，存有指向下一块的位置。</p>
-<p>使用内存块的指针链表代替磁盘的指针链表。</p>
-<p><code>FAT</code>表磁盘贮存，mount后加载到内存。</p>
-<img src="https://s2.loli.net/2021/12/16/EGO2xvNdM3F64oT.png" alt="image-20211216160543096" style="zoom:67%;" />
-<h4 id="缺陷：如果一个pointer出错-可能导致后面的信息全部丢失">缺陷：如果一个pointer出错，可能导致后面的信息全部丢失</h4>
-<h3 id="索引分配">索引分配</h3>
-<ul>
-<li>Brings all pointer together into the index block</li>
-<li>Logical views</li>
-<li><img src="https://s2.loli.net/2021/12/16/V4ar3YzvifbT5wp.png" alt="image-20211216161501695"></li>
-</ul>
-<p><img src="https://s2.loli.net/2021/12/16/NK84groX29DtOqR.png" alt="image-20211216162200711"></p>
-<p><img src="https://s2.loli.net/2021/12/16/OD8wW2ZqEaBMpPR.png" alt="image-20211216162210567"></p>
-<h4 id="缺点：需要多访问一次磁盘-索引块">缺点：需要多访问一次磁盘（索引块）</h4>
-<blockquote>
-<p>通常来说：会采用组合的模式：既有直接访问，也可以有多级访问</p>
-</blockquote>
-<h2 id="free-space-management">Free-Space Management</h2>
-<p>空闲块的管理</p>
-<p><img src="https://s2.loli.net/2021/12/16/JoSPGAQgNTDkOps.png" alt="image-20211216163358184"></p>
-<ul>
-<li>Bit map requires extra space
-<ul>
-<li>Example:
-<ul>
-<li>block size : <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>12</mn></msup></mrow><annotation encoding="application/x-tex">2^{12}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>bytes</li>
-<li>disk size: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>30</mn></msup></mrow><annotation encoding="application/x-tex">2^{30}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span></span>bytes</li>
-<li>n = <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>30</mn></msup><mi mathvariant="normal">/</mi><msup><mn>2</mn><mn>12</mn></msup><mo>=</mo><msup><mn>2</mn><mn>18</mn></msup></mrow><annotation encoding="application/x-tex">2^{30}/2^{12} = 2^{18}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span></span>bits(32 K bytes)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><font color = red>Easy to get contiguous files</font></li>
-<li>Linked list(free list)
-<ul>
-<li>Cannot get contiguous space easily</li>
-<li>But basically can work (FAT)</li>
-<li>No waste of space</li>
-</ul>
-</li>
-<li>Grouping - a modification of the Linked list
-<ul>
-<li>Addresses of the n free blocks are stored in the first block.</li>
-</ul>
-</li>
-<li>Counting
-<ul>
-<li>Address of the first free block and number n contiguous blocks.</li>
-</ul>
-</li>
-</ul>
-<h4 id="need-to-protect">Need to protect</h4>
-<ul>
-<li>空闲链表的指针</li>
-<li>bit map
-<ul>
-<li>Must be kept on disk</li>
-<li>The copy in memory and disk may differ</li>
-<li>Cannot allow for block[i] to have a situation where bit[i] = 1 in memory and bit[i] = 0 on disk</li>
-</ul>
-</li>
-<li>Solution:
-<ul>
-<li>先给硬盘上的 bit[i]置1</li>
-<li>再释放block[i]</li>
-<li>最后改内存上的bit[i]</li>
-</ul>
-</li>
-</ul>
-<p><img src="C:/Users/1/AppData/Roaming/Typora/typora-user-images/image-20211217231511367.png" alt="image-20211217231511367"></p>
-<p>（1）</p>
-<ul>
-<li>连续分配：理论上不受限制，可大到整个磁盘文件区</li>
-<li>链接分配：由于块的地址为4字节，所以最多的链接索引块数为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>32</mn></msup></mrow><annotation encoding="application/x-tex">2^{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>，而每个盘块中存放文件大小为4092B。链接分配可管理的最大文件为:<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>G</mi><mo>×</mo><mn>4092</mn><mi>B</mi><mo>=</mo><mn>16368</mn><mi>G</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">4G \times 4092B = 16368GB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault">G</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mord">9</span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord">3</span><span class="mord">6</span><span class="mord">8</span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span></li>
-<li>链接索引：由于块的地址为4字节，所以最多的链接索引块数为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>32</mn></msup></mrow><annotation encoding="application/x-tex">2^{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>,而每个索引块中有1023个文件块的地址，盘块大小为4B。假设最多有n个索引块，则<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1023</mn><mo>×</mo><mi>n</mi><mo>+</mo><mi>n</mi><mo>=</mo><msup><mn>2</mn><mn>32</mn></msup></mrow><annotation encoding="application/x-tex">1023\times n+n=2^{32}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">2</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span>,最大文件为:<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>G</mi><mo>×</mo><mn>4092</mn><mi>B</mi><mo>=</mo><mn>16368</mn><mi>G</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">4G \times 4092B = 16368GB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault">G</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mord">9</span><span class="mord">2</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord">3</span><span class="mord">6</span><span class="mord">8</span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span></li>
-<li>二级索引：由于盘块大小为4KB，每个地址用4B表示，一个盘块可存1K个索引表目。
-<ul>
-<li>最大文件容量<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>K</mi><mi>B</mi><mo>×</mo><mn>1</mn><mi>K</mi><mo>×</mo><mn>1</mn><mi>K</mi><mo>=</mo><mn>4</mn><mi>G</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">4KB\times 1K \times 1K=4GB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span></li>
-</ul>
-</li>
-<li><code>LINUX 混合分配</code>：<code>LINUX</code>的直接地址指针有12个，还有一个一级索引，一个二级索引，一个三级索引
-<ul>
-<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>48</mn><mi>K</mi><mi>B</mi><mo>+</mo><mn>4</mn><mi>M</mi><mi>B</mi><mo>+</mo><mn>4</mn><mi>G</mi><mi>B</mi><mo>+</mo><mn>4</mn><mi>T</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">48KB + 4MB + 4GB + 4TB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord">8</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span></li>
-</ul>
-</li>
-</ul>
-<p>（2）</p>
-<ul>
-<li>连续分配：不管大小文件，只需要在文件控制块FCB设两项，一是首块物理块块号，另一是文件总块数，不需专用块来记录文件的物理地址。</li>
-<li>链接分配：对大小文件都只需在文件控制块FCB中设二项，一是首块物理块块号，另一是末块物理块块号；同时在文件的每个物理块中设置存放下一个块号的指针。</li>
-<li>一级索引：
-<ul>
-<li>对20KB小文件只有5个物理块大小，所以只需一块专用物理块来做索引块，用来保存文件的各个物理块地址；</li>
-<li>对于20MB大文件共有5K个物理块，由于链接索引的每个索引块只能保存（1K-1)个文件物理块地址（另有一个表目存放下一个索引块指针），所以他需要6块专用物理块来作链接索引块。</li>
-</ul>
-</li>
-<li>二级索引：
-<ul>
-<li>对20KB小文件用一个物理块作第一级索引，另一块作二级索引；</li>
-<li>对20MB大文件，用一块物理块作第一级索引，另外需要5块物理块（一块存1K地址项，每一项指向一块能存4KB空间，故一块可以指代4MB空间）作第二级索引。</li>
-</ul>
-</li>
-<li><code>LINUX</code>的混合分配：
-<ul>
-<li>对20KB小文件只需在文件控制块<code>FCB</code>的<code>i_addr[15]</code>中使用前5个表目存放文件的物理块号，不需专用物理块。</li>
-<li>对20MB小文件，（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn><mo>∗</mo><mn>4</mn><mi>K</mi><mi>B</mi><mo>=</mo><mn>48</mn><mi>K</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">12*4KB = 48KB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">8</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>)，用一级索引一块保存大文件接着的1K块块号（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>K</mi><mo>∗</mo><mn>4</mn><mi>K</mi><mi>B</mi><mo>=</mo><mn>4</mn><mi>M</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">1K*4KB = 4MB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>）,剩下还有接近16MB，还要用二级索引存大文件以后的块号，一块物理块作为二级索引，第二级索引4块（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>K</mi><mi>B</mi><mo>×</mo><mn>1</mn><mi>K</mi><mo>×</mo><mn>4</mn><mo>=</mo><mn>16</mn><mi>M</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">4KB\times 1K \times 4 = 16MB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>）。</li>
-</ul>
-</li>
-</ul>
-<p>（3）</p>
-<ul>
-<li>连续分配：读前面第5.5KB的信息，只需要一次IO操作；读后面第（16MB+5.5KB）的信息，也只需要一次。
-<ul>
-<li>未读大文件前面和后面信息都需先计算信息在文件中的相对块数，前面信息相对逻辑块号为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5.5</mn><mi>K</mi><mi mathvariant="normal">/</mi><mn>4</mn><mi>K</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">5.5K/4K =1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5</span><span class="mord">.</span><span class="mord">5</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord">/</span><span class="mord">4</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>,后面信息相对逻辑块号（(16M+5.5K)/4K = 4097)</li>
-</ul>
-</li>
-<li>链接分配：读前面第5.5KB的信息，需要两次IO；读后面（(16MB+5.5KB)/ 4092 = 4102）的信息需要4103次IO</li>
-<li>链接索引：读前面第5.5KB信息，需要首先读取索引块，再获取第一块的信息，即两次IO；读后面第（16MB+5.5KB）的信息，需要读取第四块索引块（0,1,2,3,4 -&gt; 5次IO），在读取所需的信息，一共6次。</li>
-<li>二级索引：为读大文件前面和后面信息的操作相同，需要一次第一级索引，一次第二级索引，最后一次所在数据块。3次IO。</li>
-<li><code>LINUX</code>混合分配：读前面第5.5KB的信息（在内存文件控制块<code>FCB</code>的<code>i_addr</code>第二个表目中读取信息所在块块号），只需要一次IO操作。后面(16MB+5.5KB)的信息在二级索引，所以需要3次IO.</li>
-</ul>
-]]></content>
-      <categories>
-        <category>操作系统</category>
-      </categories>
-      <tags>
-        <tag>OS</tag>
       </tags>
   </entry>
 </search>
