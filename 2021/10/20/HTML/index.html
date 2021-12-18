@@ -16,14 +16,14 @@
       
       <link rel="shortcut icon" href="/favicon.ico" />
        
-<link rel="stylesheet" href="/project/dist/main.css">
+<link rel="stylesheet" href="/dist/main.css">
 
       <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
       />
       
-<link rel="stylesheet" href="/project/css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
  
       <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
        
@@ -84,11 +84,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/project/2021/10/20/HTML/" class="article-date">
+      <a href="/2021/10/20/HTML/" class="article-date">
   <time datetime="2021-10-20T14:22:34.000Z" itemprop="datePublished">2021-10-20</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/project/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/">前端开发基础</a>
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/">前端开发基础</a>
   </div>
   
 <div class="word_count">
@@ -120,102 +120,79 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="基础语法">基础语法</h2>
-<h3 id="1-html基础格式">1. HTML基础格式</h3>
-<p>Most HTML elements have an opening tag and a closing tag.</p>
+  <h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="1-HTML基础格式"><a href="#1-HTML基础格式" class="headerlink" title="1. HTML基础格式"></a>1. HTML基础格式</h3><p>Most HTML elements have an opening tag and a closing tag.</p>
 <p>Opening tags look like this:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>Closing tags look like this:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>显示<code>Hello World</code>:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-各级标题">2.各级标题</h3>
-<p><code>h1,h2,h3,...,h6</code></p>
+<h3 id="2-各级标题"><a href="#2-各级标题" class="headerlink" title="2.各级标题"></a>2.各级标题</h3><p><code>h1,h2,h3,...,h6</code></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>CatPhotoApp<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-段落">3.段落</h3>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>I&#x27;m a p tag!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-注释">4.注释</h3>
-<p>Comments in HTML start with <code>&lt;!--</code> and end with a <code>--&gt;</code></p>
-<h3 id="5-元素简介">5.元素简介</h3>
-<p>HTML5 引入了更具描述性的 HTML 标签。这些措施包括<code>main</code>，<code>header</code>，<code>footer</code>，<code>nav</code>，<code>video</code>，<code>article</code>，<code>section</code></p>
+<h3 id="3-段落"><a href="#3-段落" class="headerlink" title="3.段落"></a>3.段落</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>I&#x27;m a p tag!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-注释"><a href="#4-注释" class="headerlink" title="4.注释"></a>4.注释</h3><p>Comments in HTML start with <code>&lt;!--</code> and end with a <code>--&gt;</code></p>
+<h3 id="5-元素简介"><a href="#5-元素简介" class="headerlink" title="5.元素简介"></a>5.元素简介</h3><p>HTML5 引入了更具描述性的 HTML 标签。这些措施包括<code>main</code>，<code>header</code>，<code>footer</code>，<code>nav</code>，<code>video</code>，<code>article</code>，<code>section</code></p>
 <p>示例用法，一个<code>main</code>元素内部嵌套有两个子元素：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">main</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello Paragraph<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="6-插入图片">6.插入图片</h3>
-<p>An example of this would be:</p>
+<h3 id="6-插入图片"><a href="#6-插入图片" class="headerlink" title="6.插入图片"></a>6.插入图片</h3><p>An example of this would be:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://www.freecatphotoapp.com/your-image.jpg&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>Note ： <code>img</code> elements are self-closing.（不需要<code>&lt;/img&gt;</code>)</p>
 <p>用<code>alt</code>为<code>img</code>上面的示例添加一个属性：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://www.freecatphotoapp.com/your-image.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;A business cat wearing a necktie.&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="7-超链接">7.超链接</h3>
-<p><code>a</code> elements need a destination web address called an <code>href</code> attribute. They also need anchor text. Here’s an example:</p>
+<h3 id="7-超链接"><a href="#7-超链接" class="headerlink" title="7.超链接"></a>7.超链接</h3><p><code>a</code> elements need a destination web address called an <code>href</code> attribute. They also need anchor text. Here’s an example:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.freecodecamp.org&quot;</span>&gt;</span>this links to freecodecamp.org<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>Then your browser will display the text <code>this links to freecodecamp.org</code> as a link you can click. And that link will take you to the web address <code>https://www.freecodecamp.org</code>.</p>
-<h3 id="8-内部链接">8.内部链接</h3>
-<p>以下是内部锚链接及其目标元素的示例：</p>
+<h3 id="8-内部链接"><a href="#8-内部链接" class="headerlink" title="8.内部链接"></a>8.内部链接</h3><p>以下是内部锚链接及其目标元素的示例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#contacts-header&quot;</span>&gt;</span>Contacts<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">&quot;contacts-header&quot;</span>&gt;</span>Contacts<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>当用户单击该<code>Contacts</code>链接时，他们将被带到带有<strong>Contacts</strong>标题元素的网页部分。</p>
-<h3 id="9-嵌套">9.嵌套</h3>
-<p>You can nest links within other text elements.</p>
+<h3 id="9-嵌套"><a href="#9-嵌套" class="headerlink" title="9.嵌套"></a>9.嵌套</h3><p>You can nest links within other text elements.</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  Here&#x27;s a <span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://www.freecodecamp.org&quot;</span>&gt;</span> link to www.freecodecamp.org<span class="tag">&lt;/<span class="name">a</span>&gt;</span> for you to follow.</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="10-死链接">10.死链接</h3>
-<p>The current value of the <code>href</code> attribute is a link that points to “<code>https://www.freecatphotoapp.com</code>”. Replace the <code>href</code> attribute value with a <code>#</code>, also known as a hash symbol, to create a dead link.</p>
+<h3 id="10-死链接"><a href="#10-死链接" class="headerlink" title="10.死链接"></a>10.死链接</h3><p>The current value of the <code>href</code> attribute is a link that points to “<code>https://www.freecatphotoapp.com</code>“. Replace the <code>href</code> attribute value with a <code>#</code>, also known as a hash symbol, to create a dead link.</p>
 <p>例如: <code>href=&quot;#&quot;</code></p>
-<h3 id="11-无序列表">11.无序列表</h3>
-<p>无序列表以一个开始<code>&lt;ul&gt;</code>元素开始，然后是任意数量的<code>&lt;li&gt;</code>元素。最后，无序列表以<code>&lt;/ul&gt;</code>.</p>
+<h3 id="11-无序列表"><a href="#11-无序列表" class="headerlink" title="11.无序列表"></a>11.无序列表</h3><p>无序列表以一个开始<code>&lt;ul&gt;</code>元素开始，然后是任意数量的<code>&lt;li&gt;</code>元素。最后，无序列表以<code>&lt;/ul&gt;</code>.</p>
 <p>例如：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>milk<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>cheese<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="12-有序列表">12.有序列表</h3>
-<p>Ordered lists start with an opening <code>&lt;ol&gt;</code> element, followed by any number of <code>&lt;li&gt;</code> elements. Finally, ordered lists are closed with the <code>&lt;/ol&gt;</code> tag.</p>
+<h3 id="12-有序列表"><a href="#12-有序列表" class="headerlink" title="12.有序列表"></a>12.有序列表</h3><p>Ordered lists start with an opening <code>&lt;ol&gt;</code> element, followed by any number of <code>&lt;li&gt;</code> elements. Finally, ordered lists are closed with the <code>&lt;/ol&gt;</code> tag.</p>
 <p>For example:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Garfield<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Sylvester<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h3 id="13-创建文本字段">13.创建文本字段</h3>
-<p><code>input</code> elements are a convenient way to get input from your user.</p>
+<h3 id="13-创建文本字段"><a href="#13-创建文本字段" class="headerlink" title="13.创建文本字段"></a>13.创建文本字段</h3><p><code>input</code> elements are a convenient way to get input from your user.</p>
 <p>You can create a text input like this:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>可以通过<code>placeholder</code>提供默认填充符：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;cat photo URL&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="14-创建表单元素">14.创建表单元素</h3>
-<p>可以仅使用纯 HTML 构建实际将数据提交到服务器的 Web 表单。可以通过<code>action</code>在<code>form</code>元素上指定一个属性来做到这一点。</p>
+<h3 id="14-创建表单元素"><a href="#14-创建表单元素" class="headerlink" title="14.创建表单元素"></a>14.创建表单元素</h3><p>可以仅使用纯 HTML 构建实际将数据提交到服务器的 Web 表单。可以通过<code>action</code>在<code>form</code>元素上指定一个属性来做到这一点。</p>
 <p>例如：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/url-where-you-want-to-submit-form-data&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="14-1-向表单添加提交按钮">14.1 向表单添加提交按钮</h4>
-<p>让我们<code>submit</code>向您的表单添加一个按钮。单击此按钮会将表单中的数据发送到您使用表单<code>action</code>属性指定的 URL 。</p>
+<h4 id="14-1-向表单添加提交按钮"><a href="#14-1-向表单添加提交按钮" class="headerlink" title="14.1 向表单添加提交按钮"></a>14.1 向表单添加提交按钮</h4><p>让我们<code>submit</code>向您的表单添加一个按钮。单击此按钮会将表单中的数据发送到您使用表单<code>action</code>属性指定的 URL 。</p>
 <p>这是一个示例提交按钮：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>this button submits the form<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="14-2-使用要求字段">14.2 使用要求字段</h4>
-<p>可以要求特定的表单字段，以便用户在填写完这些字段之前无法提交您的表单。</p>
+<h4 id="14-2-使用要求字段"><a href="#14-2-使用要求字段" class="headerlink" title="14.2 使用要求字段"></a>14.2 使用要求字段</h4><p>可以要求特定的表单字段，以便用户在填写完这些字段之前无法提交您的表单。</p>
 <p>例如，如果您想让文本输入字段成为必需，您只需<code>required</code>在<code>input</code>元素中添加该属性，如下所示：<code>&lt;input type=&quot;text&quot; required&gt;</code></p>
-<h3 id="15-创建一组单选按钮">15.创建一组单选按钮</h3>
-<p>下面是一个单选按钮的例子：</p>
+<h3 id="15-创建一组单选按钮"><a href="#15-创建一组单选按钮" class="headerlink" title="15.创建一组单选按钮"></a>15.创建一组单选按钮</h3><p>下面是一个单选按钮的例子：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;indoor-outdoor&quot;</span>&gt;</span>Indoor </span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>最好的做法在<code>label</code>元素上设置一个<code>for</code>属性，该值有一个与之相匹配的<code>input</code>元素（与值<code>id</code>的属性一致）。这允许辅助技术在标签和相关<code>input</code>元素之间创建链接关系。例如：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;indoor&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;indoor-outdoor&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;indoor&quot;</span>&gt;</span>Indoor<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>我们还可以将<code>input</code>元素嵌套在<code>label</code>标签中：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;indoor&quot;</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;indoor&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;indoor-outdoor&quot;</span>&gt;</span>Indoor </span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="16-创建一组复选框">16.创建一组复选框</h3>
-<p>对于可能有多个答案的问题，表单通常使用复选框。</p>
+<h3 id="16-创建一组复选框"><a href="#16-创建一组复选框" class="headerlink" title="16.创建一组复选框"></a>16.创建一组复选框</h3><p>对于可能有多个答案的问题，表单通常使用复选框。</p>
 <p>复选框是<code>input</code>元素.</p>
 <p>您的每个复选框都可以嵌套在其自己的<code>label</code>元素中。通过将<code>input</code>元素包装在元素内，<code>label</code>它会自动将复选框输入与其周围的标签元素相关联。</p>
 <p>下面是一个复选框示例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;loving&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;loving&quot;</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">value</span> = <span class="string">&quot;loving&quot;</span> <span class="attr">name</span>=<span class="string">&quot;personality&quot;</span>&gt;</span> Loving</span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="16-1-设置默认值">16.1 设置默认值</h4>
-<p>使用<code>checked</code> 属性可以设置复选或单选框的默认勾选.</p>
+<h4 id="16-1-设置默认值"><a href="#16-1-设置默认值" class="headerlink" title="16.1 设置默认值"></a>16.1 设置默认值</h4><p>使用<code>checked</code> 属性可以设置复选或单选框的默认勾选.</p>
 <p>To do this, just add the word <code>checked</code> to the inside of an input element. For example:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;test-name&quot;</span> <span class="attr">checked</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="17-声明-html-文档的-doctype">17. 声明 HTML 文档的 Doctype</h3>
-<p>可以通过<code>&lt;!DOCTYPE ...&gt;</code>在第一行添加标记来告诉浏览器此信息，其中<code>...</code>部分是 HTML 的版本。对于 HTML5，您使用<code>&lt;!DOCTYPE html&gt;</code>.</p>
+<h3 id="17-声明-HTML-文档的-Doctype"><a href="#17-声明-HTML-文档的-Doctype" class="headerlink" title="17. 声明 HTML 文档的 Doctype"></a>17. 声明 HTML 文档的 Doctype</h3><p>可以通过<code>&lt;!DOCTYPE ...&gt;</code>在第一行添加标记来告诉浏览器此信息，其中<code>...</code>部分是 HTML 的版本。对于 HTML5，您使用<code>&lt;!DOCTYPE html&gt;</code>.</p>
 <p>该<code>!</code>和大写<code>DOCTYPE</code>是很重要的，特别是对于旧的浏览器。在<code>html</code>不区分大小写。</p>
 <p>接下来，您的 HTML 代码的其余部分需要包含在<code>html</code>标签中。开头<code>&lt;html&gt;</code>直接在<code>&lt;!DOCTYPE html&gt;</code>线条下方，<code>&lt;/html&gt;</code>结尾在页面末尾。</p>
 <p>这是页面结构的示例。您的 HTML 代码将位于两个<code>html</code>标签之间的空间中。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="18-定义-html-文档的头部和正文">18. 定义 HTML 文档的头部和正文</h3>
-<p>您可以在<code>html</code>带有<code>head</code>和<code>body</code>元素的标记内在 HTML 文档中添加另一个级别的组织。任何包含有关您的页面信息的标记都将进入<code>head</code>标记。然后任何带有页面内容的标记（向用户显示的内容）都将进入<code>body</code>标签。</p>
+<h3 id="18-定义-HTML-文档的头部和正文"><a href="#18-定义-HTML-文档的头部和正文" class="headerlink" title="18. 定义 HTML 文档的头部和正文"></a>18. 定义 HTML 文档的头部和正文</h3><p>您可以在<code>html</code>带有<code>head</code>和<code>body</code>元素的标记内在 HTML 文档中添加另一个级别的组织。任何包含有关您的页面信息的标记都将进入<code>head</code>标记。然后任何带有页面内容的标记（向用户显示的内容）都将进入<code>body</code>标签。</p>
 <p>元数据元素，例如<code>link</code>，<code>meta</code>，<code>title</code>，和<code>style</code>，典型地去内部<code>head</code>元件。</p>
 <p>以下是页面布局的示例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="19-更改文本颜色">19. 更改文本颜色</h3>
-<p>现在让我们改变一些文本的颜色。</p>
+<h3 id="19-更改文本颜色"><a href="#19-更改文本颜色" class="headerlink" title="19. 更改文本颜色"></a>19. 更改文本颜色</h3><p>现在让我们改变一些文本的颜色。</p>
 <p>我们可以通过改变<code>style</code>你的<code>h2</code>元素来做到这一点。</p>
 <p>负责元素文本颜色的<code>color</code>属性是样式属性。</p>
 <p>以下是将<code>h2</code>元素的文本颜色设置为蓝色的方法：</p>
@@ -272,12 +249,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://zju-stu-lizheng.github.io/project/2021/10/20/HTML/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/10/20/HTML/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/project/tags/SRTP/" rel="tag">SRTP</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SRTP/" rel="tag">SRTP</a></li></ul>
 
     </footer>
   </div>
@@ -285,7 +262,7 @@
    
   <nav class="article-nav">
     
-      <a href="/project/2021/10/24/CSS/" class="article-nav-link">
+      <a href="/2021/10/24/CSS/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
@@ -295,7 +272,7 @@
       </a>
     
     
-      <a href="/project/2021/10/12/GAT/" class="article-nav-link">
+      <a href="/2021/10/12/GAT/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">GAT</div>
       </a>
@@ -414,29 +391,29 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/project/"><img src="/images/ayer-side.svg" alt="Fascinating Blog"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="Fascinating Blog"></a>
   </div>
   
   <ul class="nav nav-main">
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/project/">主页</a>
+      <a class="nav-item-link" href="/">主页</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/project/archives">归档</a>
+      <a class="nav-item-link" href="/archives">归档</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/project/categories">分类</a>
+      <a class="nav-item-link" href="/categories">分类</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/project/tags">标签</a>
+      <a class="nav-item-link" href="/tags">标签</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/project/friends">友链</a>
+      <a class="nav-item-link" href="/friends">友链</a>
     </li>
     
   </ul>
@@ -472,13 +449,13 @@
   </div>
 </div>
     
-<script src="/project/js/jquery-3.6.0.min.js"></script>
+<script src="/js/jquery-3.6.0.min.js"></script>
  
-<script src="/project/js/lazyload.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
  
-<script src="/project/js/tocbot.min.js"></script>
+<script src="/js/tocbot.min.js"></script>
 
 <script>
   tocbot.init({
@@ -501,7 +478,7 @@
 />
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
 
-<script src="/project/dist/main.js"></script>
+<script src="/dist/main.js"></script>
 
 <!-- ImageViewer -->
  <!-- Root element of PhotoSwipe. Must have class pswp. -->
@@ -639,7 +616,7 @@
 
 <!-- busuanzi  -->
  
-<script src="/project/js/busuanzi-2.3.pure.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
  
 <!-- ClickLove -->
 
@@ -647,13 +624,13 @@
 
 <script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
 
-<script src="/project/js/clickBoom1.js"></script>
+<script src="/js/clickBoom1.js"></script>
  
 <!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
  
-<link rel="stylesheet" href="/project/css/clipboard.css">
+<link rel="stylesheet" href="/css/clipboard.css">
  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <script>
   function wait(callback, seconds) {
