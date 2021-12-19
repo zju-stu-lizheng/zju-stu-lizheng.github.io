@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>GAT |  Fascinating Blog</title>
+      <title>Visual Design |  Fascinating Blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -65,7 +65,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-GAT"
+  id="post-SRTP/Design"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -76,7 +76,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  GAT
+  Visual Design
 </h1>
  
 
@@ -84,11 +84,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/10/12/GAT/" class="article-date">
-  <time datetime="2021-10-12T14:50:46.000Z" itemprop="datePublished">2021-10-12</time>
+      <a href="/2021/11/13/SRTP/Design/" class="article-date">
+  <time datetime="2021-11-13T08:35:31.000Z" itemprop="datePublished">2021-11-13</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/SRTP/">SRTP</a>
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/">前端开发基础</a>
   </div>
   
 <div class="word_count">
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">821</span>
+            <span class="post-count">639</span>
         </span>
     </span>
 
@@ -105,7 +105,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -120,42 +120,32 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="Graph-Attention-Networks"><a href="#Graph-Attention-Networks" class="headerlink" title="Graph Attention Networks"></a>Graph Attention Networks</h1><blockquote>
-<p>参考文献 ：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1710.10903">《Graph Attention Networks》</a></p>
-</blockquote>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>针对图结构数据，本文提出了GAT（graph attention networks)网络。该网络使用self-attention层解决了之前基于图卷积的模型所存在的问题。在GAT中，图中的每个节点可以根据邻节点的特征，为其分配不同的权值。GAT的另一个优点在于，无需使用预先构建好的图。因此GAT可以解决一些基于谱的图神经网络中所具有的问题。</p>
-<h3 id="GAT-architecture"><a href="#GAT-architecture" class="headerlink" title="GAT architecture"></a>GAT architecture</h3><h4 id="Graph-attentional-layer"><a href="#Graph-attentional-layer" class="headerlink" title="Graph attentional layer"></a>Graph attentional layer</h4><p>首先来介绍单个的graph attentional layer。</p>
-<ul>
-<li>单个的 graph attentional layer 的输入是一个节点特征向量集：</li>
-</ul>
-<script type="math/tex; mode=display">
-h = {\vec{h_1},\vec{h_2},...,\vec{h_N}},\vec{h_i} \in {\mathcal R}^F</script><p>其中，$N$表示节点集中节点的个数，$F$表示相应的特征向量维度。</p>
-<ul>
-<li>每一层的输出是一个新的节点特征向量集：</li>
-</ul>
-<script type="math/tex; mode=display">
-h' = {\vec{h'_1},\vec{h'_2},...,\vec{h'_N}},\vec{h'_i} \in {\mathcal R}^{F'}</script><p>其中，$F’$ 表示新的节点特征向量维度（可以不等于$F$)。</p>
-<ul>
-<li>一个graph attention layer的结构如下图所示：</li>
-</ul>
-<p><img src="https://i.loli.net/2021/10/11/VIjiETHJMfnqhQc.png" alt="图一" style="zoom:50%;" /></p>
-<p>具体来说，graph attentional layer首先根据输入的节点特征向量集，进行self-attention处理：</p>
-<script type="math/tex; mode=display">
-e_{ij} = a(W\vec{h_i},W\vec{h_j})</script><p>其中，a是一个 ${\mathcal R}^{F’} \times {\mathcal R}^{F’} \rightarrow  {\mathcal R}$的映射，$W \in {\mathcal R}^{F’\times F}$是一个权值矩阵。一般来说，self-attention会将注意力分配到图中所有的节点上，这种做法显然会丢失结构信息。为了解决这个问题，本文使用了masked attention的方式——仅将注意力分配到点$i$的邻节点集上，即$j \in \mathcal N_i$（在本文中，节点i也是$\mathcal N_i$的一部分）：</p>
-<script type="math/tex; mode=display">
-\alpha_{ij} = softmax_j(e_{ij}) = \frac{exp(e_{ij})}{\sum_{k\in \mathcal N_i}exp(e_{ik})}</script><p>在本文中，$a$使用单层的前馈神经网络实现。总的计算过程为：</p>
-<script type="math/tex; mode=display">
-\alpha_{ij} =  \frac{exp(LeakyReLU(\vec{a}^T[W\vec{h_i}||W\vec{h_j}]))}{\sum_{k\in \mathcal N_i}exp(LeakyReLU(\vec{a}^T[W\vec{h_i}||W\vec{h_k}]))}</script><ul>
-<li>ps：Leaky ReLU函数图像如下：（Leaky ReLUs allow a small, positive gradient when the unit is not active）</li>
-</ul>
-<p><img src="https://i.loli.net/2021/10/11/TyZVk4d2LoS3hxm.png" alt="Leaky ReLU"  /></p>
-<p>其中，$\vec{a}^T \in {\mathcal R}^{2F’}$为前馈神经网络a的参数，Leaky ReLU为前馈神经网络的激活函数，此时即可得到$\vec{h’_i}$了：</p>
-<script type="math/tex; mode=display">
-\vec{h'_i} = \sigma(\sum_{j\in {\mathcal N_i}}\alpha_{ij}W\vec{h_j})</script><p>为了提高模型的拟合能力，在本文中还引入了多抽头的self-attention（如图一右侧部分。与<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27464080">《Attention is All You Need》</a>一致），即同时使用多个 $W^k$ 计算 self-attention, 然后将各个 $W^k$  计算得到的结果合并（连接或求和)：</p>
-<script type="math/tex; mode=display">
-\vec{h'_i} = {||}^K_{k=1} \sigma(\sum_{j\in {\mathcal N_i}}\alpha_{ij}W\vec{h_j})</script><p>其中，||表示连接，$a_{ij}^k$与$W^k$表示第k个抽头得到的结果。由于$W^k \in {\mathcal R}^{F’\times F}$，因此这里的$\vec{h’_i} \in {\mathcal R}^{KF’}$。同样可以采取求和的方式来得到$\vec{h’_i}$：</p>
-<script type="math/tex; mode=display">
-\vec{h'_i} = \sigma(\frac{1}{K}\sum_{k=1}^K \sum_{j\in {\mathcal N_i}}\alpha_{ij}W\vec{h_j})</script><h4 id="与相关工作的对比"><a href="#与相关工作的对比" class="headerlink" title="与相关工作的对比"></a>与相关工作的对比</h4><h5 id="GAT是高效的"><a href="#GAT是高效的" class="headerlink" title="GAT是高效的"></a>GAT是高效的</h5><p>相比于其它图模型，GAT无需使用特征值分解，单层GAT的时间复杂度为$O(|V|FF’ +|E|F’)$。其中$|V|$与$|E|$分别表示节点的数量与边的数量。</p>
+  <h3 id="一-使用-text-align-属性创建视觉平衡">一、<strong>使用 text-align 属性创建视觉平衡</strong></h3>
+<p>课程的这一部分侧重于应用视觉设计。第一组挑战建立在给定的卡片布局上，以展示一些核心原则。</p>
+<p>文本通常是 Web 内容的很大一部分。CSS 有几个关于如何将其与<code>text-align</code>属性对齐的选项。</p>
+<p><code>text-align: justify;</code> 将文本间隔开，以便每行具有相等的宽度。</p>
+<p><code>text-align: center;</code> 居中文本</p>
+<p><code>text-align: right;</code> 右对齐文本</p>
+<p>并且<code>text-align: left;</code>（默认）左对齐文本。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css"><span class="selector-tag">h4</span> &#123;</span></span><br><span class="line"><span class="css">	<span class="attribute">text-align</span>:center;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"><span class="selector-tag">p</span> &#123;</span></span><br><span class="line"><span class="css">	<span class="attribute">text-align</span>:justify;</span></span><br><span class="line"><span class="css">&#125;</span></span><br><span class="line"><span class="css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>Google<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Google was founded by Larry Page and Sergey Brin while they were Ph.D. students at Stanford University.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<img src="https://i.loli.net/2021/11/13/4r8u3qjEvK9x7zo.png" style="zoom:67%;" />
+<h3 id="二-使用-width-属性或者height属性"><strong>二、使用 width 属性或者height属性</strong></h3>
+<p>您可以使用<code>width</code>CSS 中的属性指定元素的宽度。值可以以相对长度单位（例如<code>em</code>）、绝对长度单位（例如<code>px</code>）或以其包含的父元素的百分比给出。这是一个将图像宽度更改为 220px 的示例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">220px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>您可以使用<code>height</code>CSS 中的属性指定元素的高度，类似于<code>width</code>属性。这是一个将图像高度更改为 20px 的示例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三-对文本操作">三、<strong>对文本操作</strong></h3>
+<p>要使文本加粗，您可以使用<code>strong</code>标签。这通常用于引起对文本的注意并象征它很重要。使用<code>strong</code>标签，浏览器将 CSS 应用<code>font-weight: bold;</code>到元素。</p>
+<p>要为文本加下划线，您可以使用<code>u</code>标签。这通常用于表示一段文本很重要，或者要记住一些东西。使用<code>u</code>标签，浏览器将 CSS 应用<code>text-decoration: underline;</code>到元素。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;Google was founded by Larry Page and Sergey Brin <span class="keyword">while</span> they were&lt;u&gt; Ph.D. students&lt;/u&gt; at &lt;strong&gt;Stanford University&lt;/strong&gt;.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<img src="https://i.loli.net/2021/11/13/cMYgqr4uE6VsdUK.jpg" style="zoom: 67%;" />
+<p><strong>使用 em 标签使文本斜体</strong></p>
+<p>要强调文本，您可以使用<code>em</code>标签。这将文本显示为斜体，因为浏览器将 的 CSS 应用于<code>font-style: italic;</code>元素。</p>
+<p><strong>使用 s 标记删除文本</strong></p>
+<p>要删除文本（当水平线穿过字符时），您可以使用<code>s</code>标记。它显示一段文本不再有效。使用<code>s</code>标签，浏览器将 CSS 应用<code>text-decoration: line-through;</code>到元素。</p>
+<p><strong>使用 hr 元素创建一条水平线</strong></p>
+<p>您可以使用该<code>hr</code>标签在其包含元素的宽度上添加一条水平线。这可用于定义主题的更改或在视觉上分隔内容组。</p>
  
       <!-- reward -->
       
@@ -208,12 +198,12 @@ e_{ij} = a(W\vec{h_i},W\vec{h_j})</script><p>其中，a是一个 ${\mathcal R}^{
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/10/12/GAT/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/11/13/SRTP/Design/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SRTP/" rel="tag">SRTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graph/" rel="tag">graph</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SRTP/" rel="tag">SRTP</a></li></ul>
 
     </footer>
   </div>
@@ -221,19 +211,19 @@ e_{ij} = a(W\vec{h_i},W\vec{h_j})</script><p>其中，a是一个 ${\mathcal R}^{
    
   <nav class="article-nav">
     
-      <a href="/2021/10/20/HTML/" class="article-nav-link">
+      <a href="/2021/11/28/%E5%A4%A7%E4%B8%89%E4%B8%8A/OpenGL/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            HTML
+            OpenGL
           
         </div>
       </a>
     
     
-      <a href="/2021/10/12/GCN/" class="article-nav-link">
+      <a href="/2021/10/24/SRTP/CSS/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">GCN</div>
+        <div class="article-nav-title">CSS</div>
       </a>
     
   </nav>

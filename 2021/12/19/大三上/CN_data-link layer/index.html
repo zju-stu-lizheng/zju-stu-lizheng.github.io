@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Node2vec |  Fascinating Blog</title>
+      <title>计网-数据链路层 |  Fascinating Blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -65,7 +65,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-Node2vec"
+  id="post-大三上/CN_data-link layer"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -76,7 +76,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Node2vec
+  计网-数据链路层
 </h1>
  
 
@@ -84,11 +84,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/10/10/Node2vec/" class="article-date">
-  <time datetime="2021-10-10T10:48:07.000Z" itemprop="datePublished">2021-10-10</time>
+      <a href="/2021/12/19/%E5%A4%A7%E4%B8%89%E4%B8%8A/CN_data-link%20layer/" class="article-date">
+  <time datetime="2021-12-19T02:00:45.000Z" itemprop="datePublished">2021-12-19</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/SRTP/">SRTP</a>
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8A/">大三上</a>
   </div>
   
 <div class="word_count">
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.8k</span>
+            <span class="post-count">0</span>
         </span>
     </span>
 
@@ -105,170 +105,20 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">6 min</span>
+            <span class="post-count">1 min</span>
         </span>
     </span>
 </div>
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="node2vec"><a href="#node2vec" class="headerlink" title="node2vec"></a>node2vec</h1><blockquote>
-<p>node2vec : Scalable Feature Learning for Networks</p>
-</blockquote>
-<h3 id="1-Introduction："><a href="#1-Introduction：" class="headerlink" title="1. Introduction："></a>1. Introduction：</h3><ol>
-<li><p>介绍<font color=red>网络分析的任务</font></p>
-<ul>
-<li>网络节点的分类(<strong>node classification task</strong>):将网络中的节点进行聚类，哪些节点有着相同的属性，就分为一类。</li>
-<li>链接预测(<strong>Link prediction</strong>)：预测网络中哪些顶点有着潜在的关联。</li>
-<li>…</li>
-</ul>
-</li>
-<li><font color=red>网络嵌入问题</font>
-
-<p>完成上述任务的前提是解决网络嵌入问题，以前的手工提取特征的方式有着诸多不足。</p>
-<ul>
-<li>解优化函数的方式学习网络的表示特征（<strong><em>learn</em> feature representations by solving an optimization problem</strong>)：面临计算效率和准确度的平衡问题，无法兼顾两者。使用传统的降维方法如PCA（主成分分析）也确实有一定效果，但是会涉及矩阵分解，运算量大准确率也不高。</li>
-<li>本文尝试设计出<strong>既能保持节点邻居特性而且又特别容易训练</strong>的模型。我们发现很多节点在网络中往往有一些类似的结构特征。一种结构特征是很多节点会聚集在一起，内部的连接远比外部的连接多，我们称之为社区（<strong>community</strong>）；另一种结构特征是网络中两个可能相聚很远的点在边的连接上有着相似的特征。</li>
-<li>如下图，$u,s_1,s_2,s_4,s_4$属于一个社区，$u,s_6$在结构上有着相似的特征。</li>
-<li><img src="https://i.loli.net/2021/10/11/J2zVouvhLYXU6pE.png" alt="图一" style="zoom: 67%;" /></li>
-</ul>
-</li>
-</ol>
-<p>要设计的网络表示学习算法的目标必须满足这两点：</p>
-<ul>
-<li>同一个社区内节点表示相似。</li>
-<li>拥有类似结构特征的节点表示相似。</li>
-</ul>
-<p>总之本文的贡献是：提出了一个有效的，可扩展的表示学习算法，可以体现网络特征和节点邻居特征。</p>
-<h3 id="2-Related-Works"><a href="#2-Related-Works" class="headerlink" title="2. Related Works :"></a>2. Related Works :</h3><p>之前的工作存在以下问题：</p>
-<ul>
-<li>特征需要依赖人手工定义，不是某个领域内的专业人士无法从事该工作。</li>
-<li>一些无监督学习（<strong>Unsupervised feature learning</strong>）中的降维方法拿来使用，但是这些方法计算效率低，准确度也不够，而且还不能反映出网络的结构特征。</li>
-</ul>
-<p>自然语言处理（<strong>natural language processing</strong>）表征学习的进展为本文的作者提供了思路。与deepwalk相似，这里也用skip-gram模型来解决网络表示学习的问题。</p>
-<span id="more"></span>
-<h3 id="3-Feature-learning-framework"><a href="#3-Feature-learning-framework" class="headerlink" title="3. Feature learning framework"></a>3. <strong>Feature learning framework</strong></h3><p>损失函数，其实跟DeepWalk是一样的，只不过换了种表达而已：</p>
-<p><img src="https://i.loli.net/2021/10/11/RMvJhTetm1zoG4p.png" style="zoom:67%;" /></p>
-<p>其中 $f(u)$ 就是当前节点，$N_s(u)$  就是邻居节点（以s的方法采样得到的)，为了让这个结果更容易计算，引入了两个假设，其实这都是skip-gram模型中的。</p>
-<ul>
-<li><p><strong>条件独立（Conditional independence）</strong>：即采样每个邻居是相互独立的</p>
-<p><img src="https://i.loli.net/2021/10/11/kA6Pb1SGtOvsCd2.png" style="zoom:67%;" /></p>
-</li>
-<li><p><strong>特征空间的对称性（Symmetry in feature space）</strong>：a对b的影响和b对a的影响应该是一样的。（使用softmax归一化）</p>
-</li>
-</ul>
-<p><img src="https://i.loli.net/2021/10/11/ivlPhOUZtzu9GH8.png"  style="zoom:67%;" /></p>
-<p><strong>推导过程</strong>：</p>
-<p><img src="https://i.loli.net/2021/10/11/vukwY3lP9Tz6qcB.jpg" style="zoom: 33%;" /></p>
-<p>也即优化目标为：</p>
-<p><img src="https://i.loli.net/2021/10/11/oUneslcCwF6rbAS.png" style="zoom:67%;" /></p>
-<p>注意两点：</p>
-<ol>
-<li>$Z_u$ 直接计算特别费时，本文用<strong>Negative Sampling</strong>方法解决的。</li>
-<li>$N_s(u)$ 未必是u的直接邻居，只是用s方法采样得到的邻居，跟具体的采样方法有关。</li>
-</ol>
-<h4 id="3-0-Negative-sampling"><a href="#3-0-Negative-sampling" class="headerlink" title="3.0 Negative sampling"></a>3.0 Negative sampling</h4><p>负采样（negative sampling）是用来提高训练速度并且改善所得到词向量的质量的一种方法。不同于原本每个训练样本更新所有的权重，负采样每次让一个训练样本仅仅更新一小部分的权重，这样就会降低梯度下降过程中的计算量。</p>
-<p>当我们用训练样本 ( input word: “fox”，output word: “quick”) 来训练我们的神经网络时，“ fox”和“quick”都是经过one-hot编码的。如果我们的vocabulary大小为10000时，在输出层，我们期望对应“quick”单词的那个神经元结点输出1，其余9999个都应该输出0。在这里，这9999个我们期望输出为0的神经元结点所对应的单词我们称为“negative” word。</p>
-<p>当使用负采样时，我们将随机选择一小部分的negative words（比如选5个negative words）来更新对应的权重。我们也会对我们的“positive” word进行权重更新（在我们上面的例子中，这个单词指的是”quick“）。</p>
-<h4 id="3-1-Classic-search-strategies"><a href="#3-1-Classic-search-strategies" class="headerlink" title="3.1 Classic search strategies"></a>3.1 <strong>Classic search strategies</strong></h4><ul>
-<li>BFS &amp; DFS</li>
-<li>BFS倾向于在初始节点的周围游走，可以反映出一个节点的邻居的微观特性；而DFS一般会跑的离初始节点越来越远，可以反映出一个节点邻居的宏观特性。</li>
-</ul>
-<h4 id="3-2-node2vec"><a href="#3-2-node2vec" class="headerlink" title="3.2 node2vec"></a>3.2 node2vec</h4><blockquote>
-<p>改进DeepWalk中随机游走的方式，使它综合DFS &amp; BFS的特性</p>
-</blockquote>
-<h5 id="Lv0-random-walk"><a href="#Lv0-random-walk" class="headerlink" title="Lv0 - random walk"></a>Lv0 - random walk</h5><script type="math/tex; mode=display">
-P(c_i = x\ |\  c_{i-1} = v) = 
-\begin{cases}
-\cfrac{\pi_{vx}}{Z} &if\ (v,x)\ \in E \\
-0 &otherwise
-\end{cases}</script><ul>
-<li>$\pi _{vx}$ 是v与x之间的非归一化转换概率,  <em>Z</em> 是归一化常数（<strong>normalizing constant</strong>）.</li>
-</ul>
-<h5 id="Lv1-biasd-random-walk"><a href="#Lv1-biasd-random-walk" class="headerlink" title="Lv1 - biasd random walk"></a>Lv1 - biasd random walk</h5><p> $\pi _{vx} = w_{vx}$</p>
-<h5 id="Lv2-2-nd-order-random-walk"><a href="#Lv2-2-nd-order-random-walk" class="headerlink" title="Lv2 - $2^{nd}$ order random walk"></a>Lv2 - $2^{nd}$ order random walk</h5><ul>
-<li><p>添加两个参数 p , q</p>
-</li>
-<li><p>$\pi _{vx} = \alpha_{pq}(t,x)*w_{vx}$</p>
-</li>
-</ul>
-<p><img src="https://i.loli.net/2021/10/11/ZWXhMil2sFbYJat.png" style="zoom:67%;" /></p>
-<p>如上图，对于一个随机游走，如果已经采样了$(t,v)$,也就是说现在停留在节点v上，那么下一个要采样的节点x是哪个？作者在这里定义了一个概率分布，也就是一个节点到它的不同邻居的转移概率</p>
-<p><img src="https://i.loli.net/2021/10/11/WioErKLtbJXCOaz.png" style="zoom:67%;" /></p>
-<ul>
-<li>参数解释:<ul>
-<li>返回概率p: <ul>
-<li>如果$p&gt;max(q,1)$,那么采样会尽量不往回走,对应上图的情况,就是下一个节点不太可能是上一个访问的节点t</li>
-<li>如果$p&lt;min(q,1)$,那么采样会更倾向于返回上一个节点,这样就会一直在起始点走位某些节点来回转来转去.</li>
-</ul>
-</li>
-<li>出入概率q:<ul>
-<li>如果$q&gt;1$,那么游走会倾向于在起始点周围的节点跑,反映一个节点的BFS特性.</li>
-<li>如果$q&lt;1$,那么游走会倾向于往远处跑,反映出DFS特性.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>分布解释:<ul>
-<li>如果t与x相等,那么采样x的概率为$\frac{1}{p}$;</li>
-<li>如果t与x相连,那么采样x的概率为$1$;</li>
-<li>如果t与x不相连,那么采样x的概率为$\frac{1}{q}$;</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>特殊地,当p=1,q=1时,游走方式就等同于DeepWalk中的随机游走.</p>
-</blockquote>
-<h3 id="4-Algorithm"><a href="#4-Algorithm" class="headerlink" title="4. Algorithm"></a>4. <strong>Algorithm</strong></h3><p><img src="https://i.loli.net/2021/10/11/OdMVa5nsHoZJQYx.png" alt="Algorithm" style="zoom:50%;" /></p>
-<ul>
-<li><p><strong>LearnFeatures</strong></p>
-<ol>
-<li>根据p,q和之前的概率公式计算一个节点到它的邻居的转移概率</li>
-<li>将这个转移概率加入图G形成G’</li>
-<li>walks储存随机游走,先初始化为空</li>
-<li>外循环r次表示每个节点作为初始节点要生成r个随机游走</li>
-<li>对图中的每一个节点<ol>
-<li>生成一个随机游走walk</li>
-<li>将walk添加入walks</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-<ol>
-<li>用SGD的方法对walks进行训练</li>
-</ol>
-<ul>
-<li><p><strong>Node2vecWalk</strong></p>
-<blockquote>
-<p>上述第六步中一条walk形成方式:</p>
-</blockquote>
-<ol>
-<li>将初始节点u添加入walk</li>
-<li>循环添加入$l-1$个节点<ol>
-<li>当前节点设为walk最后添加的节点.</li>
-<li>找出当前节点的所有邻居节点.</li>
-<li>根据转移概率采样选择某个邻居s.</li>
-<li>将该邻居加入walk中.</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="5-Conclusion"><a href="#5-Conclusion" class="headerlink" title="5. Conclusion"></a>5. Conclusion</h3><p>本文主要思想与deepwalk一致,不过改进了随机游走的生成方式,充分反映了DFS &amp; BFS 两种采样的特性,从而提高网络嵌入的效果。</p>
-<blockquote>
-<p>参考网站: <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/46344860">论文理解：node2vec</a></p>
-<p>​             <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27234078">理解 Word2Vec 之 Skip-Gram 模型</a></p>
-</blockquote>
- 
+   
       <!-- reward -->
       
     </div>
@@ -320,12 +170,12 @@ P(c_i = x\ |\  c_{i-1} = v) =
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/10/10/Node2vec/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/12/19/%E5%A4%A7%E4%B8%89%E4%B8%8A/CN_data-link%20layer/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SRTP/" rel="tag">SRTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graph/" rel="tag">graph</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
 
     </footer>
   </div>
@@ -333,19 +183,10 @@ P(c_i = x\ |\  c_{i-1} = v) =
    
   <nav class="article-nav">
     
-      <a href="/2021/10/11/DeepWalk/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            DeepWalk
-          
-        </div>
-      </a>
     
-    
-      <a href="/2021/10/09/%E5%8D%9A%E5%AE%A2%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/" class="article-nav-link">
+      <a href="/2021/12/18/%E5%A4%A7%E4%B8%89%E4%B8%8A/chap11_File-System%20Implementation/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">博客入门指南</div>
+        <div class="article-nav-title">File System Implementation</div>
       </a>
     
   </nav>
