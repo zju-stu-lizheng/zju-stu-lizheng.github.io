@@ -161,6 +161,102 @@
     
     
     <article
+  id="post-SRTP/Node2vec"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/10/10/SRTP/Node2vec/"
+    >Node2vec</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/10/10/SRTP/Node2vec/" class="article-date">
+  <time datetime="2021-10-10T10:48:07.000Z" itemprop="datePublished">2021-10-10</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SRTP/">SRTP</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>node2vec</h1>
+<blockquote>
+<p>node2vec : Scalable Feature Learning for Networks</p>
+</blockquote>
+<h3 id="1-introduction：">1. Introduction：</h3>
+<ol>
+<li>
+<p>介绍<font color=red>网络分析的任务</font></p>
+<ul>
+<li>网络节点的分类(<strong>node classification task</strong>):将网络中的节点进行聚类，哪些节点有着相同的属性，就分为一类。</li>
+<li>链接预测(<strong>Link prediction</strong>)：预测网络中哪些顶点有着潜在的关联。</li>
+<li>…</li>
+</ul>
+</li>
+<li>
+<p><font color=red>网络嵌入问题</font></p>
+<p>完成上述任务的前提是解决网络嵌入问题，以前的手工提取特征的方式有着诸多不足。</p>
+<ul>
+<li>解优化函数的方式学习网络的表示特征（<strong><em>learn</em> feature representations by solving an optimization problem</strong>)：面临计算效率和准确度的平衡问题，无法兼顾两者。使用传统的降维方法如PCA（主成分分析）也确实有一定效果，但是会涉及矩阵分解，运算量大准确率也不高。</li>
+<li>本文尝试设计出<strong>既能保持节点邻居特性而且又特别容易训练</strong>的模型。我们发现很多节点在网络中往往有一些类似的结构特征。一种结构特征是很多节点会聚集在一起，内部的连接远比外部的连接多，我们称之为社区（<strong>community</strong>）；另一种结构特征是网络中两个可能相聚很远的点在边的连接上有着相似的特征。</li>
+<li>如下图，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo separator="true">,</mo><msub><mi>s</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>s</mi><mn>2</mn></msub><mo separator="true">,</mo><msub><mi>s</mi><mn>4</mn></msub><mo separator="true">,</mo><msub><mi>s</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">u,s_1,s_2,s_4,s_4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>属于一个社区，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo separator="true">,</mo><msub><mi>s</mi><mn>6</mn></msub></mrow><annotation encoding="application/x-tex">u,s_6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>在结构上有着相似的特征。</li>
+<li>
+<img src="https://i.loli.net/2021/10/11/J2zVouvhLYXU6pE.png" alt="图一" style="zoom: 67%;" />
+</li>
+</ul>
+</li>
+</ol>
+<p>要设计的网络表示学习算法的目标必须满足这两点：</p>
+<ul>
+<li>同一个社区内节点表示相似。</li>
+<li>拥有类似结构特征的节点表示相似。</li>
+</ul>
+<p>总之本文的贡献是：提出了一个有效的，可扩展的表示学习算法，可以体现网络特征和节点邻居特征。</p>
+<h3 id="2-related-works">2. Related Works :</h3>
+<p>之前的工作存在以下问题：</p>
+<ul>
+<li>特征需要依赖人手工定义，不是某个领域内的专业人士无法从事该工作。</li>
+<li>一些无监督学习（<strong>Unsupervised feature learning</strong>）中的降维方法拿来使用，但是这些方法计算效率低，准确度也不够，而且还不能反映出网络的结构特征。</li>
+</ul>
+<p>自然语言处理（<strong>natural language processing</strong>）表征学习的进展为本文的作者提供了思路。与deepwalk相似，这里也用skip-gram模型来解决网络表示学习的问题。</p> 
+      <a class="article-more-link" href="/2021/10/10/SRTP/Node2vec/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SRTP/" rel="tag">SRTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graph/" rel="tag">graph</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-博客入门指南"
   class="article article-type-post"
   itemscope

@@ -818,10 +818,11 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 <p><img src="http://file.cc98.org/v2-upload/js0zuxvy.jpg" alt="Phong模型示例"></p>
 ]]></content>
       <categories>
-        <category>计算机图形学</category>
+        <category>大三上</category>
       </categories>
       <tags>
         <tag>OpenGL</tag>
+        <tag>计算机图形学</tag>
       </tags>
   </entry>
   <entry>
@@ -1048,7 +1049,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 </ul>
 ]]></content>
       <categories>
-        <category>操作系统</category>
+        <category>大三上</category>
       </categories>
       <tags>
         <tag>OS</tag>
@@ -1244,6 +1245,154 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
       <tags>
         <tag>SRTP</tag>
         <tag>graph</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cisco IOS commands</title>
+    <url>/2021/12/20/%E5%A4%A7%E4%B8%89%E4%B8%8A/CN_Cisco-Command/</url>
+    <content><![CDATA[<h1>计网实验命令理解与应用</h1>
+<img src="https://s2.loli.net/2021/12/20/Txu689aMSYBbnpd.png" alt="需要理解的命令" style="zoom:50%;" />
+<h2 id="零-基础篇">零、基础篇</h2>
+<h3 id="configure-terminal">configure terminal</h3>
+<p>进入全局配置模式</p>
+<h3 id="shutdown">shutdown</h3>
+<p>关闭端口</p>
+<h3 id="no-shutdown">no shutdown</h3>
+<p>激活端口</p>
+<h2 id="一-更改端口的基本信息">一、更改端口的基本信息</h2>
+<h3 id="interface">interface &lt;&gt; &lt;&gt;</h3>
+<p>进入到某个接口的配置模式：interface &lt;接口名&gt; &lt;模块号/端口号&gt;，例如interface ethernet 0/1；</p>
+<p>创建并进入子接口：<code>interface &lt;type&gt; &lt;slot/unit.sub&gt;</code>，例如<code>interface e0/1.1</code>.</p>
+<h3 id="switch-port-mode">switch-port mode &lt;&gt;</h3>
+<p><code>switch-port mode &#123; access | trunk &#125;</code>设置端口工作模式为（主要是以下两种）：</p>
+<ul>
+<li><code>access</code>：如果一个接口的模式是 access，则该接口只能成为一个<code>VLAN</code>的成员，可以使用 <code>switchport access vlan</code> 命令把它指定给一个<code>VLAN</code></li>
+<li><code>trunk</code>：如果一个接口的模式是 trunk，则该接口可以是多个<code>VLAN</code>的成员，可以用 <code>switch-port trunk </code>命令定义许可<code>VLAN</code>列表决定它所在的<code>VLAN</code>。</li>
+</ul>
+<p><code>no switch-port mode</code>：可以把接口模式恢复为缺省值。</p>
+<h3 id="switch-port-access-vlan">switch-port access vlan &lt;&gt;</h3>
+<p>具体用途是将某个端口划到某个vlan中。</p>
+<h3 id="例题分析：">例题分析：</h3>
+<p><img src="https://s2.loli.net/2021/12/20/vRZbfdU3raWuVoO.png" alt="Quiz 4"></p>
+<p><strong>Write the commands to assign Fa0/0 in switch C to VLAN 2:</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">SwitchC(Config)<span class="meta">#    interface Fa0/0</span></span><br><span class="line">SwitchC(Config-<span class="keyword">if</span>)<span class="meta"># switchport mode access (set mode)</span></span><br><span class="line">SwitchC(Config-<span class="keyword">if</span>)<span class="meta"># switchport access vlan 2 (assign vlan)</span></span><br></pre></td></tr></table></figure>
+<h2 id="二-配置vlan">二、配置VLAN</h2>
+<h3 id="增加vlan">增加VLAN</h3>
+<h4 id="vlan-database"><code>vlan database</code></h4>
+<p>进入VLAN配置模式</p>
+<h4 id="vlan"><code>vlan &lt;&gt;</code></h4>
+<p>创建一个VLAN，后面跟的数字是标号</p>
+<figure class="highlight elm"><table><tr><td class="code"><pre><span class="line"><span class="type">Switch2</span>#      vlan database         </span><br><span class="line"><span class="type">Switch2</span>(vlan)#vlan <span class="number">2</span>                 </span><br></pre></td></tr></table></figure>
+<h3 id="给子端口配置vlan">给子端口配置VLAN</h3>
+<h4 id="ip-address">ip address &lt;&gt; &lt;&gt;</h4>
+<p>配置IP地址，例如 <code>ip address 10.0.0.1 255.255.0.0</code>,即配置的ip地址为<code>10.0.0.1</code>，子网掩码为<code>255.255.0.0</code></p>
+<h4 id="encapsulation-dot1q">encapsulation dot1q &lt;&gt;</h4>
+<p>配置子接口所属的VLAN（命令：encapsulation dot1q VLAN编号）</p>
+<h3 id="例题分析：">例题分析：</h3>
+<p><img src="https://s2.loli.net/2021/12/20/vRZbfdU3raWuVoO.png" alt="Quiz 4"></p>
+<p><strong>Write the commands to create 2 sub interfaces in router A, and assign the</strong> <strong>correct VLAN and IP address to the sub interfaces. Select IP addresses from following:</strong></p>
+<p><strong>10.1.0.1/16, 10.0.0.1/16：</strong></p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">RouterA(Config)#       <span class="keyword">interface</span> e0/<span class="number">0</span><span class="variable">.1</span> (#<span class="number">1</span> sub <span class="keyword">interface</span>)</span><br><span class="line">RouterA(Config-subif)# ip address <span class="number">10</span><span class="variable">.0</span><span class="variable">.0</span><span class="variable">.1</span> <span class="number">255</span><span class="variable">.255</span><span class="variable">.0</span><span class="variable">.0</span> (set address)</span><br><span class="line">RouterA(Config-subif)# encapsulation dot1q <span class="number">1</span> (set vlan <span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line">RouterA(Config)#       <span class="keyword">interface</span> e0/<span class="number">0</span><span class="variable">.2</span> (#<span class="number">2</span> sub <span class="keyword">interface</span>)</span><br><span class="line">RouterA(Config-subif)# ip address <span class="number">10</span><span class="variable">.1</span><span class="variable">.0</span><span class="variable">.1</span> <span class="number">255</span><span class="variable">.255</span><span class="variable">.0</span><span class="variable">.0</span> (set address)</span><br><span class="line">RouterA(Config-subif)# encapsulation dot1q <span class="number">2</span> (set vlan <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="三-配置静态路由">三、配置静态路由</h2>
+<h3 id="ip-route">ip route &lt;&gt; &lt;&gt;</h3>
+<p>在各路由器上配置静态路由，使得不相邻路由器之间能够相互通信（命令：<code>ip route 目标网络 子网掩码 下一跳地址</code>）</p>
+<img src="https://s2.loli.net/2021/12/20/WlJoLdhfXHStUPI.jpg" alt="lab 4" style="zoom:67%;" />
+<p>配置路由器到<code>PC4</code>所在子网和<code>PC5</code>所在子网的路由:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"># R1 下一跳到 <span class="function">R3</span></span><br><span class="line"><span class="function"><span class="title">R1</span><span class="params">(config)</span><span class="meta">#ip route 172.16.0.0 255.255.255.0 192.168.13.3</span></span></span><br><span class="line"><span class="function"><span class="title">R1</span><span class="params">(config)</span><span class="meta">#ip route 172.16.1.0 255.255.255.0 192.168.13.3</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"># R3 下一跳再到 R4</span></span><br><span class="line"><span class="function"><span class="title">R3</span><span class="params">(config)</span><span class="meta">#ip route 172.16.0.0 255.255.255.0 192.168.34.4</span></span></span><br><span class="line"><span class="function"><span class="title">R3</span><span class="params">(config)</span><span class="meta">#ip route 172.16.1.0 255.255.255.0 192.168.34.4</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="四-配置动态路由">四、配置动态路由</h2>
+<h3 id="router-ospf">router ospf &lt;&gt;</h3>
+<p>在路由器上启用OSPF协议，<code>router ospf &lt;process-id&gt;</code></p>
+<h3 id="network-area">network &lt;&gt; &lt;&gt; area &lt;&gt;</h3>
+<p>配置路由器接口（子网）所属Area ID</p>
+<p><code>network &lt;ip_net&gt; &lt;mask&gt; area &lt;area-id&gt;</code></p>
+<h3 id="area-virtual-link">area &lt;&gt; virtual-link &lt;&gt;</h3>
+<p>在两个区域边界路由器之间建立虚链路，<code>&lt;area-id&gt;</code>填写用于传递数据的区域ID，<code>&lt;router ID&gt;</code>分别设为对方的Router ID：</p>
+<p><code>area &lt;area-id&gt; virtual-link &lt;router ID&gt;</code></p>
+<p><img src="https://s2.loli.net/2021/12/20/cDlzRk2ZIrKWxOd.png" alt="quiz 7"></p>
+<img src="https://s2.loli.net/2021/12/20/zw5rtyDN2BEgF48.png" alt="image-20211220200559722" style="zoom:67%;" />
+<p><strong>Part 1/4. Write commands to enable OSPF for all interfaces in router D (use process id</strong> <strong>1)</strong></p>
+<p>先要找到各个端口连接的子网地址以及掩码（即通过相邻的路由器的端口进行查表）。如D的<code>E1/1</code>端口接的是<code>F</code>的<code>E0/1</code>端口，那么所在子网为<code>20.3.0.0</code></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">RouterD(Config)<span class="meta"># router ospf 1</span></span><br><span class="line"></span><br><span class="line">RouterD(Config-router)<span class="meta"># network 20.3.0.0 0.0.255.255 area 1 (for E1/1)</span></span><br><span class="line">RouterD(Config-router)<span class="meta"># network 20.1.0.0 0.0.255.255 area 0 (for Gi0/0)</span></span><br><span class="line">RouterD(Config-router)<span class="meta"># network 20.4.0.0 0.0.255.255 area 0 (for E1/0)</span></span><br></pre></td></tr></table></figure>
+<img src="https://s2.loli.net/2021/12/20/aEYGLmQH5jIUwe1.png" alt="image-20211220201248155" style="zoom: 67%;" />
+<p><strong>Part 3/4. In order to exchange link state between area 3 and area 0. Write commands to setup a virtual link</strong></p>
+<ul>
+<li>首先需要挑选两个区域的边界路由器，如area 0 的E，area 3 的H</li>
+<li>其次分别为这两个路由器添加一条到达对方的虚电路</li>
+</ul>
+<p>**for the router in area 0:**Router E</p>
+<p><strong>1. Router(Config)#</strong> <code>router ospf 1</code></p>
+<p><strong>2. Router(Config-router)#</strong> <code>area 2 virtual-link 11.8.0.1</code></p>
+<p>**for the router in area 3:**Router H</p>
+<p><strong>3. Router(Config)#</strong> <code>router ospf 1</code></p>
+<p><strong>4. Router(Config-router)#</strong> <code>area 2 virtual-link 11.5.0.1</code></p>
+<h2 id="五-bgp">五、BGP</h2>
+<h3 id="router-bgp">router bgp &lt;&gt;</h3>
+<p>在路由器R1上启用BGP协议, 设置AS号：</p>
+<p><code>router bgp &lt;AS-Number&gt;</code></p>
+<h3 id="network-mask">network &lt;&gt; mask &lt;&gt;</h3>
+<p>宣告直连网络，<code>BGP</code>的<code>network</code>能够通告路由表中的所有非BGP路由量：</p>
+<p><code>network x.x.x.x mask x.x.x.x</code></p>
+<h4 id="例题：">例题：</h4>
+<img src="https://s2.loli.net/2021/12/20/IFZ8ScgmJrla6xV.png" alt="lab 6" style="zoom:67%;" />
+<p>启动R3、R5上的BGP协议（配置成同一个AS），宣告直连网络，然后把对方增加为AS内部的邻居：</p>
+<figure class="highlight cc"><table><tr><td class="code"><pre><span class="line"><span class="built_in">R3</span>(config)<span class="meta">#router bgp 65003 </span></span><br><span class="line"><span class="built_in">R3</span>(config-router)<span class="meta">#network 192.168.34.0 mask 255.255.255.0 	(f0/0直连网络)</span></span><br><span class="line"><span class="built_in">R3</span>(config-router)<span class="meta">#network 192.168.13.0 mask 255.255.255.0 	(f1/0直连网络)</span></span><br><span class="line"><span class="built_in">R3</span>(config-router)<span class="meta">#neighbor 192.168.5.1 remote-as 65003 		(192.168.5.1是R5的回环接口的IP)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">R5</span>(config)<span class="meta">#router bgp 65003 </span></span><br><span class="line"><span class="built_in">R5</span>(config-router)<span class="meta">#network 192.168.45.0 mask 255.255.255.0 	(f0/1直连网络)</span></span><br><span class="line"><span class="built_in">R5</span>(config-router)<span class="meta">#network 192.168.25.0 mask 255.255.255.0 	(f1/0直连网络)</span></span><br><span class="line"><span class="built_in">R5</span>(config-router)<span class="meta">#neighbor 192.168.3.1 remote-as 65003 		(192.168.3.1是R3的回环接口的IP)</span></span><br></pre></td></tr></table></figure>
+<h3 id="neighbor-remote-as">neighbor &lt;&gt; remote-as &lt;&gt;</h3>
+<ul>
+<li>把对方增加为AS内部的邻居（AS-Number设置为相同的AS号）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">R1(config-router)<span class="meta"># neighbor <span class="meta-string">&lt;IP-Address&gt;</span> remote-as <span class="meta-string">&lt;AS-Number&gt;</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>对方增加为AS间的邻居（IP-Address为对方的IP，AS-Number设置为对方的AS号）：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">R1</span>(config-router)<span class="meta"># neighbor <span class="meta-string">&lt;IP-Address&gt;</span> remote-as <span class="meta-string">&lt;AS-Number&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="neighbor-update-source-loopback">neighbor &lt;&gt; update-source loopback &lt;&gt;</h3>
+<p>设置BGP更新源为回环接口（IP-Addr设置为对方的回环口IP）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">R1(config-router)# neighbor &lt;IP-Addr&gt; update-source loopback 0</span><br></pre></td></tr></table></figure>
+<h3 id="redistribute-ospf">redistribute ospf &lt;&gt;</h3>
+<p>在BGP中启用路由重分发功能，从OSPF中重分发路由信息：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">R1</span>(config)<span class="meta"># router bgp <span class="meta-string">&lt;AS-Number&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">R1</span>(config-router)<span class="meta"># redistribute ospf <span class="meta-string">&lt;process-id&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="redistribute-bgp-subnets">redistribute bgp &lt;&gt; subnets</h3>
+<p>在OSPF中启用重分发功能，从BGP中重分发路由信息：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">R1</span>(config)<span class="meta"># router ospf <span class="meta-string">&lt;process-id&gt;</span> </span></span><br><span class="line"></span><br><span class="line"><span class="built_in">R1</span>(config-router)<span class="meta"># redistribute bgp <span class="meta-string">&lt;AS-Number&gt;</span> subnets</span></span><br></pre></td></tr></table></figure>
+<h3 id="例题：">例题：</h3>
+<img src="https://s2.loli.net/2021/12/20/u6wgLeaUN7MDEKk.png" alt="quiz 8" style="zoom:67%;" />
+<p><strong>Part 1/5. Write commands to enable BGP for all physical interfaces in router R3</strong></p>
+<ol>
+<li>
+<p>R3(Config)# <code>router bgp 65003</code></p>
+<p><strong>Enable routing on networks:</strong></p>
+</li>
+<li>
+<p>R3(Config-router)# <code>network 13.0.0.0 mask 255.255.0.0 (for R1-R3 link)</code></p>
+</li>
+<li>
+<p>R3(Config-router)# <code>network 34.0.0.0 mask 255.255.0.0 (for R3-R4 link)</code></p>
+<p><strong>set R1 as a neighbor:</strong></p>
+</li>
+<li>
+<p>R3(Config-router)# <code>neighbor 13.0.0.1 remote-as 65001</code></p>
+<p><strong>set R5 as a neighbor (using loopback address):</strong></p>
+</li>
+<li>
+<p>R3(Config-router)# <code>neighbor 5.0.0.1 remote-as 65003</code></p>
+<p><strong>use loopback as update source:</strong></p>
+</li>
+<li>
+<p>R3(Config-router)# <code>neighbor 5.0.0.1 update-source loopback 0</code></p>
+</li>
+</ol>
+<p><strong>Part 3/5. To let routers in AS 65003 has route for outside networks, restribution should be configured in R3:</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">R3</span>(Config)<span class="meta"># router ospf 1</span></span><br><span class="line"><span class="built_in">R3</span>(Config-router)<span class="meta"># redistribute bgp 65003 subnets</span></span><br></pre></td></tr></table></figure>
+<p>需要让<font color = red>AS内部的路由器拥有外部网络的路由</font>，需要在ospf 1中广播bgp的路由信息。</p>
+<p><strong>Part 4/5. To let router R2 has route for all inner networks in AS 65003, restribution should be configured in R5:</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">R5</span>(Config)<span class="meta"># router bgp 65003</span></span><br><span class="line"><span class="built_in">R5</span>(Config-router)<span class="meta"># redistribute ospf 1</span></span><br></pre></td></tr></table></figure>
+<p><code>redistribute ospf 1</code>:BGP将在AS之间传播<code>OSPF 1</code>的内部路由信息</p>
+]]></content>
+      <categories>
+        <category>大三上</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
       </tags>
   </entry>
 </search>

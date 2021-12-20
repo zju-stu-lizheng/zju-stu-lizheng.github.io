@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Cisco IOS commands |  Fascinating Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+      />
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-大三上/CN_Cisco-Command"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Cisco IOS commands
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/12/20/%E5%A4%A7%E4%B8%89%E4%B8%8A/CN_Cisco-Command/" class="article-date">
+  <time datetime="2021-12-20T11:00:45.000Z" itemprop="datePublished">2021-12-20</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E4%B8%89%E4%B8%8A/">大三上</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">8 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>计网实验命令理解与应用</h1>
+<img src="https://s2.loli.net/2021/12/20/Txu689aMSYBbnpd.png" alt="需要理解的命令" style="zoom:50%;" />
+<h2 id="零-基础篇">零、基础篇</h2>
+<h3 id="configure-terminal">configure terminal</h3>
+<p>进入全局配置模式</p>
+<h3 id="shutdown">shutdown</h3>
+<p>关闭端口</p>
+<h3 id="no-shutdown">no shutdown</h3>
+<p>激活端口</p>
+<h2 id="一-更改端口的基本信息">一、更改端口的基本信息</h2>
+<h3 id="interface">interface &lt;&gt; &lt;&gt;</h3>
+<p>进入到某个接口的配置模式：interface &lt;接口名&gt; &lt;模块号/端口号&gt;，例如interface ethernet 0/1；</p>
+<p>创建并进入子接口：<code>interface &lt;type&gt; &lt;slot/unit.sub&gt;</code>，例如<code>interface e0/1.1</code>.</p>
+<h3 id="switch-port-mode">switch-port mode &lt;&gt;</h3>
+<p><code>switch-port mode &#123; access | trunk &#125;</code>设置端口工作模式为（主要是以下两种）：</p>
+<ul>
+<li><code>access</code>：如果一个接口的模式是 access，则该接口只能成为一个<code>VLAN</code>的成员，可以使用 <code>switchport access vlan</code> 命令把它指定给一个<code>VLAN</code></li>
+<li><code>trunk</code>：如果一个接口的模式是 trunk，则该接口可以是多个<code>VLAN</code>的成员，可以用 <code>switch-port trunk </code>命令定义许可<code>VLAN</code>列表决定它所在的<code>VLAN</code>。</li>
+</ul>
+<p><code>no switch-port mode</code>：可以把接口模式恢复为缺省值。</p>
+<h3 id="switch-port-access-vlan">switch-port access vlan &lt;&gt;</h3>
+<p>具体用途是将某个端口划到某个vlan中。</p>
+<h3 id="例题分析：">例题分析：</h3>
+<p><img src="https://s2.loli.net/2021/12/20/vRZbfdU3raWuVoO.png" alt="Quiz 4"></p>
+<p><strong>Write the commands to assign Fa0/0 in switch C to VLAN 2:</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SwitchC(Config)<span class="meta">#    interface Fa0/0</span></span><br><span class="line">SwitchC(Config-<span class="keyword">if</span>)<span class="meta"># switchport mode access (set mode)</span></span><br><span class="line">SwitchC(Config-<span class="keyword">if</span>)<span class="meta"># switchport access vlan 2 (assign vlan)</span></span><br></pre></td></tr></table></figure>
+<h2 id="二-配置vlan">二、配置VLAN</h2>
+<h3 id="增加vlan">增加VLAN</h3>
+<h4 id="vlan-database"><code>vlan database</code></h4>
+<p>进入VLAN配置模式</p>
+<h4 id="vlan"><code>vlan &lt;&gt;</code></h4>
+<p>创建一个VLAN，后面跟的数字是标号</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Switch2</span>#      vlan database         </span><br><span class="line"><span class="type">Switch2</span>(vlan)#vlan <span class="number">2</span>                 </span><br></pre></td></tr></table></figure>
+<h3 id="给子端口配置vlan">给子端口配置VLAN</h3>
+<h4 id="ip-address">ip address &lt;&gt; &lt;&gt;</h4>
+<p>配置IP地址，例如 <code>ip address 10.0.0.1 255.255.0.0</code>,即配置的ip地址为<code>10.0.0.1</code>，子网掩码为<code>255.255.0.0</code></p>
+<h4 id="encapsulation-dot1q">encapsulation dot1q &lt;&gt;</h4>
+<p>配置子接口所属的VLAN（命令：encapsulation dot1q VLAN编号）</p>
+<h3 id="例题分析：">例题分析：</h3>
+<p><img src="https://s2.loli.net/2021/12/20/vRZbfdU3raWuVoO.png" alt="Quiz 4"></p>
+<p><strong>Write the commands to create 2 sub interfaces in router A, and assign the</strong> <strong>correct VLAN and IP address to the sub interfaces. Select IP addresses from following:</strong></p>
+<p><strong>10.1.0.1/16, 10.0.0.1/16：</strong></p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">RouterA(Config)#       <span class="keyword">interface</span> e0/<span class="number">0</span><span class="variable">.1</span> (#<span class="number">1</span> sub <span class="keyword">interface</span>)</span><br><span class="line">RouterA(Config-subif)# ip address <span class="number">10</span><span class="variable">.0</span><span class="variable">.0</span><span class="variable">.1</span> <span class="number">255</span><span class="variable">.255</span><span class="variable">.0</span><span class="variable">.0</span> (set address)</span><br><span class="line">RouterA(Config-subif)# encapsulation dot1q <span class="number">1</span> (set vlan <span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line">RouterA(Config)#       <span class="keyword">interface</span> e0/<span class="number">0</span><span class="variable">.2</span> (#<span class="number">2</span> sub <span class="keyword">interface</span>)</span><br><span class="line">RouterA(Config-subif)# ip address <span class="number">10</span><span class="variable">.1</span><span class="variable">.0</span><span class="variable">.1</span> <span class="number">255</span><span class="variable">.255</span><span class="variable">.0</span><span class="variable">.0</span> (set address)</span><br><span class="line">RouterA(Config-subif)# encapsulation dot1q <span class="number">2</span> (set vlan <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="三-配置静态路由">三、配置静态路由</h2>
+<h3 id="ip-route">ip route &lt;&gt; &lt;&gt;</h3>
+<p>在各路由器上配置静态路由，使得不相邻路由器之间能够相互通信（命令：<code>ip route 目标网络 子网掩码 下一跳地址</code>）</p>
+<img src="https://s2.loli.net/2021/12/20/WlJoLdhfXHStUPI.jpg" alt="lab 4" style="zoom:67%;" />
+<p>配置路由器到<code>PC4</code>所在子网和<code>PC5</code>所在子网的路由:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># R1 下一跳到 <span class="function">R3</span></span><br><span class="line"><span class="function"><span class="title">R1</span><span class="params">(config)</span><span class="meta">#ip route 172.16.0.0 255.255.255.0 192.168.13.3</span></span></span><br><span class="line"><span class="function"><span class="title">R1</span><span class="params">(config)</span><span class="meta">#ip route 172.16.1.0 255.255.255.0 192.168.13.3</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"># R3 下一跳再到 R4</span></span><br><span class="line"><span class="function"><span class="title">R3</span><span class="params">(config)</span><span class="meta">#ip route 172.16.0.0 255.255.255.0 192.168.34.4</span></span></span><br><span class="line"><span class="function"><span class="title">R3</span><span class="params">(config)</span><span class="meta">#ip route 172.16.1.0 255.255.255.0 192.168.34.4</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="四-配置动态路由">四、配置动态路由</h2>
+<h3 id="router-ospf">router ospf &lt;&gt;</h3>
+<p>在路由器上启用OSPF协议，<code>router ospf &lt;process-id&gt;</code></p>
+<h3 id="network-area">network &lt;&gt; &lt;&gt; area &lt;&gt;</h3>
+<p>配置路由器接口（子网）所属Area ID</p>
+<p><code>network &lt;ip_net&gt; &lt;mask&gt; area &lt;area-id&gt;</code></p>
+<h3 id="area-virtual-link">area &lt;&gt; virtual-link &lt;&gt;</h3>
+<p>在两个区域边界路由器之间建立虚链路，<code>&lt;area-id&gt;</code>填写用于传递数据的区域ID，<code>&lt;router ID&gt;</code>分别设为对方的Router ID：</p>
+<p><code>area &lt;area-id&gt; virtual-link &lt;router ID&gt;</code></p>
+<p><img src="https://s2.loli.net/2021/12/20/cDlzRk2ZIrKWxOd.png" alt="quiz 7"></p>
+<img src="https://s2.loli.net/2021/12/20/zw5rtyDN2BEgF48.png" alt="image-20211220200559722" style="zoom:67%;" />
+<p><strong>Part 1/4. Write commands to enable OSPF for all interfaces in router D (use process id</strong> <strong>1)</strong></p>
+<p>先要找到各个端口连接的子网地址以及掩码（即通过相邻的路由器的端口进行查表）。如D的<code>E1/1</code>端口接的是<code>F</code>的<code>E0/1</code>端口，那么所在子网为<code>20.3.0.0</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">RouterD(Config)<span class="meta"># router ospf 1</span></span><br><span class="line"></span><br><span class="line">RouterD(Config-router)<span class="meta"># network 20.3.0.0 0.0.255.255 area 1 (for E1/1)</span></span><br><span class="line">RouterD(Config-router)<span class="meta"># network 20.1.0.0 0.0.255.255 area 0 (for Gi0/0)</span></span><br><span class="line">RouterD(Config-router)<span class="meta"># network 20.4.0.0 0.0.255.255 area 0 (for E1/0)</span></span><br></pre></td></tr></table></figure>
+<img src="https://s2.loli.net/2021/12/20/aEYGLmQH5jIUwe1.png" alt="image-20211220201248155" style="zoom: 67%;" />
+<p><strong>Part 3/4. In order to exchange link state between area 3 and area 0. Write commands to setup a virtual link</strong></p>
+<ul>
+<li>首先需要挑选两个区域的边界路由器，如area 0 的E，area 3 的H</li>
+<li>其次分别为这两个路由器添加一条到达对方的虚电路</li>
+</ul>
+<p>**for the router in area 0:**Router E</p>
+<p><strong>1. Router(Config)#</strong> <code>router ospf 1</code></p>
+<p><strong>2. Router(Config-router)#</strong> <code>area 2 virtual-link 11.8.0.1</code></p>
+<p>**for the router in area 3:**Router H</p>
+<p><strong>3. Router(Config)#</strong> <code>router ospf 1</code></p>
+<p><strong>4. Router(Config-router)#</strong> <code>area 2 virtual-link 11.5.0.1</code></p>
+<h2 id="五-bgp">五、BGP</h2>
+<h3 id="router-bgp">router bgp &lt;&gt;</h3>
+<p>在路由器R1上启用BGP协议, 设置AS号：</p>
+<p><code>router bgp &lt;AS-Number&gt;</code></p>
+<h3 id="network-mask">network &lt;&gt; mask &lt;&gt;</h3>
+<p>宣告直连网络，<code>BGP</code>的<code>network</code>能够通告路由表中的所有非BGP路由量：</p>
+<p><code>network x.x.x.x mask x.x.x.x</code></p>
+<h4 id="例题：">例题：</h4>
+<img src="https://s2.loli.net/2021/12/20/IFZ8ScgmJrla6xV.png" alt="lab 6" style="zoom:67%;" />
+<p>启动R3、R5上的BGP协议（配置成同一个AS），宣告直连网络，然后把对方增加为AS内部的邻居：</p>
+<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">R3</span>(config)<span class="meta">#router bgp 65003 </span></span><br><span class="line"><span class="built_in">R3</span>(config-router)<span class="meta">#network 192.168.34.0 mask 255.255.255.0 	(f0/0直连网络)</span></span><br><span class="line"><span class="built_in">R3</span>(config-router)<span class="meta">#network 192.168.13.0 mask 255.255.255.0 	(f1/0直连网络)</span></span><br><span class="line"><span class="built_in">R3</span>(config-router)<span class="meta">#neighbor 192.168.5.1 remote-as 65003 		(192.168.5.1是R5的回环接口的IP)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">R5</span>(config)<span class="meta">#router bgp 65003 </span></span><br><span class="line"><span class="built_in">R5</span>(config-router)<span class="meta">#network 192.168.45.0 mask 255.255.255.0 	(f0/1直连网络)</span></span><br><span class="line"><span class="built_in">R5</span>(config-router)<span class="meta">#network 192.168.25.0 mask 255.255.255.0 	(f1/0直连网络)</span></span><br><span class="line"><span class="built_in">R5</span>(config-router)<span class="meta">#neighbor 192.168.3.1 remote-as 65003 		(192.168.3.1是R3的回环接口的IP)</span></span><br></pre></td></tr></table></figure>
+<h3 id="neighbor-remote-as">neighbor &lt;&gt; remote-as &lt;&gt;</h3>
+<ul>
+<li>把对方增加为AS内部的邻居（AS-Number设置为相同的AS号）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">R1(config-router)<span class="meta"># neighbor <span class="meta-string">&lt;IP-Address&gt;</span> remote-as <span class="meta-string">&lt;AS-Number&gt;</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>对方增加为AS间的邻居（IP-Address为对方的IP，AS-Number设置为对方的AS号）：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">R1</span>(config-router)<span class="meta"># neighbor <span class="meta-string">&lt;IP-Address&gt;</span> remote-as <span class="meta-string">&lt;AS-Number&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="neighbor-update-source-loopback">neighbor &lt;&gt; update-source loopback &lt;&gt;</h3>
+<p>设置BGP更新源为回环接口（IP-Addr设置为对方的回环口IP）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">R1(config-router)# neighbor &lt;IP-Addr&gt; update-source loopback 0</span><br></pre></td></tr></table></figure>
+<h3 id="redistribute-ospf">redistribute ospf &lt;&gt;</h3>
+<p>在BGP中启用路由重分发功能，从OSPF中重分发路由信息：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">R1</span>(config)<span class="meta"># router bgp <span class="meta-string">&lt;AS-Number&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">R1</span>(config-router)<span class="meta"># redistribute ospf <span class="meta-string">&lt;process-id&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="redistribute-bgp-subnets">redistribute bgp &lt;&gt; subnets</h3>
+<p>在OSPF中启用重分发功能，从BGP中重分发路由信息：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">R1</span>(config)<span class="meta"># router ospf <span class="meta-string">&lt;process-id&gt;</span> </span></span><br><span class="line"></span><br><span class="line"><span class="built_in">R1</span>(config-router)<span class="meta"># redistribute bgp <span class="meta-string">&lt;AS-Number&gt;</span> subnets</span></span><br></pre></td></tr></table></figure>
+<h3 id="例题：">例题：</h3>
+<img src="https://s2.loli.net/2021/12/20/u6wgLeaUN7MDEKk.png" alt="quiz 8" style="zoom:67%;" />
+<p><strong>Part 1/5. Write commands to enable BGP for all physical interfaces in router R3</strong></p>
+<ol>
+<li>
+<p>R3(Config)# <code>router bgp 65003</code></p>
+<p><strong>Enable routing on networks:</strong></p>
+</li>
+<li>
+<p>R3(Config-router)# <code>network 13.0.0.0 mask 255.255.0.0 (for R1-R3 link)</code></p>
+</li>
+<li>
+<p>R3(Config-router)# <code>network 34.0.0.0 mask 255.255.0.0 (for R3-R4 link)</code></p>
+<p><strong>set R1 as a neighbor:</strong></p>
+</li>
+<li>
+<p>R3(Config-router)# <code>neighbor 13.0.0.1 remote-as 65001</code></p>
+<p><strong>set R5 as a neighbor (using loopback address):</strong></p>
+</li>
+<li>
+<p>R3(Config-router)# <code>neighbor 5.0.0.1 remote-as 65003</code></p>
+<p><strong>use loopback as update source:</strong></p>
+</li>
+<li>
+<p>R3(Config-router)# <code>neighbor 5.0.0.1 update-source loopback 0</code></p>
+</li>
+</ol>
+<p><strong>Part 3/5. To let routers in AS 65003 has route for outside networks, restribution should be configured in R3:</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">R3</span>(Config)<span class="meta"># router ospf 1</span></span><br><span class="line"><span class="built_in">R3</span>(Config-router)<span class="meta"># redistribute bgp 65003 subnets</span></span><br></pre></td></tr></table></figure>
+<p>需要让<font color = red>AS内部的路由器拥有外部网络的路由</font>，需要在ospf 1中广播bgp的路由信息。</p>
+<p><strong>Part 4/5. To let router R2 has route for all inner networks in AS 65003, restribution should be configured in R5:</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">R5</span>(Config)<span class="meta"># router bgp 65003</span></span><br><span class="line"><span class="built_in">R5</span>(Config-router)<span class="meta"># redistribute ospf 1</span></span><br></pre></td></tr></table></figure>
+<p><code>redistribute ospf 1</code>:BGP将在AS之间传播<code>OSPF 1</code>的内部路由信息</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/12/20/%E5%A4%A7%E4%B8%89%E4%B8%8A/CN_Cisco-Command/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2021/12/19/%E5%A4%A7%E4%B8%89%E4%B8%8A/CN_data-link%20layer/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">计网-数据链路层</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "DkrqIdNGBif9GdhBufgY1lcl-gzGzoHsz",
+    app_key: "ISc7R4Lf0bvyXbUMzrHqJhV5",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021
+        <i class="ri-heart-fill heart_icon"></i> lz
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Fascinating Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i></p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+
+</html>
