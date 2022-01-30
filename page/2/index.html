@@ -161,6 +161,108 @@
     
     
     <article
+  id="post-SRTP/DeepWalk"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/10/11/SRTP/DeepWalk/"
+    >DeepWalk</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/10/11/SRTP/DeepWalk/" class="article-date">
+  <time datetime="2021-10-11T09:00:26.000Z" itemprop="datePublished">2021-10-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SRTP/">SRTP</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>DeepWalk Implementation</h1>
+<blockquote>
+<p>关于中文编码问题： <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40371180/article/details/112917271">一个有用的博客</a></p>
+<p>源码地址：<a target="_blank" rel="noopener" href="https://github.com/shenweichen/GraphEmbedding">Github网址</a></p>
+</blockquote>
+<h3 id="步骤">步骤</h3>
+<ol>
+<li>
+<p>从Github上下载源码。</p>
+</li>
+<li>
+<p>Anaconda安装环境</p>
+<ul>
+<li><code>conda create --name tf1 python=3.6.0</code>	<a target="_blank" rel="noopener" href="//xn--3-zn6aob7vr87crf0b103a.6">//也不一定要用3.6</a>，可以用更高的版本，之后的matplotlib我用3.6出现了一些问题.
+<ul>
+<li>proceed这里选择y.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2021/10/11/QNEvGsWkX4PgCwB.png" alt="python环境"></p>
+<ul>
+<li>
+<p><code>conda activate tf1</code> ：启用虚拟环境</p>
+</li>
+<li>
+<p><code>pip install tensorflow==1.12.0</code>：安装TensorFlow1，这里的代码实现使用的是TensorFlow1版本，不可下载最新版本。</p>
+</li>
+<li>
+<p><code>python setup.py install</code>：进入下载好的源码目录（setup.py目录下），<a target="_blank" rel="noopener" href="http://xn--setup-tj4o143b.py">运行setup.py</a></p>
+<p><img src="https://i.loli.net/2021/10/11/uPFfBHbqZ7J69aD.png" alt="error"></p>
+</li>
+<li>
+<p>上面可能是因为python版本的问题，于是我选择手动安装matplotlib</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install matplotlib</span><br><span class="line">pip install pandas</span><br><span class="line">pip install scipy</span><br><span class="line">pip install decorator</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>安装完毕后，即可执行下面命令</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python setup.py install</span><br><span class="line">cd examples</span><br><span class="line">python deepwalk_wiki.py</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>结果如下：<img src="https://i.loli.net/2021/10/11/NwXVxqveEb9ZCu5.png" alt="控制台结果"></p>
+</li>
+</ul>
+</li>
+</ol>
+<img src="https://i.loli.net/2021/10/11/HGUm2vdY9hwQnCc.png" alt="结果示意图" style="zoom: 50%;" /> 
+      <a class="article-more-link" href="/2021/10/11/SRTP/DeepWalk/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SRTP/" rel="tag">SRTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graph/" rel="tag">graph</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-SRTP/Node2vec"
   class="article article-type-post"
   itemscope
@@ -429,7 +531,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2021
+        2021-2022
         <i class="ri-heart-fill heart_icon"></i> lz
       </li>
     </ul>

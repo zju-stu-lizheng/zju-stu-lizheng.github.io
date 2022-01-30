@@ -161,6 +161,108 @@
     
     
     <article
+  id="post-GitForVscode"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/01/29/GitForVscode/"
+    >Git for VScode</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/01/29/GitForVscode/" class="article-date">
+  <time datetime="2022-01-29T11:03:37.000Z" itemprop="datePublished">2022-01-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="1-vscode-配置">1. vscode 配置</h2>
+<ul>
+<li>点击设置在设置里找到git设置里面的git.path选项。</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/01/29/FK5WZXM6GBzAP9f.png" alt="image-20220129192225310"></p>
+<ul>
+<li>将设置复制到右边的用户默认设置。（如这里的<code>&quot;D:/Program Files (x86)/Git/cmd/git.exe&quot;</code>)</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/01/29/6RqtJ8TFjG1P39H.png" alt="image-20220129194046188"></p>
+<h2 id="2-git-命令行操作">2. git 命令行操作</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1 添加.git文件夹#</span></span><br><span class="line">git init</span><br><span class="line"><span class="comment">#2 将文件加入仓库#</span></span><br><span class="line">git add readme.txt</span><br><span class="line">git commit -m <span class="string">&quot;wrote a readme file&quot;</span></span><br><span class="line"><span class="comment">#3 将文件加入仓库#</span></span><br><span class="line">git remote add origin https://github.com/zju-stu-lizheng/socket.git</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-添加-git文件夹">2.1 添加.git文件夹</h3>
+<p>通过<code>git init</code>命令把这个目录变成Git可以管理的仓库</p>
+<p><img src="https://s2.loli.net/2022/01/30/4F9DJA71jftcuKy.png" alt="image-20220130095132765"></p>
+<h4 id="注意事项">注意事项</h4>
+<blockquote>
+<p>首先这里再明确一下，所有的版本控制系统，其实只能跟踪文本文件的改动，比如TXT文件，网页，所有的程序代码等等，Git也不例外。版本控制系统可以告诉你每次的改动，比如在第5行加了一个单词“Linux”，在第8行删了一个单词“Windows”。而图片、视频这些二进制文件，虽然也能由版本控制系统管理，但没法跟踪文件的变化，只能把二进制文件每次改动串起来，也就是只知道图片从100KB改成了120KB，但到底改了啥，版本控制系统不知道，也没法知道。</p>
+<p>不幸的是，Microsoft的Word格式是二进制格式，因此，版本控制系统是没法跟踪Word文件的改动的。</p>
+<p>因为文本是有编码的，强烈建议使用标准的UTF-8编码，所有语言使用同一种编码，既没有冲突，又被所有平台所支持。</p>
+</blockquote>
+<h3 id="2-2-将文件放入git仓库">2.2 将文件放入git仓库</h3>
+<p><strong>和把大象放到冰箱需要3步相比，把一个文件放到Git仓库只需要两步。</strong></p>
+<p>第一步，用命令<code>git add</code>告诉Git，把文件添加到仓库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add readme.txt</span><br></pre></td></tr></table></figure>
+<p>执行上面的命令，没有任何显示，这就对了，Unix的哲学是“没有消息就是好消息”，说明添加成功。</p>
+<p>第二步，用命令<code>git commit</code>告诉Git，把文件提交到仓库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;wrote a readme file&quot;</span></span><br><span class="line">[master (root-commit) 60d2a7f] wrote a readme file</span><br><span class="line"> 1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line"> create mode 100644 readme.txt</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/01/30/qaEhTF1bIymxcgA.png" alt="image-20220130095242765"></p>
+<p>简单解释一下<code>git commit</code>命令，<code>-m</code>后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。</p>
+<p><code>git commit</code>命令执行成功后会告诉你，<code>1 file changed</code>：1个文件被改动（我们新添加的readme.txt文件）.</p>
+<h3 id="2-3-推送分支">2.3 推送分支</h3>
+<p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<p>如果要推送其他分支，比如<code>dev</code>，就改成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin dev</span><br></pre></td></tr></table></figure>
+<p>但是，并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？</p>
+<ul>
+<li><code>master</code>分支是主分支，因此要时刻与远程同步；</li>
+<li><code>dev</code>分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</li>
+<li>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；</li>
+<li>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。</li>
+</ul>
+<h3 id="小结">小结</h3>
+<ul>
+<li>查看远程库信息，使用<code>git remote -v</code>；</li>
+<li>本地新建的分支如果不推送到远程，对其他人就是不可见的；</li>
+<li>从本地推送分支，使用<code>git push origin branch-name</code>，如果推送失败，先用<code>git pull</code>抓取远程的新提交；</li>
+<li>在本地创建和远程分支对应的分支，使用<code>git checkout -b branch-name origin/branch-name</code>，本地和远程分支的名称最好一致；</li>
+<li>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream branch-name origin/branch-name</code>；</li>
+<li>从远程抓取分支，使用<code>git pull</code>，如果有冲突，要先处理冲突。</li>
+</ul>
+<h2 id="出现的错误及解决方案">出现的错误及解决方案</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43945983/article/details/110882074">OpenSSL  10054错误解决</a></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%A5%E9%97%A8/" rel="tag">入门</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-大三上/CN_Cisco-Command"
   class="article article-type-post"
   itemscope
@@ -1460,108 +1562,6 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 </article>
 
     
-    <article
-  id="post-SRTP/DeepWalk"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/10/11/SRTP/DeepWalk/"
-    >DeepWalk</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/10/11/SRTP/DeepWalk/" class="article-date">
-  <time datetime="2021-10-11T09:00:26.000Z" itemprop="datePublished">2021-10-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/SRTP/">SRTP</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1>DeepWalk Implementation</h1>
-<blockquote>
-<p>关于中文编码问题： <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40371180/article/details/112917271">一个有用的博客</a></p>
-<p>源码地址：<a target="_blank" rel="noopener" href="https://github.com/shenweichen/GraphEmbedding">Github网址</a></p>
-</blockquote>
-<h3 id="步骤">步骤</h3>
-<ol>
-<li>
-<p>从Github上下载源码。</p>
-</li>
-<li>
-<p>Anaconda安装环境</p>
-<ul>
-<li><code>conda create --name tf1 python=3.6.0</code>	<a target="_blank" rel="noopener" href="//xn--3-zn6aob7vr87crf0b103a.6">//也不一定要用3.6</a>，可以用更高的版本，之后的matplotlib我用3.6出现了一些问题.
-<ul>
-<li>proceed这里选择y.</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://i.loli.net/2021/10/11/QNEvGsWkX4PgCwB.png" alt="python环境"></p>
-<ul>
-<li>
-<p><code>conda activate tf1</code> ：启用虚拟环境</p>
-</li>
-<li>
-<p><code>pip install tensorflow==1.12.0</code>：安装TensorFlow1，这里的代码实现使用的是TensorFlow1版本，不可下载最新版本。</p>
-</li>
-<li>
-<p><code>python setup.py install</code>：进入下载好的源码目录（setup.py目录下），<a target="_blank" rel="noopener" href="http://xn--setup-tj4o143b.py">运行setup.py</a></p>
-<p><img src="https://i.loli.net/2021/10/11/uPFfBHbqZ7J69aD.png" alt="error"></p>
-</li>
-<li>
-<p>上面可能是因为python版本的问题，于是我选择手动安装matplotlib</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install matplotlib</span><br><span class="line">pip install pandas</span><br><span class="line">pip install scipy</span><br><span class="line">pip install decorator</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>安装完毕后，即可执行下面命令</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python setup.py install</span><br><span class="line">cd examples</span><br><span class="line">python deepwalk_wiki.py</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>结果如下：<img src="https://i.loli.net/2021/10/11/NwXVxqveEb9ZCu5.png" alt="控制台结果"></p>
-</li>
-</ul>
-</li>
-</ol>
-<img src="https://i.loli.net/2021/10/11/HGUm2vdY9hwQnCc.png" alt="结果示意图" style="zoom: 50%;" /> 
-      <a class="article-more-link" href="/2021/10/11/SRTP/DeepWalk/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SRTP/" rel="tag">SRTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graph/" rel="tag">graph</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
@@ -1579,7 +1579,7 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
     <ul>
       <li>
         Copyrights &copy;
-        2021
+        2021-2022
         <i class="ri-heart-fill heart_icon"></i> lz
       </li>
     </ul>
