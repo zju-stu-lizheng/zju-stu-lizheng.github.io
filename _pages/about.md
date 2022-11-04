@@ -18,7 +18,7 @@ I am Zheng Li (李政), an undergraduate from [CKC Honors College](http://ckc.zj
 
 ## Education
 
-<img src="../images/zju.png" alt="zju" style="zoom:9%; float: left" />&emsp; [ZheJiang University](https://www.zju.edu.cn/english/) （Ranking: **2/125**, GPA: 4.67/5.0）   
+<img src="../images/zju.png" alt="zju" style="zoom:12%; float: left" />&emsp; [ZheJiang University](https://www.zju.edu.cn/english/) （Ranking: **2/125**, GPA: 4.67/5.0）   
 &emsp; B.S. in Computer Science, advised by Prof. [Lidan Shou](https://person.zju.edu.cn/should#0). Sep. 2019 - Present
 
 
