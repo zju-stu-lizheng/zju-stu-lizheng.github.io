@@ -15,10 +15,11 @@ My research focuses on database and AI.
 
 ## Education
 
-<img src="../images/zju.png" alt="zju" style="zoom:12%; float: left" />&emsp; [ZheJiang University](https://www.zju.edu.cn/english/) （Ranking: **2/125**, GPA: 4.67/5.0 92.7/100）
+<img src="../images/zju.png" alt="zju" style="zoom:8%; float: left" />&emsp; [ZheJiang University](https://www.zju.edu.cn/english/) （Ranking: **2/125**, GPA: 4.67/5.0 92.7/100）
+
 &emsp; B.S. in Computer Science and technology. Sep. 2019 - Jun. 2023
 
-<img src="../images/zju.png" alt="zju" style="zoom:12%; float: left" />&emsp; [ZheJiang University](https://www.zju.edu.cn/english/)
+<img src="../images/zju.png" alt="zju" style="zoom:8%; float: left" />&emsp; [ZheJiang University](https://www.zju.edu.cn/english/)
 
 &emsp; M.D. student in Computer Science and technology, advised by Prof. [Lidan Shou](https://person.zju.edu.cn/should#0). Sep. 2023 - Present
 
