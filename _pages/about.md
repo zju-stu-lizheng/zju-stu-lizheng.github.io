@@ -9,7 +9,7 @@ redirect_from:
 ---
 This is Liodb's home on the web!
 
-I'm Zheng Li (李政), an incoming M.D. student in Computer Science and technology from [ZheJiang University](https://www.zju.edu.cn/english/). I feel very fortunate to have worked under the guidance of [Prof. Lidan Shou](https://person.zju.edu.cn/should#0) since 2022.
+I'm Zheng Li (李政), an incoming M.S. student in Computer Science and technology from [ZheJiang University](https://www.zju.edu.cn/english/). I feel very fortunate to have worked under the guidance of [Prof. Lidan Shou](https://person.zju.edu.cn/should#0) since 2022.
 
 My research focuses on database and AI.
 
@@ -22,7 +22,6 @@ My research focuses on database and AI.
 <img src="../images/zju.png" alt="zju" style="zoom:7%; float: left" />&emsp; [ZheJiang University](https://www.zju.edu.cn/english/)
 
 &emsp; M.S. in Computer Science and technology, advised by Prof. [Lidan Shou](https://person.zju.edu.cn/should#0). Sep. 2023 - Present
-
 
 ## Competition
 

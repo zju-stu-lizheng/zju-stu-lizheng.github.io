@@ -14,6 +14,10 @@ Education
 * B.S. in CS, Zhejiang University, 2023
 * M.S. in CS, Zhejiang University, 2026(expected)
 
+Competition
+======
+[2023全球智能汽车AI挑战赛——AI大模型检索问答](https://tianchi.aliyun.com/competition/entrance/532154/customize433)&emsp;[优胜奖（4/730）](https://zju-stu-lizheng.github.io/images/ai-tt.jpg)
+
 <!-- Work experience
 ======
 * Summer 2015: Research Assistant
