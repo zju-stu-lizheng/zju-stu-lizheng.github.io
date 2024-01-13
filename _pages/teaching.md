@@ -4,14 +4,11 @@ title: "Teaching"
 permalink: /teaching/
 author_profile: true
 ---
-## Education
-
 ## [Operating System Principles](https://zju-sec.github.io/os23fall-stu/)
 
 Undergraduate Course,  *Zhejiang University, CS* , 2023
 
 Teaching Assistant [Fall 2023]
-
 
 ## [Operating System Principles](https://zju-sec.github.io/os23fall-stu/)
 
