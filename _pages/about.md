@@ -27,4 +27,8 @@ My research focuses on database and AI.
 
 2023全球智能汽车AI挑战赛——AI大模型检索问答[优胜奖（4/730）](https://tianchi.aliyun.com/competition/entrance/532154/customize433)
 
-<!-- ## Publications -->
+## Publications 
+
+### FloE: On-the-Fly MoE Inference on Memory-constrained GPU  
+**Authors:** Yuxin Zhou · *Zheng Li* · Jun Zhang · Jue Wang · Yiping Wang · Zhongle Xie · Ke Chen · Lidan Shou  
+ICML 2025 co-first author, [Paper Link](https://icml.cc/virtual/2025/poster/44378) 
