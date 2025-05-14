@@ -5,6 +5,11 @@ permalink: /publications/
 author_profile: true
 ---
 
+<!-- <ul>{% for post in site.publications %}
+    {% include archive-single-cv.html %}
+  {% endfor %}</ul> -->
+
+
 ## FloE: On-the-Fly MoE Inference on Memory-constrained GPU  
 **Authors:** Yuxin Zhou · *Zheng Li* · Jun Zhang · Jue Wang · Yiping Wang · Zhongle Xie · Ke Chen · Lidan Shou  
 ICML 2025 co-first author, [Paper Link](https://icml.cc/virtual/2025/poster/44378) 
